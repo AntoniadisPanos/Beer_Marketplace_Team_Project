@@ -4,6 +4,7 @@ namespace Omadiko.Database.Migrations
     using Microsoft.AspNet.Identity.EntityFramework;
     using Omadiko.Entities;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -23,6 +24,24 @@ namespace Omadiko.Database.Migrations
 
             context.Products.AddOrUpdate(x => new { x.Name }, p1, p2, p3);
             context.SaveChanges();
+            #region Book Authors
+            Book book1 = new Book() { Title = "Lord of The Rings", Price = 20, IsAvailable = true };
+            Book book2 = new Book() { Title = "Avatar", Price = 15, IsAvailable = false };
+            Book book3 = new Book() { Title = "Harry-Potter", Price = 20, IsAvailable = true };
+            Book book4 = new Book() { Title = "The fifty shades of gray", Price = 20, IsAvailable = true };
+
+            Author author1 = new Author() { FirstName = "Stephen", LastName = " King" };
+            Author author2 = new Author() { FirstName = "Mitsos", LastName = "Tolkien" };
+            Author author3 = new Author() { FirstName = "J-K", LastName = " Rolling" };
+
+            author1.Books = new List<Book>() { book1, book2, book3 };
+            author2.Books = new List<Book>() { book1 };
+            author3.Books = new List<Book>() { book1, book2 };
+
+            context.Authors.AddOrUpdate(x => x.FirstName, author1, author2, author3);
+            context.SaveChanges();
+            #endregion
+
 
 
             if (!context.Roles.Any(x => x.Name == "Admin"))
