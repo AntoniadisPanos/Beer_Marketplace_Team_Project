@@ -28,11 +28,11 @@ namespace Omadiko.Database.Migrations
             Book book1 = new Book() { Title = "Lord of The Rings", Price = 20, IsAvailable = true };
             Book book2 = new Book() { Title = "Avatar", Price = 15, IsAvailable = false };
             Book book3 = new Book() { Title = "Harry-Potter", Price = 20, IsAvailable = true };
-            Book book4 = new Book() { Title = "The fifty shades of gray", Price = 20, IsAvailable = true };
+            Book book4 = new Book() { Title = "The fifty shades", Price = 20, IsAvailable = true };
 
-            Author author1 = new Author() { FirstName = "Stephen", LastName = " King" };
+            Author author1 = new Author() { FirstName = "Stephen", LastName = " Kings" };
             Author author2 = new Author() { FirstName = "Mitsos", LastName = "Tolkien" };
-            Author author3 = new Author() { FirstName = "J-K", LastName = " Rolling" };
+            Author author3 = new Author() { FirstName = "J-King", LastName = " Rolling" };
 
             author1.Books = new List<Book>() { book1, book2, book3 };
             author2.Books = new List<Book>() { book1 };
