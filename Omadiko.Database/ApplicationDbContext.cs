@@ -22,6 +22,8 @@ namespace Omadiko.Database
         {
             return new ApplicationDbContext();
         }
+        public DbSet<Book> Books { get; set; }
 
+        public DbSet<Author> Authors { get; set; }
     }
 }

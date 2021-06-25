@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Omadiko.Entities
 {
-    class Book
+   public class Book
     {
         public int BookId { get; set; }
         [Required(ErrorMessage = "Book must have a price ")]
