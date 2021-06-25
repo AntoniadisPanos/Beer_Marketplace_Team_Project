@@ -9,50 +9,50 @@ using System.Threading.Tasks;
 
 namespace Omadiko.RepositoryServices
 {
-    public class ProductRepository
+    public class BookRepository
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
 
-        public IEnumerable<Product> GetAll()
+        public IEnumerable<Book> GetAll()
         {
-            return db.Products.ToList();
+            return db.Books.ToList();
         }
 
-        public IEnumerable<Product> GetAllOrderedByName()
+        public IEnumerable<Book> GetAllOrderedByName()
         {
-            return db.Products.OrderBy(x=>x.Name).ToList();
+            return db.Books.OrderBy(x=>x.Title).ToList();
         }
 
-        public IEnumerable<Product> FilterByName(string name)
+        public IEnumerable<Book> FilterByName(string title)
         {
-            return db.Products.Where(x => x.Name.Contains(name)).ToList();
+            return db.Books.Where(x => x.Title.Contains(title)).ToList();
         }
 
 
 
-        public Product GetById(int? id)
+        public Book GetById(int? id)
         {
-            return db.Products.Find(id);
+            return db.Books.Find(id);
         }
 
-        public void Insert(Product product)
+        public void Insert(Book book)
         {
-            db.Entry(product).State = EntityState.Added;
+            db.Entry(book).State = EntityState.Added;
             db.SaveChanges();
         }
 
-        public void Update(Product product)
+        public void Update(Book book)
         {
-            db.Entry(product).State = EntityState.Modified;
+            db.Entry(book).State = EntityState.Modified;
             db.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            var product = db.Products.Find(id);
+            var book = db.Books.Find(id);
 
-            db.Entry(product).State = EntityState.Deleted;
+            db.Entry(book).State = EntityState.Deleted;
             db.SaveChanges();
         }
 
