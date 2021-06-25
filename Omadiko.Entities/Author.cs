@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Omadiko.Entities
 {
-    class Author
+    public class Author
     {
         public int AuthorId { get; set; }
         [Required(ErrorMessage = "Author must have first name ")]
