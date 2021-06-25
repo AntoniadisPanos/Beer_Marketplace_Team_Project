@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationUser.cs" />
+    <Compile Include="Book.cs" />
     <Compile Include="Custom Validations\Methods.cs" />
     <Compile Include="Custom Validations\ValidationMethods.cs" />
     <Compile Include="Product.cs" />
