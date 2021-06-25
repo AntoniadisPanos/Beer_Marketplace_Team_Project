@@ -14,7 +14,7 @@ namespace Omadiko.Entities
         [Required(ErrorMessage = "Book must have a price ")]
         [CustomValidation(typeof(ValidationMethods), Methods.ValidateGreaterThanZero)]
         public int Price { get; set; }
-        [Required(ErrorMessage = "Book Must Have A Price ")]
+        [Required(ErrorMessage = "Book Must Have A Title ")]
         [MaxLength(25),MinLength(5)]
         public string Title { get; set; }
         [Required(ErrorMessage = "We must know if book is available or not ")]
