@@ -1,17 +1,22 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿body{
+    /*background-color:antiquewhite;*/
+    background-image:url("Images/university1.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:50px;
+    position:absolute;
+     margin-left:600px;
+     margin-top:400px;
+     padding-bottom:20px 20px 20px 20px;
+     padding-left:20px 20px 20px 20px;
+     margin:2px 2px 2px 2px ;
+    
+    
+
+
+}
+table{
+    background-color:aqua;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
