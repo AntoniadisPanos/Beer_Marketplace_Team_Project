@@ -19,10 +19,10 @@ namespace Omadiko.Database.Migrations
         protected override void Seed(Omadiko.Database.ApplicationDbContext context)
         {
 
-            Beer beer1 = new Beer() {Name="Corona",Price=3,PhotoUrl="Content/Images/corona.jpg",Description="",Popularity=5 };
-            Beer beer2 = new Beer() {Name="Chios_Alospale",Price=2,PhotoUrl="",Description="",Popularity=4 };
-            Beer beer3 = new Beer() {Name="Chios_Freskia",Price=5,PhotoUrl="",Description="",Popularity=4 };
-            Beer beer4 = new Beer() {Name="Aecht_Schlenkerla_Rauchbie",Price=4,PhotoUrl="",Description="",Popularity=3 };
+            Beer beer1 = new Beer() {Name="Corona",Price=3,PhotoUrl="/Content/Images/corona.jpg",Description="",Popularity=5 };
+            Beer beer2 = new Beer() {Name="Chios_Alospale",Price=2,PhotoUrl= "/Content/Images/_aecht_schlenkerla_rauchbier_marzen_500ml.jpg", Description="",Popularity=4 };
+            Beer beer3 = new Beer() {Name="Chios_Freskia",Price=5,PhotoUrl= "/Content/Images/chiou_alos_pale_ale_fiali_12x330ml.jpg", Description="",Popularity=4 };
+            Beer beer4 = new Beer() {Name="Aecht_Schlenkerla_Rauchbie",Price=4,PhotoUrl= "/Content/Images/freskia_mpyra_chiou_330ml.jpg", Description="",Popularity=3 };
 
             context.Beers.AddOrUpdate(x => x.Name, beer1, beer2, beer3, beer4);
             context.SaveChanges();

@@ -58,8 +58,8 @@ namespace Omadiko.WebApp
             //   consumerSecret: "");
 
             //app.UseFacebookAuthentication(
-            //  appId: "396614948407135",
-            //  appSecret: "0e991327735eecbeaa0ed5f2fdf5aa70");
+            //  appId: "",
+            //  appSecret: "");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
