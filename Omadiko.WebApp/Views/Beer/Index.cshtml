@@ -29,27 +29,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var beer in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @beer.Name.Replace("_", " ")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Price)
+            @Html.DisplayFor(modelItem => beer.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Popularity)
+            @Html.DisplayFor(modelItem => beer.Popularity)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            @Html.DisplayFor(modelItem => beer.Description)
         </td>
         <td>
-            <img style="width:100px;" src=@item.PhotoUrl alt="Alternate Text" />
+            <img style="width:100px;" src=@beer.PhotoUrl alt="Alternate Text" />
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BeerId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BeerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BeerId })
+            @Html.ActionLink("Edit", "Edit", new { id= beer.BeerId }) |
+            @Html.ActionLink("Details", "Details", new { id= beer.BeerId }) |
+            @Html.ActionLink("Delete", "Delete", new { id= beer.BeerId })
         </td>
     </tr>
 }
