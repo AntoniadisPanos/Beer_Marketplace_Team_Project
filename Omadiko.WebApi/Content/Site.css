@@ -1,22 +1,25 @@
-﻿body{
-    /*background-color:antiquewhite;*/
-    background-image:url("Images/university1.jpg");
-    background-repeat:no-repeat;
-    background-size:cover;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size:50px;
-    position:absolute;
-     margin-left:600px;
-     margin-top:400px;
-     padding-bottom:20px 20px 20px 20px;
-     padding-left:20px 20px 20px 20px;
-     margin:2px 2px 2px 2px ;
-    
-    
-
-
+﻿body {
+    background-color:antiquewhite;
+    background-image: url("Images/university1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    position: absolute;
+    margin-left: 600px;
+    margin-top: 400px;
+    padding-bottom: 20px 20px 20px 20px;
+    padding-left: 20px 20px 20px 20px;
+    margin: 2px 2px 2px 2px;
+    background-color: antiquewhite;
+    color: antiquewhite;
+    padding: 20px 20px 20px 20px;
 }
-table{
-    background-color:aqua;
+.body:hover {
+    color: aliceblue;
+    background-color: antiquewhite;
+}
+table {
+    background-color: antiquewhite;
 }
 

@@ -9,9 +9,9 @@ using Omadiko.Entities.Custom_Validations;
 
 namespace Omadiko.Entities
 {
-    public class Product
+    public class Beer
     {
-        public int ProductId { get; set; }
+        public int BeerId { get; set; }
 
         [Required(ErrorMessage ="Title is required")]
         [MaxLength(60,ErrorMessage ="Title must be less than 60 characters")]
@@ -20,5 +20,10 @@ namespace Omadiko.Entities
 
         [CustomValidation(typeof(ValidationMethods), Methods.ValidateGreaterThanZero)]
         public double Price { get; set; }
+        [Range(0, 5)]
+        public int Popularity { get; set; }
+        public string Description { get; set; }
+        public string PhotoUrl { get; set; }
+       
     }
 }

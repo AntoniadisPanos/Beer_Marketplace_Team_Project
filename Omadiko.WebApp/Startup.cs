@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using System.Web.Services.Description;
 
 [assembly: OwinStartupAttribute(typeof(Omadiko.WebApp.Startup))]
 namespace Omadiko.WebApp
@@ -11,4 +12,5 @@ namespace Omadiko.WebApp
             ConfigureAuth(app);
         }
     }
+   
 }

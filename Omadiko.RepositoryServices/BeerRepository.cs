@@ -9,51 +9,51 @@ using System.Threading.Tasks;
 
 namespace Omadiko.RepositoryServices
 {
-    class AuthorRepository
+    class BeerRepository
     {
 
         ApplicationDbContext db = new ApplicationDbContext();
 
 
-        public IEnumerable<Author> GetAll()
+        public IEnumerable<Beer> GetAll()
         {
-            return db.Authors.ToList();
+            return db.Beers.ToList();
         }
 
-        public IEnumerable<Author> GetAllOrderedByName()
+        public IEnumerable<Beer> GetAllOrderedByName()
         {
-            return db.Authors.OrderBy(x => x.FirstName).ToList();
+            return db.Beers.OrderBy(x => x.Name).ToList();
         }
 
-        public IEnumerable<Author> FilterByName(string firstName)
+        public IEnumerable<Beer> FilterByName(string name)
         {
-            return db.Authors.Where(x => x.FirstName.Contains(firstName)).ToList();
+            return db.Beers.Where(x => x.Name.Contains(name)).ToList();
         }
 
 
 
-        public Author GetById(int? id)
+        public Beer GetById(int? id)
         {
-            return db.Authors.Find(id);
+            return db.Beers.Find(id);
         }
 
-        public void Insert(Author author)
+        public void Insert(Beer beer)
         {
-            db.Entry(author).State = EntityState.Added;
+            db.Entry(beer).State = EntityState.Added;
             db.SaveChanges();
         }
 
-        public void Update(Author author)
+        public void Update(Beer beer)
         {
-            db.Entry(author).State = EntityState.Modified;
+            db.Entry(beer).State = EntityState.Modified;
             db.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            var author = db.Books.Find(id);
+            var beer = db.Beers.Find(id);
 
-            db.Entry(author).State = EntityState.Deleted;
+            db.Entry(beer).State = EntityState.Deleted;
             db.SaveChanges();
         }
 

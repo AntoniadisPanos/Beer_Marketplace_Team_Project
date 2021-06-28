@@ -16,14 +16,12 @@ namespace Omadiko.Database
 
         }
 
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Beer> Beers { get; set; }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
-        public DbSet<Book> Books { get; set; }
-
-        public DbSet<Author> Authors { get; set; }
+        
     }
 }

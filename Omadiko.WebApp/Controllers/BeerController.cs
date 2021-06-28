@@ -11,107 +11,107 @@ using Omadiko.Entities;
 
 namespace Omadiko.WebApp.Controllers
 {
-    public class ProductsController : Controller
+    public class BeerController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Products
+        // GET: Beer
         public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            return View(db.Beers.ToList());
         }
 
-        // GET: Products/Details/5
+        // GET: Beer/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            Beer beer = db.Beers.Find(id);
+            if (beer == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(beer);
         }
 
-        // GET: Products/Create
+        // GET: Beer/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Products/Create
+        // POST: Beer/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,Name,Price")] Product product)
+        public ActionResult Create([Bind(Include = "BeerId,Name,Price,Popularity,Description,PhotoUrl")] Beer beer)
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
+                db.Beers.Add(beer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(product);
+            return View(beer);
         }
 
-        // GET: Products/Edit/5
+        // GET: Beer/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            Beer beer = db.Beers.Find(id);
+            if (beer == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(beer);
         }
 
-        // POST: Products/Edit/5
+        // POST: Beer/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,Name,Price")] Product product)
+        public ActionResult Edit([Bind(Include = "BeerId,Name,Price,Popularity,Description,PhotoUrl")] Beer beer)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                db.Entry(beer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(product);
+            return View(beer);
         }
 
-        // GET: Products/Delete/5
+        // GET: Beer/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            Beer beer = db.Beers.Find(id);
+            if (beer == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(beer);
         }
 
-        // POST: Products/Delete/5
+        // POST: Beer/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
+            Beer beer = db.Beers.Find(id);
+            db.Beers.Remove(beer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -8,8 +8,10 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-
-    <div class="container body-content">    
+    <div class="content body-content">
+        <h1>Welcome to The HORDE Library University</h1>
+    </div>
+    <div class="container body-content">
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
@@ -17,11 +19,10 @@
                 <li>@Html.ActionLink("Author", "Index", "Authors", new { area = "" }, null)</li>
             </ul>
         </div>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    @RenderBody()
-</body>
+    </div>               
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        @RenderBody()
+    </body>
 </html>
