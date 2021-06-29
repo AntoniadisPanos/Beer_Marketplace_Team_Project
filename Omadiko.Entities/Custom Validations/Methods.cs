@@ -9,5 +9,6 @@ namespace Omadiko.Entities.Custom_Validations
     public static class Methods
     {
         public const string ValidateGreaterThanZero = "ValidateGreaterThanZero";
+        public const string ValidateZeroToHundred = "ValidateZeroToHundred";
     }
 }
