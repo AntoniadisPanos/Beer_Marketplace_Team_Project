@@ -180,10 +180,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Images\_aecht_schlenkerla_rauchbier_marzen_500ml.jpg" />
-    <Content Include="Content\Images\freskia_mpyra_chiou_330ml.jpg" />
-    <Content Include="Content\Images\chiou_alos_pale_ale_fiali_12x330ml.jpg" />
-    <Content Include="Content\Images\corona.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

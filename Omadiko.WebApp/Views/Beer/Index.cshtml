@@ -44,7 +44,7 @@
             @Html.DisplayFor(modelItem => beer.Description)
         </td>
         <td>
-            <img style="width:100px;" src=@beer.PhotoUrl alt="Alternate Text" />
+            <img style="width:100px;" src="@beer.PhotoUrl" alt="Alternate Text" />
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id= beer.BeerId }) |
