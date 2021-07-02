@@ -18,6 +18,15 @@
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.ABV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Popularity)
         </th>
         <th>
@@ -29,27 +38,36 @@
         <th></th>
     </tr>
 
-@foreach (var beer in Model) {
+@foreach (var item in Model) {
     <tr>
         <td>
-            @beer.Name.Replace("_", " ")
+            @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => beer.Price)
+            @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => beer.Popularity)
+            @Html.DisplayFor(modelItem => item.ABV)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => beer.Description)
+            @Html.DisplayFor(modelItem => item.Color)
         </td>
         <td>
-            <img style="width:100px;" src="@beer.PhotoUrl" alt="Alternate Text" />
+            @Html.DisplayFor(modelItem => item.Type)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id= beer.BeerId }) |
-            @Html.ActionLink("Details", "Details", new { id= beer.BeerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id= beer.BeerId })
+            @Html.DisplayFor(modelItem => item.Popularity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            <img style="width:50px;" src="@item.PhotoUrl" alt="Alternate Text" />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BeerId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BeerId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BeerId })
         </td>
     </tr>
 }

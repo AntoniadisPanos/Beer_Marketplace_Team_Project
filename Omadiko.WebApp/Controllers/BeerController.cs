@@ -47,7 +47,7 @@ namespace Omadiko.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BeerId,Name,Price,Popularity,Description,PhotoUrl")] Beer beer)
+        public ActionResult Create([Bind(Include = "BeerId,Name,Price,ABV,Color,Type,Popularity,Description,PhotoUrl")] Beer beer)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace Omadiko.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BeerId,Name,Price,Popularity,Description,PhotoUrl")] Beer beer)
+        public ActionResult Edit([Bind(Include = "BeerId,Name,Price,ABV,Color,Type,Popularity,Description,PhotoUrl")] Beer beer)
         {
             if (ModelState.IsValid)
             {
