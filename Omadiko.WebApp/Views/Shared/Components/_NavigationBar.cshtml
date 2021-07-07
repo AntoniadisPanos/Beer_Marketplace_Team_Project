@@ -1,0 +1,90 @@
+﻿<div class="navbar section no-padding" role="navigation">
+    <!-- Heading -->
+    <div class="heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 hidden-xs">
+                    <ul class="social">
+                        
+                        <li><a href="~/Template/main/#" class="fa fa-instagram"></a></li>
+                        <li><a href="~/Template/main/#" class="fa fa-facebook-square"></a></li>
+                        <li><a href="~/Template/main/#" class="fa fa-twitter-square"></a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-8">
+                    <div class="finder">
+                        <a href="~/Template/main/#">
+                            <span class="fa fa-map-marker"></span> Find our beer
+                        </a>
+                    </div>
+                    <div class="cart">
+                        <a href="~/Template/main/cart.html">
+                            <span class="fa fa-shopping-cart"></span> Empty
+                        </a>
+                    </div>
+                    <div class="cart">
+                        <a href="~/Template/main/cart.html">
+                            <span class="fa fa login"></span> Login
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="navbar-header">
+            <a href="~/Template/main/index.html" class="logo" title="Craft beer landing page">
+                <img src="~/Template/images/logo.png" alt="Craft Beer HTML Template">
+            </a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar top-bar"></span>
+                <span class="icon-bar middle-bar"></span>
+                <span class="icon-bar bottom-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul id="menu-primary" class="nav navbar-nav">
+                <li class="active">
+                    <span>
+                        @Html.ActionLink("Home", "Index", "Home")
+                    </span>
+                </li>
+                <li>
+                    <span>
+                       @Html.ActionLink("Beer","Index","Beer")
+                    </span>
+                </li>
+                <li class="dropdown">
+                    <span>
+                        <a href="~/Template/main/our-beer.html">Our beer</a>
+                    </span>
+                    <ul class="dropdown-menu">
+                        <li><a href="~/Template/main/our-beer.html">Sugar Skull</a></li>
+                        <li><a href="~/Template/main/our-beer.html">BraveHeart</a></li>
+                        <li><a href="~/Template/main/our-beer.html">The Drunk Indian</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span>
+                        @Html.ActionLink("Our Story","OurStory","Home")
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        @Html.ActionLink("Contact","Contact","Home")
+                    </span>
+                </li>
+                <li class="dropdown">
+                    <span>
+                        <a href="#">Blog</a>
+                    </span>
+                    <ul class="dropdown-menu">
+                       @Html.ActionLink("SingleBlog", "SingleBlog", "Home")
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

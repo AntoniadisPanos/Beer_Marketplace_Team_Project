@@ -39,6 +39,8 @@ namespace Omadiko.Entities
         [MinLength(2, ErrorMessage = "Title must be greater than 2 characters")]
         public string Description { get; set; }
         public string PhotoUrl { get; set; }
+
+        
        
     }
 }

@@ -26,5 +26,20 @@ namespace Omadiko.WebApp.Controllers
 
             return View();
         }
+        public ActionResult OurStory()
+        {
+            ViewBag.Message = "You story page.";
+            return View();
+        }
+        public ActionResult Blog()
+        {
+            ViewBag.Message = "Your Blog is here.";
+            return View();
+        }
+        public ActionResult SingleBlog()
+        {
+            ViewBag.Message = "Your Blog is here.";
+            return View();
+        }
     }
 }
