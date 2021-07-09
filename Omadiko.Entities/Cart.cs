@@ -20,6 +20,6 @@ namespace Omadiko.Entities
         public decimal Price { get; set; }
         public decimal TotalAmount { get; set; }
         public bool Purchase { get; set; }
-
+        //test
     }
 }
