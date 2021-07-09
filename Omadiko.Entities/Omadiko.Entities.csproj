@@ -67,7 +67,6 @@
     <Compile Include="Customer.cs" />
     <Compile Include="OrderDetails.cs" />
     <Compile Include="Product.cs" />
-    <Compile Include="Ingredients.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Supplier.cs" />
