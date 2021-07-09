@@ -19,12 +19,12 @@ namespace Omadiko.Database.Migrations
         protected override void Seed(Omadiko.Database.ApplicationDbContext context)
         {
 
-            Beer beer1 = new Beer() {Name="Corona",Price=3,PhotoUrl= "/Content/Images/xlarge_corona_20sgl.jpg", Description="",Popularity=5 };
-            Beer beer2 = new Beer() {Name="Chios_Alospale",Price=2,PhotoUrl= "/Content/Images/_aecht_schlenkerla_rauchbier_marzen_500ml.jpg", Description="",Popularity=4 };
-            Beer beer3 = new Beer() {Name="Chios_Freskia",Price=5,PhotoUrl= "/Content/Images/chiou_alos_pale_ale_fiali_12x330ml.jpg", Description="",Popularity=4 };
-            Beer beer4 = new Beer() {Name="Aecht_Schlenkerla_Rauchbie",Price=4,PhotoUrl= "/Content/Images/freskia_mpyra_chiou_330ml.jpg", Description="",Popularity=3 };
+            Product beer1 = new Product() {ProductName="Corona",Price=3,PhotoUrl= "/Content/Images/xlarge_corona_20sgl.jpg", Description="",Popularity=5 };
+            Product beer2 = new Product() { ProductName = "Chios_Alospale",Price=2,PhotoUrl= "/Content/Images/_aecht_schlenkerla_rauchbier_marzen_500ml.jpg", Description="",Popularity=4 };
+            Product beer3 = new Product() { ProductName = "Chios_Freskia",Price=5,PhotoUrl= "/Content/Images/chiou_alos_pale_ale_fiali_12x330ml.jpg", Description="",Popularity=4 };
+            Product beer4 = new Product() { ProductName = "Aecht_Schlenkerla_Rauchbie",Price=4,PhotoUrl= "/Content/Images/freskia_mpyra_chiou_330ml.jpg", Description="",Popularity=3 };
 
-            context.Beers.AddOrUpdate(x => x.Name, beer1, beer2, beer3, beer4);
+            context.Beers.AddOrUpdate(x => x.ProductName, beer1, beer2, beer3, beer4);
             context.SaveChanges();
             
 

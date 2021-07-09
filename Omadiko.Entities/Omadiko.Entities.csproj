@@ -59,9 +59,14 @@
   <ItemGroup>
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="Brewery.cs" />
+    <Compile Include="Cart.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="Country.cs" />
     <Compile Include="Custom Validations\Methods.cs" />
     <Compile Include="Custom Validations\ValidationMethods.cs" />
-    <Compile Include="Beer.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="OrderDetails.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Ingredients.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

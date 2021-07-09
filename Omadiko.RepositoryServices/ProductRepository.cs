@@ -9,41 +9,41 @@ using System.Threading.Tasks;
 
 namespace Omadiko.RepositoryServices
 {
-    class BeerRepository
+    class ProductRepository
     {
 
         ApplicationDbContext db = new ApplicationDbContext();
 
 
-        public IEnumerable<Beer> GetAll()
+        public IEnumerable<Product> GetAll()
         {
             return db.Beers.ToList();
         }
 
-        public IEnumerable<Beer> GetAllOrderedByName()
+        public IEnumerable<Product> GetAllOrderedByName()
         {
-            return db.Beers.OrderBy(x => x.Name).ToList();
+            return db.Beers.OrderBy(x => x.ProductName).ToList();
         }
 
-        public IEnumerable<Beer> FilterByName(string name)
+        public IEnumerable<Product> FilterByName(string name)
         {
-            return db.Beers.Where(x => x.Name.Contains(name)).ToList();
+            return db.Beers.Where(x => x.ProductName.Contains(name)).ToList();
         }
 
 
 
-        public Beer GetById(int? id)
+        public Product GetById(int? id)
         {
             return db.Beers.Find(id);
         }
 
-        public void Insert(Beer beer)
+        public void Insert(Product beer)
         {
             db.Entry(beer).State = EntityState.Added;
             db.SaveChanges();
         }
 
-        public void Update(Beer beer)
+        public void Update(Product beer)
         {
             db.Entry(beer).State = EntityState.Modified;
             db.SaveChanges();
