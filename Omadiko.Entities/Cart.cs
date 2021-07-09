@@ -21,5 +21,6 @@ namespace Omadiko.Entities
         public decimal TotalAmount { get; set; }
         public bool Purchase { get; set; }
         //test
+        //sagsagsag
     }
 }
