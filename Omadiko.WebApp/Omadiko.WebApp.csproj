@@ -3793,11 +3793,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Beer\Create.cshtml" />
-    <Content Include="Views\Beer\Delete.cshtml" />
-    <Content Include="Views\Beer\Details.cshtml" />
-    <Content Include="Views\Beer\Edit.cshtml" />
-    <Content Include="Views\Beer\Index.cshtml" />
     <Content Include="Views\Shared\Components\_NavigationBar.cshtml" />
     <Content Include="Views\Shared\Components\_Footer.cshtml" />
     <Content Include="Views\Home\OurStory.cshtml" />
