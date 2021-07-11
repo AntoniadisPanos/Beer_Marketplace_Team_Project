@@ -1,5 +1,8 @@
 ﻿@using Microsoft.AspNet.Identity
+
+@Html.Partial("~/Views/Shared/Components/_NavigationBar.cshtml")
 @RenderBody()
+@Html.Partial("~/Views/Shared/Components/_Footer.cshtml")
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -22,3 +25,7 @@ else
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+@RenderSection("MyJavascript", required: false) 

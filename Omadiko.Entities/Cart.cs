@@ -13,8 +13,6 @@ namespace Omadiko.Entities
         public int CartId { get; set; }
         public int Quantity { get; set; }
 
-
-
         public bool Add { get; set; }
         public bool Remove { get; set; }
         public decimal Price { get; set; }
