@@ -64,7 +64,7 @@
     <Compile Include="Country.cs" />
     <Compile Include="Custom Validations\Methods.cs" />
     <Compile Include="Custom Validations\ValidationMethods.cs" />
-    <Compile Include="Customer.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="OrderDetails.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Order.cs" />
