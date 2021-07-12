@@ -27,7 +27,7 @@ namespace Omadiko.Database
         public DbSet<OrderDetails> OrderDetails { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<ShippingDetails> ShippingDetails { get; set; }
-        public DbSet<Supplier> Suppliers { get; set; }
+        
         public DbSet<Customer>Customers { get; set; }
 
 
