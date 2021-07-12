@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Omadiko.Entities
 {
-    public class AppUser
+    public class Customer
     {
-        public int UserId { get; set; }
+        public int CustomerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string HomeAddress { get; set; }

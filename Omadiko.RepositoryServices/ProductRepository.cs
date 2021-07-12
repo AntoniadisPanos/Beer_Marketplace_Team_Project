@@ -17,24 +17,24 @@ namespace Omadiko.RepositoryServices
 
         public IEnumerable<Product> GetAll()
         {
-            return db.Beers.ToList();
+            return db.Products.ToList();
         }
 
         public IEnumerable<Product> GetAllOrderedByName()
         {
-            return db.Beers.OrderBy(x => x.ProductName).ToList();
+            return db.Products.OrderBy(x => x.ProductName).ToList();
         }
 
         public IEnumerable<Product> FilterByName(string name)
         {
-            return db.Beers.Where(x => x.ProductName.Contains(name)).ToList();
+            return db.Products.Where(x => x.ProductName.Contains(name)).ToList();
         }
 
 
 
         public Product GetById(int? id)
         {
-            return db.Beers.Find(id);
+            return db.Products.Find(id);
         }
 
         public void Insert(Product beer)
@@ -51,7 +51,7 @@ namespace Omadiko.RepositoryServices
 
         public void Delete(int id)
         {
-            var beer = db.Beers.Find(id);
+            var beer = db.Products.Find(id);
 
             db.Entry(beer).State = EntityState.Deleted;
             db.SaveChanges();

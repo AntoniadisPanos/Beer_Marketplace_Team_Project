@@ -20,17 +20,17 @@ namespace Omadiko.Entities
         [MinLength(2, ErrorMessage = "Title must be greater than 2 characters")]
         public string ProductName { get; set; }
 
-        [CustomValidation(typeof(ValidationMethods), Methods.ValidateGreaterThanZero)]
+       [CustomValidation(typeof(ValidationMethods), Methods.ValidateGreaterThanZero)]
         public decimal Price { get; set; }
 
         [CustomValidation(typeof(ValidationMethods), Methods.ABVPercent)]
         public decimal ABV { get; set; }  //Alcohol By Volume
 
-        [CustomValidation(typeof(ValidationMethods), Methods.ValidateVolume)]
+       [CustomValidation(typeof(ValidationMethods), Methods.ValidateVolume)]
         public double Volume { get; set; }
 
         [MaxLength(500, ErrorMessage = "Description must be less than 500 characters")]
-        [MinLength(2, ErrorMessage = "Description must be greater than 2 characters")]
+        
         public string Description { get; set; }
 
         [MaxLength(20, ErrorMessage = "Type must be less than 60 characters")]

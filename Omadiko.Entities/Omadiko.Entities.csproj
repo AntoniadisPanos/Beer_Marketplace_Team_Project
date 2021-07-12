@@ -67,7 +67,7 @@
     <Compile Include="Custom Validations\ValidationMethods.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="ShippingDetails.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="Customer.cs" />
     <Compile Include="OrderDetails.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Order.cs" />
