@@ -42,5 +42,9 @@ namespace Omadiko.Entities
 
         public string PhotoUrl { get; set; }
 
+        //Navigaiton Properties
+
+        public int CategoryId { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

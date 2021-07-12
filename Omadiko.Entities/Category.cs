@@ -12,5 +12,9 @@ namespace Omadiko.Entities
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
+
+        //Navigation Properties
+
+        public virtual ICollection<Product> Products { get; set; }
     }
 }
