@@ -11,5 +11,12 @@ namespace Omadiko.Entities
         public int BlogId { get; set; }
         public string Article { get; set; }
         public int Comments { get; set; }
+
+        //Navigation Properties
+
+        public virtual Customer Customer { get; set; }
     }
+
+
+
 }
