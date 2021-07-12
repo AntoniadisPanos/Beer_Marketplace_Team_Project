@@ -58,12 +58,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationUser.cs" />
+    <Compile Include="Blog.cs" />
     <Compile Include="Brewery.cs" />
     <Compile Include="Cart.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="Custom Validations\Methods.cs" />
     <Compile Include="Custom Validations\ValidationMethods.cs" />
+    <Compile Include="Payment.cs" />
+    <Compile Include="ShippingDetails.cs" />
     <Compile Include="User.cs" />
     <Compile Include="OrderDetails.cs" />
     <Compile Include="Product.cs" />
