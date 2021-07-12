@@ -17,6 +17,19 @@ namespace Omadiko.Database
         }
 
         public DbSet<Product> Beers { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Brewery> Breweries { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetails> OrderDetails { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ShippingDetails> ShippingDetails { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<AppUser>AppUsers { get; set; }
+
 
         public static ApplicationDbContext Create()
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Omadiko.Entities
 {
-    public class User
+    public class AppUser
     {
         public int UserId { get; set; }
         public string FirstName { get; set; }

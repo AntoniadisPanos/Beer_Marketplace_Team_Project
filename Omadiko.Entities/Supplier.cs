@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Omadiko.Entities
 {
-    class Supplier
+   public class Supplier
     {
         public int SupplierId { get; set; }
 

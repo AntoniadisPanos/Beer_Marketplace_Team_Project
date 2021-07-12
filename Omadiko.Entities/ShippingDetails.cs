@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Omadiko.Entities
 {
-    class ShippingDetails
+   public class ShippingDetails
     {
         public int ShippingDetailsId { get; set; }
         public string Address { get; set; }
