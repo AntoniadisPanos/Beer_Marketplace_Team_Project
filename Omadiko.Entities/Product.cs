@@ -41,10 +41,13 @@ namespace Omadiko.Entities
         public byte Popularity { get; set; }
 
         public string PhotoUrl { get; set; }
+        public Country Country { get; set; }
+        
 
-        //Navigaiton Properties
+        //Navigation Properties
 
-        public int CategoryId { get; set; }
+
+        public int? CategoryId { get; set; }
         public virtual Category Category { get; set; }
     }
 }
