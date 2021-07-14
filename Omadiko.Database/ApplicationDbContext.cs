@@ -28,7 +28,7 @@ namespace Omadiko.Database
         public DbSet<Payment> Payments { get; set; }
         public DbSet<ShippingDetails> ShippingDetails { get; set; }
         
-        public DbSet<Customer>Customers { get; set; }
+        public DbSet<UserDetails>UserDetails { get; set; }
 
 
         public static ApplicationDbContext Create()

@@ -23,7 +23,7 @@ namespace Omadiko.Database.Migrations
             Product beer2 = new Product() { ProductName = "Chios_Alospale",Price=2,PhotoUrl= "/Content/Images/_aecht_schlenkerla_rauchbier_marzen_500ml.jpg", Description="qqq",Popularity=4 };
             Product beer3 = new Product() { ProductName = "Chios_Freskia",Price=5,PhotoUrl= "/Content/Images/chiou_alos_pale_ale_fiali_12x330ml.jpg", Description="qqq",Popularity=4 };
             Product beer4 = new Product() { ProductName = "Aecht_Schlenkerla_Rauchbie",Price=4,PhotoUrl= "/Content/Images/freskia_mpyra_chiou_330ml.jpg", Description="qqq",Popularity=3 };
-
+           
             context.Products.AddOrUpdate(x => x.ProductName, beer1, beer2, beer3, beer4);
             context.SaveChanges();
             
