@@ -23,7 +23,8 @@ namespace Omadiko.Entities
         //Navigation Properties
 
        
-       public int? PaymentId { get; set; }
+
+        public int? PaymentId { get; set; }
         public virtual Payment Payment { get; set; }
     }
 }
