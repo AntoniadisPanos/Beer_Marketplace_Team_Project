@@ -26,11 +26,20 @@ namespace Omadiko.Database.Migrations
             Category cat1 = new Category() { CategoryName = "Blonde" };
             Category cat2 = new Category() { CategoryName = "Dark" };
 
+           // Order order1 = new Order() { OrderDate = new DateTime(2021, 02, 03), PaymentDate = new DateTime(2021, 02, 05), ShippingDate = new DateTime(2021, 02, 06), Paid = true, Fullfilled = true, Deleted = false };
+            //Order order2 = new Order() { OrderDate = new DateTime(2021, 03, 04), PaymentDate = new DateTime(2021, 03, 06), ShippingDate = new DateTime(2021, 03, 07), Paid = true, Fullfilled = true, Deleted = false };
+            //Order order3 = new Order() { OrderDate = new DateTime(2021, 03, 05), PaymentDate = new DateTime(2021, 04, 07), ShippingDate = new DateTime(2021, 03, 09), Paid = true, Fullfilled = true, Deleted = false };
+
+           
+
             cat1.Products = new List<Product>() { beer1, beer2, beer3, beer4 };
-            
-            
+           // order1.Products = new List<Product> { beer1, beer2 };
+
+           
+         
             context.Products.AddOrUpdate(x => x.ProductName, beer1, beer2, beer3, beer4);
             context.Categories.AddOrUpdate(x => x.CategoryName, cat1, cat2);
+           // context.Orders.AddOrUpdate(x => x.OrderDate, order1, order2, order3);
 
             context.SaveChanges();
             

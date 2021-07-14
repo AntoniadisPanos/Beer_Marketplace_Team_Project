@@ -24,6 +24,10 @@ namespace Omadiko.Entities
         public string LastName { get; set; }
 
         //Navigation Properties
+
+        public virtual Order Order { get; set; }
         public virtual UserDetails UserDetails { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
+        public virtual Blog Blog { get; set; }
     }
 }

@@ -16,7 +16,8 @@ namespace Omadiko.Entities
 
 
 
-        [CustomValidation(typeof(ValidationMethods), Methods.ValidateGreaterThanZero)]
+        //  [CustomValidation(typeof(ValidationMethods), Methods.ValidateGreaterThanZero)]
+       
         public DateTime OrderDate { get; set; }
         public DateTime ShippingDate { get; set; }
         public DateTime PaymentDate { get; set; }
@@ -24,5 +25,11 @@ namespace Omadiko.Entities
         public bool Paid { get; set; }
         public bool Deleted { get; set; }
 
+
+        //Navigation properties
+
+       public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
+      public virtual ICollection<OrderDetails> OrderDetails { get; set; }
     }
 }

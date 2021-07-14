@@ -19,6 +19,11 @@ namespace Omadiko.Entities
         public bool FullFilled { get; set; }
         public DateTime ShippingDate { get; set; }
         public DateTime PaymentDate { get; set; }
+
+        //Navigation Properties
+
+       public int OrderId { get; set; }
+       public virtual Order Order { get; set; }
     }
 }
 

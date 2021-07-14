@@ -19,5 +19,8 @@ namespace Omadiko.Entities
         public string Location { get; set; }
         public string ContactName { get; set; }
         public string ContactPhone { get; set; }
+
+        //Navigation Properties
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

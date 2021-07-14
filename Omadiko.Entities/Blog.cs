@@ -14,7 +14,7 @@ namespace Omadiko.Entities
 
         //Navigation Properties
 
-       // public virtual Customer Customer { get; set; }
+       public virtual ICollection<ApplicationUser> ApplicationUsers{ get; set; }
     }
 
 

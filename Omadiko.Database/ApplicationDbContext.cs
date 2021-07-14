@@ -11,7 +11,7 @@ namespace Omadiko.Database
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext() :base("Sindesmos")
+        public ApplicationDbContext() :base("Panos")
         {
 
         }
@@ -29,6 +29,7 @@ namespace Omadiko.Database
         public DbSet<ShippingDetails> ShippingDetails { get; set; }
         
         public DbSet<UserDetails>UserDetails { get; set; }
+        public DbSet<UserLocation>UserLocations { get; set; }
 
 
         public static ApplicationDbContext Create()

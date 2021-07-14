@@ -47,7 +47,16 @@ namespace Omadiko.Entities
         //Navigation Properties
 
 
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
+        public int? BreweryId { get; set; }
+
         public virtual Category Category { get; set; }
+
+       public virtual Order Order { get; set; }
+
+        public virtual Brewery Brewery { get; set; }
+
+        public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
+       
     }
 }
