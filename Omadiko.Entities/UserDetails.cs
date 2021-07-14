@@ -9,5 +9,9 @@ namespace Omadiko.Entities
    public class UserDetails
     {
         public int UserDetailsId { get; set; }
+
+        //Navigation Properties
+
+        public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

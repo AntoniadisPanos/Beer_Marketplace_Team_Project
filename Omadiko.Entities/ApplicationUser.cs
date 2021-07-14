@@ -19,8 +19,11 @@ namespace Omadiko.Entities
             // Add custom user claims here
             return userIdentity;
         }
-
+        public int ApplicationUserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        //Navigation Properties
+        public virtual UserDetails UserDetails { get; set; }
     }
 }
