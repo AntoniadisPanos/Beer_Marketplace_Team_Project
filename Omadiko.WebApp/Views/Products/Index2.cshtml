@@ -1,0 +1,127 @@
+﻿@model IEnumerable<Omadiko.Entities.Product>
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Craft Beer Nation - Craft Beer HTML Template</title>
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fakeLoader.css" rel="stylesheet">
+    <link href="css/owl-carousel.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:400,500,600,700,800%7CGrand+Hotel" rel="stylesheet">
+
+
+    <!--[if IE 9]>
+        <link href="css/ie9.css" rel="stylesheet">
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <!-- Fake page loading -->
+    <div id="fakeLoader"></div>
+
+    <!-- Wrapper -->
+    <div class="wrapper">
+
+        <!-- Navigation -->
+        <!-- Hero -->
+        <div id="hero" class="single-page section" style="background-image: url(http://placehold.it/1500x500)">
+
+            <!-- Content -->
+            <div class="container">
+                <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+                    <div class="col-md-10 col-md-offset-1">
+                        <h1>A very warm welcome to our</h1>
+                        <h2>Beer shop</h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Section -->
+        <div class="container-fluid dark section no-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="horz-menu">
+                            <li class="active"><span><a href="#">All</a></span></li>
+                            <li><span><a href="#">Latest</a></span></li>
+                            <li><span><a href="#">Featured</a></span></li>
+                            <li><span><a href="#">Sale</a></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section -->
+        <div class="container-fluid light section no-padding">
+            <div class="row">
+                @foreach (var beer in Model)
+                {
+                    <div class="col-sm-4 product-wrapper">
+                        <div class="product">
+                            <a href="product-single.html">
+                                <span>More info</span>
+                                <img src="@beer.PhotoUrl" alt="Beer can mockup">
+                            </a>
+                            <h3>@beer.ProductName </h3>
+                            <h4>@beer.Price </h4>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+        <!-- Section -->
+        <div class="container-fluid super-dark section no-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="horz-menu center-menu pages">
+                            <li class="active"><span><a href="#">1</a></span></li>
+                            <li><span><a href="#">2</a></span></li>
+                            <li><span><a href="#">3</a></span></li>
+                            <li><span><a href="#">4</a></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+
+
+    </div>
+
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/headhesive.min.js"></script>
+    <script src="js/matchHeight.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/counterup.js"></script>
+    <script src="js/scrollme.min.js"></script>
+    <script src="js/fakeLoader.min.js"></script>
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/owl.autoplay.js"></script>
+    <script src="https://use.fontawesome.com/4dfd2d448a.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>
+
