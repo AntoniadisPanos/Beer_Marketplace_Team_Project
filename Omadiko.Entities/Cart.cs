@@ -13,18 +13,19 @@ namespace Omadiko.Entities
     {
         public int CartId { get; set; }
         public int Quantity { get; set; }
-
-        public bool Add { get; set; }
-        public bool Remove { get; set; }
+       
         public decimal Price { get; set; }
         public decimal TotalAmount { get; set; }
         public bool Purchase { get; set; }
 
         //Navigation Properties
+       
+       public virtual Order Order { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
+
 
        
-
-        public int? PaymentId { get; set; }
-        public virtual Payment Payment { get; set; }
+       
     }
 }

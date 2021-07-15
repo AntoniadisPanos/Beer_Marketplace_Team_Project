@@ -13,9 +13,10 @@ namespace Omadiko.Entities
         public string Type { get; set; }
 
         //Navigation Properties
+        public int ApplicationUserId { get; set; }
 
+       public virtual ApplicationUser ApplicationUser { get; set; }
        
-       public int? CartId { get; set; }
        
     }
 }

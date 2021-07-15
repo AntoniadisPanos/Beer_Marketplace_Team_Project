@@ -31,6 +31,8 @@ namespace Omadiko.Database
         public DbSet<UserDetails>UserDetails { get; set; }
         public DbSet<UserLocation>UserLocations { get; set; }
 
+        
+
 
         public static ApplicationDbContext Create()
         {

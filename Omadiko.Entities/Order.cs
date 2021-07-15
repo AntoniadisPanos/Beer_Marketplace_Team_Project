@@ -27,11 +27,13 @@ namespace Omadiko.Entities
 
 
         //Navigation properties
+      
         public int? ShippingDetailsId { get; set; }
         public virtual ShippingDetails ShippingDetails { get; set; }
         public virtual ICollection<Product> Products { get; set; }
-        public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
-      public virtual ICollection<OrderDetails> OrderDetails { get; set; }
+         public virtual ApplicationUser ApplicationUser { get; set; }
+         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
+        public virtual ICollection<Cart> Carts { get; set; }
 
 
     }

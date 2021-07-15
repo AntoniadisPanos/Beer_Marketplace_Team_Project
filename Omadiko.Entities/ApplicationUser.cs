@@ -19,15 +19,20 @@ namespace Omadiko.Entities
             // Add custom user claims here
             return userIdentity;
         }
-        public int ApplicationUserId { get; set; }
+       
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
         //Navigation Properties
 
-        public virtual Order Order { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
         public virtual UserDetails UserDetails { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+       
         public virtual Blog Blog { get; set; }
+        public virtual ICollection<UserLocation> UserLocations { get; set; }
+
+        public virtual ICollection<Cart> Carts { get; set; }
+
+        public virtual ICollection<Payment> Payments { get; set; }
     }
 }

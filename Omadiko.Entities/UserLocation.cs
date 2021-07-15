@@ -13,5 +13,9 @@ namespace Omadiko.Entities
         public string City { get; set; }
         public int PostalCode { get; set; }
         public Country Country { get; set; }
+
+        //Navigation Properties 
+        public virtual ApplicationUser ApplicationUser { get; set; }
+        
     }
 }
