@@ -11,7 +11,7 @@ namespace Omadiko.Database
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext() :base("Panos")
+        public ApplicationDbContext() :base("Sindesmos")
         {
 
         }
