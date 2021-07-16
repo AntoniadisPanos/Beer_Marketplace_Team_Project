@@ -24,15 +24,19 @@
                     </div>
                     <div class="cart">
                         <a href="~/Template/main/cart.html">
-                            <span class="fa fa login"></span> @Html.ActionLink("Login", "Login", "Account")
+                            <span class="fa fa login"></span>  
                         </a>
                     </div>
-                    
+                    <div class="cart">
+                        <a href="~/Template/main/cart.html">
+                            <span class="fa fa login">@Html.Partial("_LoginPartial")</span> 
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
+   
     <div class="container">
         <div class="navbar-header">
             <a href="~/Template/main/index.html" class="logo" title="Craft beer landing page">
@@ -89,3 +93,4 @@
         </div>
     </div>
 </div>
+

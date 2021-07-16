@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Index2";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
 
 <!DOCTYPE html>
@@ -28,27 +29,72 @@
     <![endif]-->
 </head>
 <body>
-
     <!-- Fake page loading -->
     <div id="fakeLoader"></div>
 
     <!-- Wrapper -->
     <div class="wrapper">
-
-        <!-- Navigation -->
         <!-- Hero -->
-        <div id="hero" class="single-page section" style="background-image: url(http://placehold.it/1500x500)">
+        <div id="hero" class="carousel slide carousel-fade section no-padding" data-ride="carousel">
 
-            <!-- Content -->
-            <div class="container">
-                <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
-                    <div class="col-md-10 col-md-offset-1">
-                        <h1>A very warm welcome to our</h1>
-                        <h2>Beer shop</h2>
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#hero" data-slide-to="0" class="active"></li>
+                <li data-target="#hero" data-slide-to="1"></li>
+                <li data-target="#hero" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+
+                <div class="item active" style="background-image: url('../../Template/images/nordic-beer-markets.jpg')">
+                    
+
+                    <!-- Content -->
+                    <div class="container">
+                        <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+                            <div class="col-md-10 col-md-offset-1">
+                                <h1>Over one hundred flavours of</h1>
+                                <h2>Specially <br />crafted beer</h2>
+                                <a href="~/Template/main/#" class="btn btn-default">
+                                    <span>Explore</span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+                <div class="item" style="background-image: url('../../Template/images/US-craft-beer-slows-while-spirits-take-off_wrbm_large.jpg');">
+                    <!-- Content -->
+                    <div class="container">
+                        <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+                            <div class="col-md-10 col-md-offset-1">
+                                <h1>We use only the finest ingredients to create the</h1>
+                                <h2>The perfect <br />craft beer</h2>
+                                <a href="~/Template/main/#" class="btn btn-default">
+                                    <span>Explore</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item" style="background-image: url('../../Template/images/Brazil-ranked-number-2-most-innovative-craft-beer-market-Mintel.jpg');">
+                    <!-- Content -->
+                    <div class="container">
+                        <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+                            <div class="col-md-10 col-md-offset-1">
+                                <h1>The perfect template to compliment</h1>
+                                <h2>Your brewery</h2>
+                                <a href="~/Template/main/#" class="btn btn-default">
+                                    <span>Explore</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
         <!-- Section -->
@@ -78,7 +124,7 @@
                                 <span>More info</span>
                                 <img src="@beer.PhotoUrl" alt="Beer can mockup">
                             </a>
-                            <h3>@beer.ProductName </h3>
+                            <h3>@beer.ProductName.ToString().Replace("_"," ")</h3>
                             <h4>@beer.Price </h4>
                         </div>
                     </div>
