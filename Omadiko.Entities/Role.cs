@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Omadiko.Entities
 {
-    class Role
+   public  class Role
     {
         public const string Admin = "Admin";
         public const string Customer = "Customer";
