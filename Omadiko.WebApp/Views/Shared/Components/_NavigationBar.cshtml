@@ -89,6 +89,11 @@
                         @Html.ActionLink("SingleBlog", "SingleBlog", "Home")
                     </ul>
                 </li>
+                @if (User.IsInRole("Admin") || User.IsInRole("Supervisor"))
+                {
+                    <li>@Html.ActionLink("Dashboard", "Index", "Admin")</li>
+
+                }
             </ul>
         </div>
     </div>

@@ -41,5 +41,6 @@ namespace Omadiko.WebApp.Controllers
             ViewBag.Message = "Your Blog is here.";
             return View();
         }
+        
     }
 }
