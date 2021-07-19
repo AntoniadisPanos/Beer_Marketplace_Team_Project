@@ -1,4 +1,5 @@
 @import url('fakeLoader.css');
+@import url('fakeLoader.css');
 
 /** Contents
 
@@ -2843,13 +2844,14 @@ footer .copyright {
 
     .product-img-wrap {
         margin-bottom: 30px;
-
+       
         text-align: center;
     }
 
-    .product-img-wrap img {
-        max-width: 75%;
-    }
+        .product-img-wrap img {
+            max-width: 75%;
+            
+        }
 
     .share-link {
         display: block;
@@ -2857,6 +2859,7 @@ footer .copyright {
 
     .product {
         margin-top: 50px;
+        
     }
 
     .grey-background {

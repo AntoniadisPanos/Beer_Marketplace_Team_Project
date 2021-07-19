@@ -55,6 +55,9 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.5.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -3740,7 +3743,9 @@
     <Content Include="Template\admin\vendors\validator\index.html" />
     <Content Include="Template\admin\vendors\validator\multifield.js" />
     <Content Include="Template\admin\vendors\validator\validator.js" />
+    <Content Include="Template\images\114642september-555x355.jpg" />
     <Content Include="Template\images\Brazil-ranked-number-2-most-innovative-craft-beer-market-Mintel.jpg" />
+    <Content Include="Template\images\Hooghoudt-30_RON5843-555x355.jpg" />
     <Content Include="Template\images\nordic-beer-markets.jpg" />
     <Content Include="Template\images\US-craft-beer-slows-while-spirits-take-off_wrbm_large.jpg" />
     <Content Include="Template\main\404.html" />

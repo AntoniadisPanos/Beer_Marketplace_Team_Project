@@ -1,4 +1,6 @@
-﻿using Microsoft.Owin;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Owin;
+using Omadiko.Database;
 using Owin;
 using System.Web.Services.Description;
 
@@ -11,6 +13,7 @@ namespace Omadiko.WebApp
         {
             ConfigureAuth(app);
         }
+       
     }
    
 }

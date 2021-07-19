@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Omadiko.Database;
+using Omadiko.Entities;
+using Omadiko.Entities.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +11,14 @@ namespace Omadiko.WebApp.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            return View();
+            IndexHomeViewModel vm = new IndexHomeViewModel()
+            {
+                BestProductsByPopularity = db.Products.Where(x => x.Popularity >= 3).OrderByDescending(x => x.Popularity).Take(5).ToList()
+            };
+            return View(vm);
         }
 
         public ActionResult About()
