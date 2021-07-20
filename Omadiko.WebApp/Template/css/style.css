@@ -568,10 +568,8 @@ hr.space-40 {
 .heading .finder,
 .heading .cart {
     display: inline-block;
-
     margin-left: 15px;
     padding: 12px 0 12px 15px;
-
     border-left: 1px solid rgba(255, 255, 255, .05);
 }
 
@@ -585,9 +583,8 @@ hr.space-40 {
 
 .heading .finder span,
 .heading .cart span {
-    display: inline-block;
-
-    margin-right: 5px;
+    display: inline-block;   
+    margin-right: 4px;
 }
 
 .heading .cart span {
