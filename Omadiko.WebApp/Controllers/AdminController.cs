@@ -21,6 +21,10 @@ namespace Omadiko.WebApp.Controllers
             var products = db.Products.Include(p => p.Brewery).Include(p => p.Category);
             return View(products.ToList());
         }
+        public ActionResult Index2()
+        {
+            return View();
+        }
 
         // GET: Admin/Details/5
         public ActionResult Details(int? id)

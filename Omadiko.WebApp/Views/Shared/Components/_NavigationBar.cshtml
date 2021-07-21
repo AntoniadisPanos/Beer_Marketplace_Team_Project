@@ -46,12 +46,12 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul id="menu-primary" class="nav navbar-nav">
-                <li class="active">
+                <li class = "active" >
                     <span>
                         @Html.ActionLink("Home", "Index", "Home")
                     </span>
                 </li>
-                <li>
+                <li >
                     <span>
                         @Html.ActionLink("Beer", "Index", "Product")
                     </span>
@@ -66,12 +66,12 @@
                         <li><a href="~/Template/main/our-beer.html">The Drunk Indian</a></li>
                     </ul>
                 </li>
-                <li>
+                <li >
                     <span>
                         @Html.ActionLink("Our Story", "OurStory", "Home")
                     </span>
                 </li>
-                <li>
+                <li >
                     <span>
                         @Html.ActionLink("Contact", "Contact", "Home")
                     </span>
@@ -86,7 +86,7 @@
                 </li>
                 @if (User.IsInRole("Admin") || User.IsInRole("Supervisor"))
                 {
-                    <li>@Html.ActionLink("Dashboard", "Index", "Admin")</li>
+                    <li>@Html.ActionLink("Dashboard", "Index2", "Admin")</li>
 
                 }
             </ul>

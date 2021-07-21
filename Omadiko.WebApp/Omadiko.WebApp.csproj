@@ -4696,6 +4696,8 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Shared\Components\_AdminNavigationBar.cshtml" />
     <Content Include="Views\Shared\Components\_AdminFooter.cshtml" />
+    <Content Include="Views\Admin\Index2.cshtml" />
+    <Content Include="Views\Product\ProductInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

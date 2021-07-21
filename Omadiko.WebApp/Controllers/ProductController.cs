@@ -15,5 +15,10 @@ namespace Omadiko.WebApp.Controllers
         {
             return View(db.Products.ToList());
         }
+        public ActionResult ProductInfo(int? id)
+        {
+           
+            return View();
+        }
     }
 }
