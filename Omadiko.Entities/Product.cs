@@ -24,7 +24,7 @@ namespace Omadiko.Entities
         public decimal Price { get; set; }
 
        // [CustomValidation(typeof(ValidationMethods), Methods.ABVPercent)]
-        public decimal ABV { get; set; }  //Alcohol By Volume
+        public double ABV { get; set; }  //Alcohol By Volume
 
       // [CustomValidation(typeof(ValidationMethods), Methods.ValidateVolume)]
         public double Volume { get; set; }
