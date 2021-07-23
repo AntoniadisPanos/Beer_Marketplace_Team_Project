@@ -1,6 +1,7 @@
 ﻿using Omadiko.Database;
 using Omadiko.Entities;
 using Omadiko.Entities.ViewModels;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,19 @@ namespace Omadiko.WebApp.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(int? pSize, int? page)
         {
-            return View(db.Products.ToList());
+
+            List<Product> products = db.Products.ToList();
+
+            int pageSize, pageNumber;
+            Pagination(pSize, page, out pageSize, out pageNumber);
+            return View(products.ToPagedList(pageNumber, pageSize));
+        }
+        private static void Pagination(int? pSize, int? page, out int pageSize, out int pageNumber)
+        {
+            pageSize = pSize ?? 5;
+            pageNumber = page ?? 1;
         }
         public ActionResult ProductInfo(int? id)
         {
