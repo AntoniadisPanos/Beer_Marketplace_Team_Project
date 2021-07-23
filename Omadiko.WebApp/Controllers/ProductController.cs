@@ -37,6 +37,8 @@ namespace Omadiko.WebApp.Controllers
                 case "PriceAsc":products = products.OrderBy(x => x.Price).ToList();break;
                 case "MostPopular":products = products.OrderBy(x => x.Popularity).ToList();break;
                 case "LessPopular":products = products.OrderByDescending(x => x.Popularity).ToList();break;
+                case "NameAsc":products = products.OrderBy(x => x.ProductName).ToList();break;
+                case "NameDesc":products = products.OrderByDescending(x => x.ProductName).ToList();break;
                 default:products = products.OrderBy(x => x.Price).ToList();break;
                    
             }
@@ -49,6 +51,8 @@ namespace Omadiko.WebApp.Controllers
             ViewBag.PA = sortOrder == "PriceAsc" ? "PriceDesc" : "PriceAsc";
             ViewBag.MP = sortOrder == "MostPopular" ? "LessPopular" : "MostPopular";
             ViewBag.LP = sortOrder == "LessPopular" ? "MostPopular" : "LessPopular";
+            ViewBag.NA = sortOrder == "NameAsc" ? "NameDesc" : "NameAsc";
+            ViewBag.ND = sortOrder == "NameDesc" ? "NameAsc" : "NameDesc";
 
             ViewBag.CurrentSortOrder = sortOrder;
             return products;

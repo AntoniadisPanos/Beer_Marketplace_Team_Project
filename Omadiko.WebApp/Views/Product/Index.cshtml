@@ -85,8 +85,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <ul class="horz-menu">
-                            <li class="active"><span><a href="@Url.Action("Index","Product",new { sortOrder = ViewBag.CurrentSortOrder },null)">All</a></span></li>
-                            @*<li><span><a href="">Latest</a></span></li>*@
+                            <li class="active"><span><a href="@Url.Action("Index","Product",new { sortOrder = ViewBag.NA },null)">All</a></span></li>
+                            <li><span><a href="@Url.Action("Index","Product",new { sortOrder = ViewBag.CurrentSortOrder },null)">Latest</a></span></li>
                             <li><span><a href="@Url.Action("Index","Product",new { sortOrder = ViewBag.MP },null)">Featured</a></span></li>
                             <li><span><a href="@Url.Action("Index","Product",new {sortOrder=ViewBag.PD },null)">Sale</a></span></li>
                         </ul>
