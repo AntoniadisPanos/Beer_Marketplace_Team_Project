@@ -15,11 +15,11 @@ namespace Omadiko.WebApp.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Product
-        public ActionResult Index(int? pSize, int? page)
+        public ActionResult Index(int? pSize, int? page,string sortOrder)
         {
+            List<Product> products =Filtering(sortOrder);
 
-            List<Product> products = db.Products.ToList();
-
+            products = Sorting(sortOrder, products);
             int pageSize, pageNumber;
             Pagination(pSize, page, out pageSize, out pageNumber);
             return View(products.ToPagedList(pageNumber, pageSize));
@@ -28,6 +28,30 @@ namespace Omadiko.WebApp.Controllers
         {
             pageSize = pSize ?? 5;
             pageNumber = page ?? 1;
+        }
+        private static List<Product> Sorting(string sortOrder,List<Product>products)
+        {
+            switch (sortOrder)
+            {
+                case "PriceDesc":products = products.OrderByDescending(x => x.Price).ToList();break;
+                case "PriceAsc":products = products.OrderBy(x => x.Price).ToList();break;
+                case "MostPopular":products = products.OrderBy(x => x.Popularity).ToList();break;
+                case "LessPopular":products = products.OrderByDescending(x => x.Popularity).ToList();break;
+                default:products = products.OrderBy(x => x.Price).ToList();break;
+                   
+            }
+            return products;
+        }
+        private List<Product> Filtering(string sortOrder)
+        {
+            var products = db.Products.ToList();
+            ViewBag.PD = String.IsNullOrEmpty(sortOrder) ? "PriceDesc" : "";
+            ViewBag.PA = sortOrder == "PriceAsc" ? "PriceDesc" : "PriceAsc";
+            ViewBag.MP = sortOrder == "MostPopular" ? "LessPopular" : "MostPopular";
+            ViewBag.LP = sortOrder == "LessPopular" ? "MostPopular" : "LessPopular";
+
+            ViewBag.CurrentSortOrder = sortOrder;
+            return products;
         }
         public ActionResult ProductInfo(int? id)
         {
