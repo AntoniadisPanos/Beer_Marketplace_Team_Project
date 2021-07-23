@@ -8,6 +8,7 @@ namespace Omadiko.Entities.ViewModels
 {
   public  class IndexHomeViewModel
     {
+        public Product Product { get; set; }
         public List<Product> BestProductsByPopularity { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿@model Omadiko.Entities.ViewModels.IndexHomeViewModel
 @{
     ViewBag.Title = "ProductInfo";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,7 +12,7 @@
     <!-- Wrapper -->
     <div class="wrapper">                 
         <!-- Hero -->
-        <div id="hero" class="single-page section" style="background-image: url(http://placehold.it/1500x500)">
+        <div id="hero" class="single-page section" style="background-image: url('../../Template/images/dt-freevb-1500x500.jpg')">
 
             <!-- Content -->
             <div class="container">
@@ -32,18 +32,18 @@
                 <div class="row">
                     <div class="col-sm-5 matchHeight">
                         <div class="product-img-wrap">
-                            <img src="http://placehold.it/475x550" alt="About our Brewery" />
+                            <img src="@Model.Product.PhotoUrl" alt="About our Brewery" />
                         </div>
                     </div>
                     <div class="col-sm-6 col-sm-push-1 matchHeight">
                         <section class="alignMiddle mobile-center">
                             <header>
-                                <h1><i>330ml</i> 4.5%</h1>
-                                <h2>Sugar Skull</h2>
+                                <h1><i>@Model.Product.ABV ml</i>@Model.Product.Volume %</h1>
+                                <h2>@Model.Product.Type</h2>
                             </header>
-                            <p>Body is light, and the mouthfeel smooth. The palate gathers apple peel, light clove notes and a thin sweetness that's touched with caramel. In the middle, ripe and juicy fresh wheat malt with pear edge, while a husky, grainy, wheat twang livens things up. Suggestions of bubblegum are noted.</p>
-                            <p>There's very little bitterness, but a slight lemony sourness, banana pith and light hop leaf character that, combined, increase the perceived bitterness. Yeast is rather neutral, a bit chalky.</p>
-                            <p class="price">&dollar;4.75</p>
+                            <p>@Model.Product.Description</p>
+                            <p>IT WORKS.CALM DOWN BOYS I GOT THIS </p>
+                            <p class="price">&dollar;@Model.Product.Price</p>
                             <input class="quantity" type="text" placeholder="1"> <a href="#" class="btn btn-default"><span>Add to cart</span></a> <a href="#share" class="share-link"><i class="fa fa-share-alt"></i> Share this</a>
                         </section>
                     </div>
@@ -195,43 +195,23 @@
                             <p>Malt character and sweetness is pretty bland, with a weak toasty note as the highlight. Finish is drying, with a lingering hop character and sourness that just doesn't seem right.</p>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-sm-push-1 matchHeight">
-                        <div class="owl-carousel">
-                            <!-- Products -->
-                            <div class="product item">
-                                <a href="our-beer.html">
-                                    <span>Buy it</span>
-                                    <img src="http://placehold.it/169x299" alt="Beer can mockup">
-                                </a>
-                                <h3>Pale ale</h3>
-                                <h4>4.5%</h4>
-                            </div>
-                            <div class="product item">
-                                <a href="our-beer.html">
-                                    <span>Buy it</span>
-                                    <img src="http://placehold.it/169x299" alt="Beer can mockup">
-                                </a>
-                                <h3>Golden ale</h3>
-                                <h4>4.2%</h4>
-                            </div>
-                            <div class="product item">
-                                <a href="our-beer.html">
-                                    <span>Buy it</span>
-                                    <img src="http://placehold.it/169x299" alt="Beer can mockup">
-                                </a>
-                                <h3>IPA</h3>
-                                <h4>7%</h4>
-                            </div>
-                            <div class="product item">
-                                <a href="our-beer.html">
-                                    <span>Buy it</span>
-                                    <img src="http://placehold.it/169x299" alt="Beer can mockup">
-                                </a>
-                                <h3>Zombie</h3>
-                                <h4>8.2%</h4>
-                            </div>
-                        </div>
-                    </div>
+                   
+                        <div class="col-sm-6 col-sm-push-1 matchHeight">
+                            <div class="owl-carousel">
+                                <!-- Products -->
+                                @foreach (var beer in Model.BestProductsByPopularity)
+                                {
+                                    <div class="product item">
+                                        <a href="our-beer.html">
+                                            <span>Buy it</span>
+                                            <img src="@beer.PhotoUrl" alt="Beer can mockup">
+                                        </a>
+                                        <h3>@beer.ProductName.ToString().Replace("_"," ")</h3>
+                                        <h4>@beer.Volume ml</h4>
+                                    </div>
+                                }
+                                </div>
+                        </div>                   
                 </div>
             </div>
         </div>

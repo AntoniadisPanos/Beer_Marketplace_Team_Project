@@ -49,6 +49,11 @@ namespace Omadiko.WebApp.Controllers
             ViewBag.Message = "Your Blog is here.";
             return View();
         }
+        public ActionResult OurBeer()
+        {
+            ViewBag.Message = "Our Beer is here.";
+            return View();
+        }
         
     }
 }

@@ -23,8 +23,11 @@
                         </a>
                     </div>                   
                     <div class="cart">
-                        <a href="~/Template/main/cart.html">
-                            <span class="fa fa login" >@Html.Partial("_LoginPartial")</span> 
+                        <a href="">
+                            <span class="fa fa login">
+                                @Html.Partial("_LoginPartial")
+                            </span>
+                           
                         </a>
                     </div>
                 </div>
@@ -45,20 +48,20 @@
             </button>
         </div>
         <div class="navbar-collapse collapse">
-            <ul id="menu-primary" class="nav navbar-nav">
-                <li class = "active" >
+            <ul id="menu-primary" class="nav navbar-nav">               
+                <li class="active">
                     <span>
                         @Html.ActionLink("Home", "Index", "Home")
                     </span>
                 </li>
-                <li >
+                <li>
                     <span>
                         @Html.ActionLink("Beer", "Index", "Product")
                     </span>
                 </li>
                 <li class="dropdown">
                     <span>
-                        <a href="~/Template/main/our-beer.html">Our beer</a>
+                        <a href="@Url.Action("OurBeer", "Home")">Our Beer</a>
                     </span>
                     <ul class="dropdown-menu">
                         <li><a href="~/Template/main/our-beer.html">Sugar Skull</a></li>
@@ -66,12 +69,12 @@
                         <li><a href="~/Template/main/our-beer.html">The Drunk Indian</a></li>
                     </ul>
                 </li>
-                <li >
+                <li>
                     <span>
                         @Html.ActionLink("Our Story", "OurStory", "Home")
                     </span>
                 </li>
-                <li >
+                <li>
                     <span>
                         @Html.ActionLink("Contact", "Contact", "Home")
                     </span>
