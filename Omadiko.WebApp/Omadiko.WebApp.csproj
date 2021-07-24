@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -48,10 +49,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
@@ -205,31 +206,30 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Images\169X299\Aecht-Schlenkerla-Rauchbier-Marzen%28169Χ299%29.jpg" />
-    <Content Include="Content\Images\169X299\ASAHI_SUPER_DRY_BEER_330ml.jpg" />
-    <Content Include="Content\Images\169X299\CHIOS BBQ.jpg" />
-    <Content Include="Content\Images\169X299\chiou_alos_pale_ale_fiali_12x330ml%28169Χ299%29.jpg" />
-    <Content Include="Content\Images\169X299\Chiou_Freskia%28169Χ299%29.jpg" />
-    <Content Include="Content\Images\169X299\Corfu_Dark_Ale_Bitter_500ml.jpg" />
-    <Content Include="Content\Images\169X299\corona-mpira-extra-355ml%28169X299%29.jpg" />
-    <Content Include="Content\Images\169X299\Erdinger_Weiss_500ml.jpg" />
-    <Content Include="Content\Images\169X299\Fix_Hellas_500ml%28169Χ299%29.jpg" />
-    <Content Include="Content\Images\169X299\freskia_mpyra_chiou_330ml%28169Χ299%29.jpg" />
-    <Content Include="Content\Images\169X299\Gouden_Carolus_Ambrio_330ml.jpg" />
-    <Content Include="Content\Images\169X299\Grimbergen_Double_330ml.jpg" />
-    <Content Include="Content\Images\169X299\Guinness_Draught_Stout_330ml.jpg" />
-    <Content Include="Content\Images\169X299\Guinness_Special_330ml.jpg" />
-    <Content Include="Content\Images\169X299\Kaiser_Pilsner_Lager_330ml.jpg" />
-    <Content Include="Content\Images\169X299\Kirki_Pale_Ale_330ml.jpg" />
-    <Content Include="Content\Images\169X299\McFarland_Irish_Ale_330ml.jpg" />
-    <Content Include="Content\Images\169X299\Newcastle_Brown_Ale_330ml.jpg" />
-    <Content Include="Content\Images\169X299\Paguru_Cream_Ale_330ml.jpg" />
-    <Content Include="Content\Images\169X299\Paulaner_Salvator_330ml.jpg" />
-    <Content Include="Content\Images\169X299\Rodenbach_Caractere_Rouge_Red_Ale_750ml.jpg" />
-    <Content Include="Content\Images\169X299\Samichlaus_Bier_330ml.jpg" />
-    <Content Include="Content\Images\169X299\Timmermans_kriek_330ml.jpg" />
-    <Content Include="Content\Images\169X299\Vergina_WEISS_500ml.jpg" />
-    <Content Include="Content\Images\169X299\Nisos_7_mpofor_330ml.jpg" />
+    <Content Include="Content\Images\169X299\Aecht-Schlenkerla-Rauchbier-Marzen.png" />
+    <Content Include="Content\Images\169X299\Asahi_Super_Dry-Black_330ml.png" />
+    <Content Include="Content\Images\169X299\Chios_BBQ.png" />
+    <Content Include="Content\Images\169X299\Chiou_alos_pale_ale_330ml.png" />
+    <Content Include="Content\Images\169X299\Chiou_Freskia.png" />
+    <Content Include="Content\Images\169X299\Corfu_Dark_Ale_Bitter_500ml.png" />
+    <Content Include="Content\Images\169X299\Corona-extra-355ml.png" />
+    <Content Include="Content\Images\169X299\Fix_Hellas_500ml.png" />
+    <Content Include="Content\Images\169X299\Fresh_Chios_Beer_330ml.png" />
+    <Content Include="Content\Images\169X299\Gouden_Carolus_330ml.png" />
+    <Content Include="Content\Images\169X299\Grimbergen-double-330ml.png" />
+    <Content Include="Content\Images\169X299\Guiness-draught-stout-330ml.png" />
+    <Content Include="Content\Images\169X299\Guiness_Special_export_330ml.png" />
+    <Content Include="Content\Images\169X299\Kaiser_Pilsner_500ml.png" />
+    <Content Include="Content\Images\169X299\Kirki-Pale-Ale-330ml.png" />
+    <Content Include="Content\Images\169X299\McFarland_Red_Irish_330ml.png" />
+    <Content Include="Content\Images\169X299\Newcastle_Brown_Ale_330ml.png" />
+    <Content Include="Content\Images\169X299\Nisos-7-bofor-330ml.png" />
+    <Content Include="Content\Images\169X299\Paulaner_Salvator.500ml.png" />
+    <Content Include="Content\Images\169X299\Rodenbach_Caractere_Rouge_Red_Ale_750ml.png" />
+    <Content Include="Content\Images\169X299\Paguru_Cream_Ale_330ml.png" />
+    <Content Include="Content\Images\169X299\Samichlaus_Bier_330ml.png" />
+    <Content Include="Content\Images\169X299\Timmermans_Kriek_330ml.png" />
+    <Content Include="Content\Images\169X299\Vergina-Weiss-500ml.png" />
     <Content Include="Content\Images\475X550\ASAHI SUPER DRY BEER 0,33LT %28DRY BEER%29 %28475X550%29 .jpg" />
     <Content Include="Content\Images\475X550\CHIOS BBQ - ΦΡΕΣΚΙΑ ΚΑΠΝΙΣΤΗ ΜΠΥΡΑ ΧΙΟΥ 0.33lt %28SMOKED PORTER%29 %28475X550%29.jpg" />
     <Content Include="Content\Images\475X550\Corfu Dark Ale Bitter 500ml %28BITTER DARK%29%28475X550%29.jpg" />
@@ -255,6 +255,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\169X299\Erdinger_Weiss_500ml.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -4779,7 +4780,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
