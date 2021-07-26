@@ -1,0 +1,120 @@
+﻿@using Omadiko.Entities;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+</head>
+<body>
+    
+    @if ((Session["Cart"] == null))
+    {
+        var items = (List<Cart>)Session["Cart"];
+    }
+   
+        <!-- Fake page loading -->
+        <div id="fakeLoader"></div>
+
+        <!-- Wrapper -->
+        <div class="wrapper">
+            <!-- Hero -->
+            <div id="hero" class="single-page section" style="background-image: url(http://placehold.it/1500x500)">
+
+                <!-- Content -->
+                <div class="container">
+                    <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+                        <div class="col-md-10 col-md-offset-1">
+                            <h1>Review your</h1>
+                            <h2>Beer cart</h2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+           
+            <!-- Section -->
+            <div class="container-fluid dark section no-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-push-2">
+                            <span class="title">Product</span>
+                        </div>
+                        <div class="col-sm-3">
+                            <span class="title">Quantity</span>
+                        </div>
+                        <div class="col-sm-2">
+                            <span class="title">Delete</span>
+                        </div>
+                        <div class="col-sm-1">
+                            <span class="title">Total</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container-fluid white section cart">               
+                @foreach (var item in (List<Cart>)Session["Cart"])
+                {
+
+                    <input type="hidden" name="name" value="@item.Product.ProductId" />
+                    <div class="container">
+                        <div class="row item">
+                            <div class="col-sm-2 matchHeight">
+                                <img src="@item.Product.PhotoUrl" alt="Beer can mockup" />
+                            </div>
+                            <div class="col-sm-4 matchHeight">
+                                <header class="alignMiddle">
+                                    <h2>@item.Product.Type</h2>
+                                    <span>@item.Product.ProductName</span>
+                                </header>
+                            </div>
+                            <div class="col-sm-3 matchHeight">
+                                <div class="quantity alignMiddle"style="width:100px;text-align:center;">
+                                    <a id="decrease" class="fa fa-chevron-down" href="@Url.Action("Decrease","ShoppingCart",new { id = item.Product.ProductId })"></a>
+                                    <input value="1"  class="itxt" type="text">
+                                    <a id="increase" class="fa fa-chevron-up" href="@Url.Action("Increase","ShoppingCart",new { id = item.Product.ProductId })"></a>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 matchHeight">
+                                <a href="@Url.Action("Delete","ShoppingCart",new { id = item.Product.ProductId })" class="remove alignMiddle fa fa-remove"></a>
+                            </div>
+                            <div class="col-sm-1 matchHeight">                               
+                                <span class="price alignMiddle">&dollar;@Cart.Sum(item.Product.Price,item.Quantity)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+                <div class="row">
+                    <div class="col-sm-6 promo">
+                        <input type="text" name="promo"> <a href="#" class="btn btn-default"><span>Apply</span></a>
+                    </div>
+                    <div class="col-sm-6 total">
+                        @{
+                            var cart = (List<Cart>)Session["Cart"];
+                        }
+                        <p>Cart total: <span>&dollar;@cart.Sum(x => x.Product.Price * x.Quantity)</span></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 btn-wrap">
+                        <a href="@Url.Action("CheckOut","ShoppingCart")" class="btn btn-default"><span>Continue to checkout</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section -->
+        </div>
+            <!-- Footer -->  
+    
+        <script>
+           
+        </script>
+    </body>
+</html>

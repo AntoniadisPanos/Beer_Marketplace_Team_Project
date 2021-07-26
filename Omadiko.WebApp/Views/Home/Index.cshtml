@@ -186,7 +186,7 @@
                             @foreach (var beer in Model.BestProductsByPopularity)
                             {
                                 <div class="product item">
-                                    <a href="~/Template/main/our-beer.html">
+                                    <a href="@Url.Action("ProductInfo","Product",new { id =beer.ProductId },null)">
                                         <span>Buy it</span>
                                         <img src="@beer.PhotoUrl" style="max-width:50%" height="100" alt="Beer can mockup">
                                     </a>
