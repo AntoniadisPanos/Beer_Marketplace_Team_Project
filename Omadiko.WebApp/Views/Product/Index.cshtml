@@ -104,10 +104,10 @@
                             <div class="product">
                                 <a href="@Url.Action("ProductInfo","Product",new {id=beer.ProductId })">
                                     <span>More Info</span>
-                                    <img src="@beer.PhotoUrl" alt="Beer can mockup">
+                                    <img src="@beer.SmallPhoto" alt="Beer can mockup">
                                 </a>
                                 <h3>@beer.ProductName.ToString().Replace("_", " ")</h3>
-                                <h4>@beer.Price </h4>
+                                <h4>@beer.Price</h4>
                             </div>
                         </div>
                     }

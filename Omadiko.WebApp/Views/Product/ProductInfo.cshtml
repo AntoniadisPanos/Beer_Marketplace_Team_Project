@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-sm-5 matchHeight">
                         <div class="product-img-wrap">
-                            <img src="@Model.Product.PhotoUrl" alt="About our Brewery" />
+                            <img src="@Model.Product.LargePhoto" alt="About our Brewery" />
                         </div>
                     </div>
                     <div class="col-sm-6 col-sm-push-1 matchHeight">
@@ -203,7 +203,7 @@
                                     <div class="product item">
                                         <a href="@Url.Action("ProductInfo","Product",new { id =beer.ProductId },null)">
                                             <span>Buy it</span>
-                                            <img src="@beer.PhotoUrl" alt="Beer can mockup">
+                                            <img src="@beer.SmallPhoto" alt="Beer can mockup">
                                         </a>
                                         <h3>@beer.ProductName.ToString().Replace("_"," ")</h3>
                                         <h4>@beer.Volume ml</h4>

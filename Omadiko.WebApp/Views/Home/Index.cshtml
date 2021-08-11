@@ -188,7 +188,7 @@
                                 <div class="product item">
                                     <a href="@Url.Action("ProductInfo","Product",new { id =beer.ProductId },null)">
                                         <span>Buy it</span>
-                                        <img src="@beer.PhotoUrl" style="max-width:50%" height="100" alt="Beer can mockup">
+                                        <img src="@beer.SmallPhoto" style="max-width:50%" height="100" alt="Beer can mockup">
                                     </a>
                                     <h3>@beer.ProductName.ToString().Replace("_", " ")</h3>
                                     <h4>@beer.Price</h4>

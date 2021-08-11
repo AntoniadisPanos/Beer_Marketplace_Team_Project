@@ -40,7 +40,8 @@ namespace Omadiko.Entities
         [Range(0, 5)]
         public byte Popularity { get; set; }
 
-        public string PhotoUrl { get; set; }
+        public string SmallPhoto { get; set; }
+        public string LargePhoto { get; set; }
         public Country Country { get; set; }
         
         
