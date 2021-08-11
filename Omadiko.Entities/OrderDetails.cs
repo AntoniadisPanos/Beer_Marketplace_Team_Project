@@ -17,8 +17,13 @@ namespace Omadiko.Entities
         public decimal Discount { get; set; }
         public decimal TotalAmount { get; set; }
         public bool FullFilled { get; set; }
-        public DateTime ShippingDate { get; set; }
-        public DateTime PaymentDate { get; set; }
+        public DateTime? ShippingDate { get; set; }
+        public DateTime? PaymentDate { get; set; }
+
+        //test properties
+        public int ProductId { get; set; }
+        public Product Product { get; set; }
+
 
         //Navigation Properties
 

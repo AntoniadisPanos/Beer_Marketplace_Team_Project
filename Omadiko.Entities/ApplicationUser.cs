@@ -33,6 +33,6 @@ namespace Omadiko.Entities
 
         public virtual ICollection<Cart> Carts { get; set; }
 
-        public virtual ICollection<Payment> Payments { get; set; }
+        //public virtual ICollection<Payment> Payments { get; set; }
     }
 }

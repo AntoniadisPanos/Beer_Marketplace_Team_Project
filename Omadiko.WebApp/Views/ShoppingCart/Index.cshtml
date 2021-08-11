@@ -16,6 +16,8 @@
     {
         var items = (List<Cart>)Session["Cart"];
     }
+           
+            
    
         <!-- Fake page loading -->
         <div id="fakeLoader"></div>
@@ -76,7 +78,7 @@
                             <div class="col-sm-3 matchHeight">
                                 <div class="quantity alignMiddle"style="width:100px;text-align:center;">
                                     <a id="decrease" class="fa fa-chevron-down" href="@Url.Action("Decrease","ShoppingCart",new { id = item.Product.ProductId })"></a>
-                                    <input value="1"  class="itxt" type="text">
+                                    <input value="@item.Quantity"  class="itxt" type="text">
                                     <a id="increase" class="fa fa-chevron-up" href="@Url.Action("Increase","ShoppingCart",new { id = item.Product.ProductId })"></a>
                                 </div>
                             </div>
@@ -108,7 +110,7 @@
                     </div>
                 </div>
             </div>
-
+           
             <!-- Section -->
         </div>
             <!-- Footer -->  

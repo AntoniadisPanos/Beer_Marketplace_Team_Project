@@ -59,12 +59,12 @@ namespace Omadiko.WebApp.Controllers
         }
         public ActionResult ProductInfo(int? id)
         {
-           if(id is null)
+           if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Product product = db.Products.Find(id);
-            if(product is null)
+            if(product == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }

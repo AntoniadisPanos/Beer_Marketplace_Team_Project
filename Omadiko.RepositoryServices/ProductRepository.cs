@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Omadiko.RepositoryServices
 {
-    class ProductRepository
+  public  class ProductRepository
     {
 
         ApplicationDbContext db = new ApplicationDbContext();
@@ -17,6 +17,7 @@ namespace Omadiko.RepositoryServices
 
         public IEnumerable<Product> GetAll()
         {
+           
             return db.Products.ToList();
         }
 

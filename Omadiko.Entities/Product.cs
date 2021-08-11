@@ -43,6 +43,7 @@ namespace Omadiko.Entities
         public string PhotoUrl { get; set; }
         public Country Country { get; set; }
         
+        
 
         //Navigation Properties
 
@@ -57,7 +58,7 @@ namespace Omadiko.Entities
 
         public virtual Brewery Brewery { get; set; }
        
-       
+        
        
     }
 }

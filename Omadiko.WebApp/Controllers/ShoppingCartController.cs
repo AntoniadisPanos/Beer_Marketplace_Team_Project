@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace Omadiko.WebApp.Controllers
 {
     public class ShoppingCartController : Controller
@@ -97,12 +98,72 @@ namespace Omadiko.WebApp.Controllers
         {
             return View("Index");
         }
-       public ActionResult CheckOut(FormCollection fc)
-        {
-            List<Cart> cart = (List<Cart>)Session["Cart"];
-                     
-            return View("CheckOut");
 
+
+
+        public ActionResult CheckOut(FormCollection formCollection)
+        {
+
+           Order order = new Order()
+            {
+                CustomerName = formCollection["customername"+" "+ "customername2"],
+                CustomerEmail = formCollection["customeremail"],
+                CustomerPhone = formCollection["customerphone"],
+                CustomerAddress = formCollection["customeraddress"],
+                CustomerAddress2 = formCollection["customeraddress2"],
+                PostalCode = formCollection["postalcode"],
+                OrderDate = DateTime.Now.Date,
+                OrderTime = DateTime.Now.TimeOfDay,
+                OrderStatus = "Pending"
+        };           
+            db.Orders.Add(order);
+            db.SaveChanges();
+
+            List<Cart> cart = (List<Cart>)Session["Cart"];
+            for (int i = 0; i <cart.Count; i++)
+            {
+                OrderDetails orderDetails = new OrderDetails()
+                {
+                    OrderId = db.Orders.Max(x => x.OrderId),
+                    ProductId = cart[i].Product.ProductId,
+                    Quantity = cart[i].Quantity
+                };
+
+                db.OrderDetails.Add(orderDetails);
+                db.SaveChanges();
+            }
+            
+            return View(order);
+
+        }
+        public ActionResult OrderDetails(FormCollection frc)
+        {
+            Order order =new Order()
+            {
+                OrderInstructions = frc["ordernotes"]
+            };
+            db.Orders.Add(order);
+            db.SaveChanges();
+            return View();
+        }
+        public ActionResult OrderInfo()
+        {
+            return View();
+        }
+        //Work with Paypal Payment
+       
+        public ActionResult PaymentInfo()
+        {
+            return View();
+        }
+       
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
                   
