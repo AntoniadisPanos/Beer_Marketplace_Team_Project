@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Omadiko.RepositoryServices;
 using Omadiko.Entities;
+using Omadiko.Database;
 
 namespace Omadiko.Console2
 {
@@ -13,7 +14,6 @@ namespace Omadiko.Console2
         static void Main(string[] args)
         {
             
-
 
         }
     }

@@ -17,7 +17,17 @@ namespace Omadiko.Entities.ViewModels
         public Product Product { get; set; }
         public List<Product> BestProductsByPopularity { get; set; }
 
-        
-        
+        public List<Product> TwoProductsForPage { get; set; }
+
+        public List<Blog> IndividualBlogForProduct { get; set; }
+
+        public Blog Blog { get; set; }
+
+        public List<Article> Articles { get; set; }
+
+        public List<Blog> Blogs { get; set; }
+
+        public PhotoForSite photoForSite { get; set; }
+
     }
 }

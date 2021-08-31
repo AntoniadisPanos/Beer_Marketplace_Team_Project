@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Omadiko.Entities
 {
     public class ApplicationUser : IdentityUser
@@ -19,11 +20,15 @@ namespace Omadiko.Entities
             // Add custom user claims here
             return userIdentity;
         }
-       
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
 
+      
+        public ApplicationUser()
+        {
+            Messages = new HashSet<Message>();
+        }
         //Navigation Properties
+       
+        public virtual ICollection<Message> Messages { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
         public virtual UserDetails UserDetails { get; set; }
@@ -31,8 +36,18 @@ namespace Omadiko.Entities
         public virtual Blog Blog { get; set; }
         public virtual ICollection<UserLocation> UserLocations { get; set; }
 
-        public virtual ICollection<Cart> Carts { get; set; }
+        public virtual Article Article { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
+            
+        public virtual ICollection<Item> Carts { get; set; }
 
-        //public virtual ICollection<Payment> Payments { get; set; }
+        
+        public ICollection<Customer> Customers { get; set; }
+
+        public virtual ICollection<Product> Products { get; set; }
+
+        
+
+        
     }
 }

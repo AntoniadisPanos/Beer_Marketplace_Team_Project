@@ -1,4 +1,4 @@
-﻿@model Omadiko.Entities.Order
+﻿@model Omadiko.WebApp.Models.CustomerProductViewModel
 @{
     ViewBag.Title = "CheckOut";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -62,97 +62,63 @@
                         <!-- Form start -->
                         @using (Html.BeginForm("CheckOut", "ShoppingCart", FormMethod.Post))
                         {
-                            @Html.AntiForgeryToken()
+                            
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="text" required name="CustomerFirstName" placeholder="First name">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" required name="CustomerLastName" placeholder="Last name">
+                                </div>
+                            </div>                            
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="text" required name="customeremail" placeholder="Email address">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" required name="customerphone" placeholder="Telephone">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    @Html.EnumDropDownListFor(x => x.Country)
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <input type="text" name="customeraddress" required placeholder="Town/City">
+                                    <input type="text" name="customeraddress2" required placeholder="Address  ">
+                                </div>
+                            </div>
+                            <div class="row">
 
-                            <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="text" name="customername" placeholder="First name">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" name="customername2" placeholder="Last name">
-                                </div>
-                            </div>
-                            @*<div class="row">
-            <div class="col-sm-12">
-                <input type="text" placeholder="Company name" name="companyname">
-            </div>
-            </div>*@
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <input type="text" name="customeremail" placeholder="Email address">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" name="customerphone" placeholder="Telephone">
+                                    <input type="text" name="postalcode" required placeholder="Postcode">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <select name="country">
-                                        <option>Country</option>
-                                        <option>--</option>
-                                        <option>United Kingdom</option>
-                                        <option>France</option>
-                                        <option>Italy</option>
-                                        <option>Germany</option>
-                                        <option>Spain</option>
-                                        <option>Poland</option>
-                                        <option>Turkey</option>
-                                        <option>Greece</option>
-                                        <option>Switzerland</option>
-                                        <option>Denmark</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <input type="text" name="customeraddress" placeholder="Address line 1">
-                                    <input type="text" name="customeraddress2" placeholder="Address line 2">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <select name="city">
-                                        <option>Town / City</option>
-                                        <option>--</option>
-                                        <option>London</option>
-                                        <option>Essex</option>
-                                        <option>Manchester</option>
-                                        <option>Liverpool</option>
-                                        <option>Cornwall</option>
-                                        <option>Birmingham</option>
-                                        <option>Newcastle</option>
-                                        <option>Kent</option>
-                                        <option>Brighton</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <input type="text" name="country" placeholder="County">
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" name="postalcode" placeholder="Postcode">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <input type="checkbox"> Create account?
+                                    <input id="createaccount" type="checkbox"> Create account?
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 btn-wrap">
-                                    <a href="@Url.Action("Index","ShoppingCart")" class="btn btn-grey"><span>Previous</span></a> <a href="@Url.Action("OrderDetails","ShoppingCart")" class="btn btn-default" style="height:48px; width:150px;"><span><input type="submit" name="name" value="Next" /></span></a>
+                                    <a href="@Url.Action("Index","ShoppingCart")" class="btn btn-grey"><span>Previous</span></a><a href="@Url.Action("OrderDetails","ShoppingCart")" ><span><input type="submit" name="name" value="Next" class="btn btn-default" /></span></a>
                                 </div>
                             </div>
                         }
                         <!-- Form end -->
-
-
                     </div>
                 </div>
             </div>
         </div>
         <!-- Footer -->
     </div>
+    <script>
+        document.getElementById('createaccount').onclick = function() {
+            if (this.checked == true)
+                window.location = '@Url.Action("Register","Account")';
+}
+    </script>
 </body>
 </html>

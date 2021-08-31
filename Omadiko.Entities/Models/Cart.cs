@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Omadiko.Entities
 {
-    public class Cart
+    public class Item
     {
-        public int CartId { get; set; }
+        public int ItemId { get; set; }
         public int Quantity { get; set; }
        
         public decimal Price { get; set; }
@@ -23,7 +23,7 @@ namespace Omadiko.Entities
        
        public virtual Order Order { get; set; }
 
-        //public virtual ICollection<Product> Products { get; set; }
+       
 
         public virtual Product Product { get; set; }
 

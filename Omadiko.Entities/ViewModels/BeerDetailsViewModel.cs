@@ -11,7 +11,7 @@ namespace Omadiko.Entities.ViewModels
         public Product Product { get; set; }
         public List<Product> Products { get; set; }
 
-        public List<Cart> Carts { get; set; }
+        public List<Item> Carts { get; set; }
         public List<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

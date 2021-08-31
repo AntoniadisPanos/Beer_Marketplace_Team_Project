@@ -11,14 +11,14 @@
     
 </head>
 <body>
-    
+
     @if ((Session["Cart"] == null))
     {
-        var items = (List<Cart>)Session["Cart"];
+        var items = (List<Item>)Session["Cart"];
     }
            
-            
-   
+    
+        
         <!-- Fake page loading -->
         <div id="fakeLoader"></div>
 
@@ -38,7 +38,7 @@
                 </div>
 
             </div>
-           
+
             <!-- Section -->
             <div class="container-fluid dark section no-padding">
                 <div class="container">
@@ -58,65 +58,81 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="container-fluid white section cart">               
-                @foreach (var item in (List<Cart>)Session["Cart"])
-                {
+            @if(Session["Cart"]!=null )
+            {
+        <div class="container-fluid white section cart">
+            @foreach (var item in (List<Item>)Session["Cart"])
+            {
 
-                    <input type="hidden" name="name" value="@item.Product.ProductId" />
-                    <div class="container">
-                        <div class="row item">
-                            <div class="col-sm-2 matchHeight">
-                                <img src="@item.Product.SmallPhoto" alt="Beer can mockup" />
-                            </div>
-                            <div class="col-sm-4 matchHeight">
-                                <header class="alignMiddle">
-                                    <h2>@item.Product.Type</h2>
-                                    <span>@item.Product.ProductName</span>
-                                </header>
-                            </div>
-                            <div class="col-sm-3 matchHeight">
-                                <div class="quantity alignMiddle"style="width:100px;text-align:center;">
-                                    <a id="decrease" class="fa fa-chevron-down" href="@Url.Action("Decrease","ShoppingCart",new { id = item.Product.ProductId })"></a>
-                                    <input value="@item.Quantity"  class="itxt" type="text">
-                                    <a id="increase" class="fa fa-chevron-up" href="@Url.Action("Increase","ShoppingCart",new { id = item.Product.ProductId })"></a>
-                                </div>
-                            </div>
-                            <div class="col-sm-2 matchHeight">
-                                <a href="@Url.Action("Delete","ShoppingCart",new { id = item.Product.ProductId })" class="remove alignMiddle fa fa-remove"></a>
-                            </div>
-                            <div class="col-sm-1 matchHeight">                               
-                                <span class="price alignMiddle">&dollar;@Cart.Sum(item.Product.Price,item.Quantity)</span>
+                <input type="hidden" name="name" value="@item.Product.ProductId" />
+                <div class="container">
+                    <div class="row item">
+                        <div class="col-sm-2 matchHeight">
+                            <img src="@item.Product.SmallPhoto" alt="Beer can mockup" />
+                        </div>
+                        <div class="col-sm-4 matchHeight">
+                            <header class="alignMiddle">
+                                <h2>@item.Product.Type</h2>
+                                <span>@item.Product.ProductName</span>
+                            </header>
+                        </div>
+                        <div class="col-sm-3 matchHeight">
+                            <div class="quantity alignMiddle" style="width:100px;text-align:center;">
+                                <a id="decrease" class="fa fa-chevron-down" onclick="decreaseValue()" href="@Url.Action("Decrease","ShoppingCart",new { id = item.Product.ProductId })"></a>
+                                <input value="@item.Quantity" id="number" class="itxt" type="text">
+                                <a id="increase" class="fa fa-chevron-up" onclick="increaseValue()" href="@Url.Action("Increase","ShoppingCart",new { id = item.Product.ProductId })"></a>
                             </div>
                         </div>
-                    </div>
-
-                }
-
-                <div class="row">
-                    <div class="col-sm-6 promo">
-                        <input type="text" name="promo"> <a href="#" class="btn btn-default"><span>Apply</span></a>
-                    </div>
-                    <div class="col-sm-6 total">
-                        @{
-                            var cart = (List<Cart>)Session["Cart"];
-                        }
-                        <p>Cart total: <span>&dollar;@cart.Sum(x => x.Product.Price * x.Quantity)</span></p>
+                        <div class="col-sm-2 matchHeight">
+                            <a href="@Url.Action("Delete","ShoppingCart",new { id = item.Product.ProductId })" class="remove alignMiddle fa fa-remove"></a>
+                        </div>
+                        <div class="col-sm-1 matchHeight">
+                            <span class="price alignMiddle">&dollar;@Item.Sum(item.Product.Price, item.Quantity)</span>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12 btn-wrap">
-                        <a href="@Url.Action("CheckOut","ShoppingCart")" class="btn btn-default"><span>Continue to checkout</span></a>
-                    </div>
+
+            }
+
+            <div class="row">
+                
+                <div class="col-sm-6 total">
+                    @{
+                        var cart = (List<Item>)Session["Cart"];
+                    }
+                    <p>Cart total: <span>&dollar;@cart.Sum(x => x.Product.Price * x.Quantity)</span></p>
                 </div>
             </div>
            
+                <div class="row">
+                    <div class="col-sm-12 btn-wrap">
+                        <a href="@Url.Action("Index","Product")" class="btn btn-grey"><span>Continue Shopping</span></a> <a href="@Url.Action("CheckOut","ShoppingCart")" id="checkout" class="btn btn-default"><span>Continue to checkout</span></a>
+                    </div>
+                </div>
+            
+
+        </div>
+            }
+            else
+            {
+                <div class="container-fluid white section cart">
+                    <div class="container">
+                        <h1>Cart is Empty</h1>
+                    </div>
+                </div>
+                
+            }
+
+
+
             <!-- Section -->
         </div>
-            <!-- Footer -->  
-    
-        <script>
-           
-        </script>
-    </body>
+        <!-- Footer -->
+   
+    <script>
+        
+       
+
+    </script>
+</body>
 </html>

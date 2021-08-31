@@ -1,4 +1,5 @@
-﻿<div class="navbar section no-padding" role="navigation">
+﻿@using Omadiko.Entities;
+<div class="navbar section no-padding" role="navigation">
     <!-- Heading -->
     <div class="heading">
         <div class="container">
@@ -19,7 +20,21 @@
                     </div>
                     <div class="cart">
                         <a href="@Url.Action("Index","ShoppingCart")">
-                            <span class="fa fa-shopping-cart"></span> Empty
+                            @if (Session["Cart"] != null)
+                            {
+                                var lista = (List<Item>)Session["Cart"];
+                                int sum = 0;
+                                foreach (var item in lista)
+                                {
+                                    sum += item.Quantity;
+                                }
+                            <span class="fa fa-shopping-cart">Cart @sum</span>                                
+                            }
+                            else
+                            {
+                                <span class="fa fa-shopping-cart">Empty</span>   
+                            }
+                            
                         </a>
                     </div>                   
                     <div class="cart">
@@ -59,11 +74,7 @@
                     <span>
                         <a href="@Url.Action("OurBeer", "Home")">Our Beer</a>
                     </span>
-                    <ul class="dropdown-menu">
-                        <li><a href="~/Template/main/our-beer.html">Sugar Skull</a></li>
-                        <li><a href="~/Template/main/our-beer.html">BraveHeart</a></li>
-                        <li><a href="~/Template/main/our-beer.html">The Drunk Indian</a></li>
-                    </ul>
+                  
                 </li>
                 <li>
                     <span>
@@ -75,19 +86,17 @@
                         @Html.ActionLink("Contact", "Contact", "Home")
                     </span>
                 </li>
+                
                 <li class="dropdown">
                     <span>
-                        <a href="#">Blog</a>
-                    </span>
-                    <ul class="dropdown-menu">
-                        @Html.ActionLink("SingleBlog", "SingleBlog", "Home")
-                    </ul>
+                        <a href="@Url.Action("Blog","Home")">Blog</a>
+                    </span>                   
                 </li>
                 @if (User.IsInRole("Admin") || User.IsInRole("Supervisor"))
                 {
-                    <li>@Html.ActionLink("Dashboard", "Index2", "Admin")</li>
+                    <li>@Html.ActionLink("Dashboard", "Index", "Admin")</li>
 
-                }               
+                }
             </ul>
         </div>
     </div>

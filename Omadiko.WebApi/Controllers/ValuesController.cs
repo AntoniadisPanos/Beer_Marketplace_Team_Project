@@ -19,6 +19,7 @@ namespace Omadiko.WebApi.Controllers
         public string Get(int id)
         {
             return "value";
+           
         }
 
         // POST api/values
@@ -35,5 +36,6 @@ namespace Omadiko.WebApi.Controllers
         public void Delete(int id)
         {
         }
+
     }
 }

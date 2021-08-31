@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Omadiko.Entities;
+using PayPal.Api;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,7 +15,9 @@ namespace Omadiko.WebApi.Controllers
             ViewBag.Title = "Home Page";
 
             return View();
+
+
         }
-        
+
     }
 }

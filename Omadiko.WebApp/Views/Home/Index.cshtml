@@ -26,7 +26,7 @@
                         <div class="col-md-10 col-md-offset-1">
                             <h1>Over one hundred flavours of</h1>
                             <h2>Specially <br />crafted beer</h2>
-                            <a href="~/Template/main/#" class="btn btn-default">
+                            <a href="@Url.Action("OurBeer","Home")" class="btn btn-default">
                                 <span>Explore</span>
                             </a>
                         </div>
@@ -41,7 +41,7 @@
                         <div class="col-md-10 col-md-offset-1">
                             <h1>We use only the finest ingredients to create the</h1>
                             <h2>The perfect <br />craft beer</h2>
-                            <a href="~/Template/main/#" class="btn btn-default">
+                            <a href="@Url.Action("OurBeer","Home")" class="btn btn-default">
                                 <span>Explore</span>
                             </a>
                         </div>
@@ -56,7 +56,7 @@
                         <div class="col-md-10 col-md-offset-1">
                             <h1>The perfect template to compliment</h1>
                             <h2>Your brewery</h2>
-                            <a href="~/Template/main/#" class="btn btn-default">
+                            <a href="@Url.Action("OurBeer","Home")" class="btn btn-default">
                                 <span>Explore</span>
                             </a>
                         </div>
@@ -166,130 +166,121 @@
             </a>
         </div>
     </div>
-    
-        <div class="container-fluid dark section" style="background-image: url(http://placehold.it/880x650);">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-5 matchHeight scrollme animateme" data-when="enter" data-from="0.75" data-to="0" data-opacity="0" data-translatex="-75">
-                        <div class="alignMiddle mobile-center">
-                            <header>
-                                <h1>Browse the</h1>
-                                <h2>Beer aisle</h2>
-                            </header>
-                            <p>Smoky characters emerge as the beer warms, as do subtle drops of caramel. The overall dryness of the beer carries through to the finish, with a semi-burnt linger and bitter end.</p>
-                            <a href="~/Template/main/#" class="btn btn-default"><span>Show me more</span></a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-sm-push-1 matchHeight">
-                        <div class="owl-carousel">
-                            <!-- Products -->
-                            @foreach (var beer in Model.BestProductsByPopularity)
-                            {
-                                <div class="product item">
-                                    <a href="@Url.Action("ProductInfo","Product",new { id =beer.ProductId },null)">
-                                        <span>Buy it</span>
-                                        <img src="@beer.SmallPhoto" style="max-width:50%" height="100" alt="Beer can mockup">
-                                    </a>
-                                    <h3>@beer.ProductName.ToString().Replace("_", " ")</h3>
-                                    <h4>@beer.Price</h4>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-    <!-- Section -->
-    <!-- Section -->
-    <div class="container-fluid light section no-padding">
+
+    <div class="container-fluid dark section" style="background-image: url(http://placehold.it/880x650);">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 latest-post odd matchHeight">
-                    <a href="~/Template/main/#"></a>
-                    <div class="row">
-                        <div class="col-sm-10 col-sm-push-1">
-                            <header>
-                                <span class="date">21 December</span>
-                                <h2>Oktoberfest</h2>
-                            </header>
-                            <p>Brewed with licorice; a proprietary, hand-smoked malt; and almost a pound of East Kent Goldings hops per barrel.</p>
-                            <p>Opaque brown in color, with muddy brown edges and a cola-colored head that drops quickly to a ringed lace. Strong and dominating licorice aroma with an underlying robust molasses-ness and highly roasted malts. Thick-ish, deep blackstrap molasses character (sweet, tangy nectar), quite robust.</p>
-                            <p><a href="~/Template/main/#" class="underline">Read more</a></p>
-                        </div>
+                <div class="col-sm-5 matchHeight scrollme animateme" data-when="enter" data-from="0.75" data-to="0" data-opacity="0" data-translatex="-75">
+                    <div class="alignMiddle mobile-center">
+                        <header>
+                            <h1>Browse the</h1>
+                            <h2>Beer aisle</h2>
+                        </header>
+                        <p>Smoky characters emerge as the beer warms, as do subtle drops of caramel. The overall dryness of the beer carries through to the finish, with a semi-burnt linger and bitter end.</p>
+                        <a href="~/Template/main/#" class="btn btn-default"><span>Show me more</span></a>
                     </div>
-                    <div class="background" style="background-image: url(http://placehold.it/750x535);"></div>
                 </div>
-                <div class="col-sm-6 latest-post even matchHeight">
-                    <a href="~/Template/main/#"></a>
-                    <div class="row">
-                        <div class="col-sm-10 col-sm-push-1">
-                            <header>
-                                <span class="date">14 December</span>
-                                <h2>Now stocked in NYC</h2>
-                            </header>
-                            <p>Brewed with licorice; a proprietary, hand-smoked malt; and almost a pound of East Kent Goldings hops per barrel.</p>
-                            <p>Opaque brown in color, with muddy brown edges and a cola-colored head that drops quickly to a ringed lace. Strong and dominating licorice aroma with an underlying robust molasses-ness and highly roasted malts. Thick-ish, deep blackstrap molasses character (sweet, tangy nectar), quite robust.</p>
-                            <p><a href="~/Template/main/#" class="underline">Read more</a></p>
-                        </div>
+                <div class="col-sm-6 col-sm-push-1 matchHeight">
+                    <div class="owl-carousel">
+                        <!-- Products -->
+                        @foreach (var beer in Model.BestProductsByPopularity)
+                        {
+                            <div class="product item">
+                                <a href="@Url.Action("ProductInfo","Product",new { id =beer.ProductId },null)">
+                                    <span>Buy it</span>
+                                    <img src="@beer.SmallPhoto" style="max-width:50%" height="100" alt="Beer can mockup">
+                                </a>
+                                <h3>@beer.ProductName.ToString().Replace("_", " ")</h3>
+                                <h4>@beer.Price</h4>
+                            </div>
+                        }
                     </div>
-                    <div class="background" style="background-image: url(http://placehold.it/750x535);"></div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Section -->
-    <div class="container-fluid super-dark section">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-6 col-sm-3">
-                    <div class="counter">
-                        <img src="~/Template/main/images/Can.svg" class="svg" alt="" />
-                        <span>207</span>
-                        Flavours
+    <!-- Section -->
+
+    
+    <div class="container-fluid light section no-padding">
+        @foreach (var article in Model.Articles)
+        {
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 latest-post  odd matchHeight">
+                        <a href="@Url.Action("SingleBlog", "Home" , new { id=article.ArticleId })"></a>
+                        <div class="row">
+                            <div class="col-sm-10 col-sm-push-1">
+                                <header>
+                                    <span class="date">@article.DateTime.ToString("dd MMMM")</span>
+                                    <h2>@article.Title</h2>
+                                </header>
+                                <p>@article.Blog</p>
+                                <p><a href="@Url.Action("SingleBlog", "Home" , new { id=article.ArticleId })" class="underline">Read more</a></p>
+                            </div>
+                        </div>
+                        <div class="background" style="background-image: url(http://placehold.it/750x535);"></div>
                     </div>
                 </div>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="counter">
-                        <img src="~/Template/main/images/Sign.svg" class="svg" alt="" />
-                        <span class="one">396</span>
-                        Outlets
+
+            </div>
+        }
+
+    </div>
+    
+        <!-- Section -->
+        <div class="container-fluid super-dark section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-3">
+                        <div class="counter">
+                            <img src="~/Template/main/images/Can.svg" class="svg" alt="" />
+                            <span>207</span>
+                            Flavours
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="counter">
-                        <img src="~/Template/main/images/Badge.svg" class="svg" alt="" />
-                        <span>60</span>
-                        Years brewing
+                    <div class="col-xs-6 col-sm-3">
+                        <div class="counter">
+                            <img src="~/Template/main/images/Sign.svg" class="svg" alt="" />
+                            <span class="one">396</span>
+                            Outlets
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="counter">
-                        <img src="~/Template/main/images/BarrelSide.svg" class="svg" alt="" />
-                        <span>21</span>
-                        Days til ready
+                    <div class="col-xs-6 col-sm-3">
+                        <div class="counter">
+                            <img src="~/Template/main/images/Badge.svg" class="svg" alt="" />
+                            <span>60</span>
+                            Years brewing
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <div class="counter">
+                            <img src="~/Template/main/images/BarrelSide.svg" class="svg" alt="" />
+                            <span>21</span>
+                            Days til ready
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        @section MyJavascript{
+            <script>
+                $("#myCarousel").owlCarousel({
+                    loop: true,
+                    autoplay: true,
+                    autoplayTimeout: 4000,
+                    autoplaySpeed: 500,
+                    autoplayHoverPause: true,
+                    responsive: {
+                        480: { items: 1 },
+                        768: { items: 3 },
+                        1024: { items: 4 }
+                    },
+                });
+            </script>
+        }
     </div>
-    @section MyJavascript{
-        <script>
-            $("#myCarousel").owlCarousel({
-                loop: true,
-                autoplay: true,
-                autoplayTimeout: 4000,
-                autoplaySpeed: 500,
-                autoplayHoverPause: true,
-                responsive: {
-                    480: { items: 1 },
-                    768: { items: 3 },
-                    1024: { items: 4 }
-                },
-            });
-        </script>
-    }
-</div>
 
 

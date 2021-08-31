@@ -99,11 +99,11 @@
                 <div class="row">
                     <div class="col-sm-8 col-sm-push-2">
                         <header class="centred">
-                            <h1>Login or checkout</h1>
-                            <h2>As a guest</h2>
+                            <h1>Register or Checkout</h1>
+                            <h2>As A Guest</h2>
                         </header>
                         <hr class="space-40" />
-                        <p class="centred">If you have already registered, please, enter your details in the boxes below. If you are a new customer, please, go to the Billing &amp; Shipping section.</p>
+                        <p class="centred">If you are a new customer, please, go to the Billing &amp; Shipping section.</p>
                         <hr class="space-40" />
                         <div class="login">
                             <div class="row">
@@ -115,6 +115,7 @@
                                             <h4>Create a new account.</h4>
                                             <hr />
                                             @Html.ValidationSummary("", new { @class = "text-danger" })
+                                            
                                             <div class="form-group">
                                                 @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
                                                 <div class="col-md-10">
@@ -143,11 +144,11 @@
                                 </div>
 
                             </div>
-                            <div class="row">
+                            @*<div class="row">
                                 <div class="col-sm-12 btn-wrap">
                                     <a href="checkout-2.html" class="btn btn-default"><span>Next</span></a>
                                 </div>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>

@@ -36,6 +36,8 @@ namespace Omadiko.Entities
         [MaxLength(20, ErrorMessage = "Type must be less than 60 characters")]
         [MinLength(2, ErrorMessage = "Type must be greater than 2 characters")]
         public string Type { get; set; }
+        public decimal Discount { get; set; }
+        public string DiscountCode { get; set; }
 
         [Range(0, 5)]
         public byte Popularity { get; set; }
@@ -55,11 +57,15 @@ namespace Omadiko.Entities
         public virtual Category Category { get; set; }
 
        public virtual ICollection<Order> Orders { get; set; }
-        public virtual ICollection<Cart> Carts { get; set; }
+        public virtual ICollection<Item> Carts { get; set; }
 
         public virtual Brewery Brewery { get; set; }
        
+        public virtual ICollection<Blog> Blogs { get; set; }
+
+        public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
         
+        public virtual ICollection<Customer> Customers { get; set; }
        
     }
 }

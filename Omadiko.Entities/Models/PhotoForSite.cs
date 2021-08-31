@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace Omadiko.Entities
 {
-   public  class Role
+   public class PhotoForSite
     {
-        public const string Admin = "Admin";
-        public const string Customer = "Customer";
+
+        public int PhotoForSiteId { get; set; }
+
+        public string Url { get; set; }
+
+
     }
 }

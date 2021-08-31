@@ -12,7 +12,7 @@
 <body>
     @if ((Session["Cart"] == null))
     {
-        var items = (List<Cart>)Session["Cart"];
+        var items = (List<Item>)Session["Cart"];
     }
     <!-- Fake page loading -->
     <div id="fakeLoader"></div>
@@ -60,11 +60,12 @@
                                 <h2>Order info</h2>
                             </header>
                             <hr class="space-40" />
-                            @foreach (var item in (List<Cart>)Session["Cart"])
+                            @foreach (var item in (List<Item>)Session["Cart"])
                             {
+                               
                                 <div class="row item">
                                     <div class="col-sm-2 matchHeight">
-                                        <img src="@item.Product.PhotoUrl" alt="Beer can mockup" />
+                                        <img src="@item.Product.SmallPhoto" alt="Beer can mockup" />
                                     </div>
                                     <div class="col-sm-5 matchHeight">
                                         <header class="alignMiddle">
@@ -78,7 +79,9 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-1 matchHeight">
-                                        <span class="price alignMiddle">&dollar;@Cart.Sum(item.Product.Price, item.Quantity)</span>
+                                        <span class="price alignMiddle">&dollar;@Item.Sum(item.Product.Price, item.Quantity)</span>
+                                        
+
                                     </div>
                                 </div>
                             }
@@ -89,10 +92,10 @@
                                 </div>
                                 <div class="col-sm-6 total">
                                     @{
-                                        var cart = (List<Cart>)Session["Cart"];
+                                        var cart = (List<Item>)Session["Cart"];
                                     }
                                     <p>Cart total: <span>&dollar;@cart.Sum(x => x.Product.Price * x.Quantity)</span></p>
-                                    
+                                   
                                 </div>
                             </div>
 

@@ -57,7 +57,18 @@ namespace Omadiko.WebApp.Controllers
             ViewBag.CurrentSortOrder = sortOrder;
             return products;
         }
-        public ActionResult ProductInfo(int? id)
+
+
+        //[HttpGet]
+        //public ActionResult ProductInfo()
+        //{
+        //    IndexHomeViewModel vm = new IndexHomeViewModel();
+        //    return View(vm);
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult ProductInfo(int? id,FormCollection frc)
         {
            if(id == null)
             {
@@ -70,12 +81,33 @@ namespace Omadiko.WebApp.Controllers
             }
             var mostpopular = db.Products.Where(x => x.Popularity >= 3).OrderByDescending(x => x.Popularity).Take(5).ToList();
 
+            
+
+            Blog blog = new Blog()
+            {   
+                ProductId=product.ProductId,
+                CustomerName =User.Identity.Name,
+                CustomerEmail = User.Identity.Name,
+                Comments = frc["comment"]
+            };
+            
+            db.Blogs.Add(blog);
+            db.SaveChanges();
+            var blogs = db.Blogs.Where(x => x.Product.ProductId == id).ToList();
             IndexHomeViewModel vm = new IndexHomeViewModel()
             {
+                Blog = blog,
                 Product = product,
-                BestProductsByPopularity = mostpopular
+                BestProductsByPopularity = mostpopular,
+                IndividualBlogForProduct = blogs
+
             };
+           
+            db.SaveChanges();
+
+            
             return View(vm);
         }
+        
     }
 }

@@ -17,7 +17,7 @@
     <!-- Wrapper -->
     <div class="wrapper">
 
-       
+
 
         <!-- Hero -->
         <div id="hero" class="single-page section" style="background-image: url(http://placehold.it/1500x500)">
@@ -63,31 +63,42 @@
                         {
                             <div class="check-option">
                                 <input type="checkbox" checked> <strong>Direct bank transfer</strong>
-                                <blockquote>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram.</blockquote>
+                                <blockquote></blockquote>
                             </div>
                             <div class="check-option">
-                                <input type="checkbox"> <strong>PayPal</strong>
+                                <input id="paypal" type="checkbox"> <strong>PayPal</strong>
                             </div>
                             <div class="check-option">
-                                <input type="checkbox"> <strong>Cheque</strong>
+                                <input id="cheque" type="checkbox"> <strong>Cheque</strong>
                             </div>
                             <div class="check-option">
-                                <input type="checkbox"> <strong>Credit or Debit card</strong>
+                                <input id="creditcard" type="checkbox"> <strong>Credit or Debit card</strong>
                             </div>
                             <div class="row">
-                                <div class="col-sm-12 btn-wrap">
-                                    <a href="@Url.Action("OrderInfo","ShoppingCart")" class="btn btn-grey"><span>Previous</span></a> <a href="#" class="btn btn-default" style="height:48px; width:150px;"><input type="submit" name="name" value="" />Place Order</a>
+                                <div class="col-sm-12 btn-wrap"> 
+                                    <a href="@Url.Action("OrderInfo","ShoppingCart")" class="btn btn-grey"><span>Previous</span></a> <a href="@Url.Action("PaymentWithPaypal","ShoppingCart")"  class="btn btn-default" style="height:48px; width:150px;"><input type="submit" name="name" value=""  />Place Order</a>
                                 </div>
                             </div>
                         }
-
+                        @*<div id="paypal-button-container"></div>*@
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Footer -->
-    </div> 
+    </div>
+    @*<script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>*@
+    <script>
+      
+
+        document.getElementById('paypal').onclick = function() {
+            if (this.checked == true)
+                window.location = '@Url.Action("PaymentWithPaypal", "ShoppingCart")';
+                
+
+}
+    </script>
 </body>
 </html>
 

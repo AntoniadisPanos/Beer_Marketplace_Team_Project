@@ -1,141 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNetCore.Mvc;
 using Omadiko.Database;
 using Omadiko.Entities;
+using Omadiko.Entities.ViewModels;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace Omadiko.WebApp.Controllers
 {
     public class AdminController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
+       
         // GET: Admin
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.Brewery).Include(p => p.Category);
-            return View(products.ToList());
-        }
-        public ActionResult Index2()
-        {
             return View();
         }
-
-        // GET: Admin/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult GetDate()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
+            ApplicationDbContext db = new ApplicationDbContext();
+            var data = db.OrderDetails.Include("Product").ToList();
 
-        // GET: Admin/Create
-        public ActionResult Create()
-        {
-            ViewBag.BreweryId = new SelectList(db.Breweries, "BreweryId", "BreweryName");
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
-            return View();
+            var query = db.OrderDetails.Include("Product")
+                .GroupBy(x => x.ProductName)
+                .Select(y => new { name = y.Key, count =y.SingleOrDefault().Quantity });
+            return Json(query, JsonRequestBehavior.AllowGet);
         }
+        
+        
+        
 
-        // POST: Admin/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,ProductName,Price,ABV,Volume,Description,Type,Popularity,PhotoUrl,Country,CategoryId,BreweryId")] Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Products.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.BreweryId = new SelectList(db.Breweries, "BreweryId", "BreweryName", product.BreweryId);
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", product.CategoryId);
-            return View(product);
-        }
-
-        // GET: Admin/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.BreweryId = new SelectList(db.Breweries, "BreweryId", "BreweryName", product.BreweryId);
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", product.CategoryId);
-            return View(product);
-        }
-
-        // POST: Admin/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,ProductName,Price,ABV,Volume,Description,Type,Popularity,PhotoUrl,Country,CategoryId,BreweryId")] Product product)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(product).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.BreweryId = new SelectList(db.Breweries, "BreweryId", "BreweryName", product.BreweryId);
-            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", product.CategoryId);
-            return View(product);
-        }
-
-        // GET: Admin/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
-        }
-
-        // POST: Admin/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
