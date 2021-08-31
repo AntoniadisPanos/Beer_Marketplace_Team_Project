@@ -15,8 +15,8 @@ namespace Omadiko.WebApp.Controllers
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        
-        
+
+
         public ActionResult Index()
         {
             IndexHomeViewModel vm = new IndexHomeViewModel()
@@ -33,11 +33,57 @@ namespace Omadiko.WebApp.Controllers
             return View();
         }
 
-        public ActionResult Contact(FormCollection frc)
+        [HttpGet]
+        public ActionResult Contact()
         {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Contact(FormCollection frc, int? id)
+        {
+
+            
+                Customer customer = new Customer()
+                {
+                    CustomerEmail=frc["Customeremail"],
+                    CustomerFirstName=frc["CustomerFirstName"]
+                };
+                db.Customers.Add(customer);
+                db.SaveChanges();
+            if (User.Identity.IsAuthenticated)
+            {
+                Message msg = new Message()
+                {
+
+                    UserId=db.Users.Max(x=>x.Id),                   
+                    UserName = User.Identity.Name,
+                    Text = frc["message"],
+                    When = DateTime.Now.Date
+                };
+                db.Messages.Add(msg);
+                db.SaveChanges();
+            }
+            else
+            {
+                Message msg = new Message()
+                {
+                    UserName = customer.CustomerEmail,
+                    CustomerId =db.Customers.Max(x=>x.CustomerId),
+                    Text = frc["message"],
+                    When = DateTime.Now.Date
+                };
+                db.Messages.Add(msg);
+                db.SaveChanges();
+            }
+                
             
             return View();
         }
+                
+                
+    
       
         public ActionResult OurStory()
         {

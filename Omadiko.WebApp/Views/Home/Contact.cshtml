@@ -1,4 +1,4 @@
-﻿
+﻿@model Omadiko.Entities.ViewModels.CustomerContactWithMessagesViewModel
 <!-- Fake page loading -->
 <div id="fakeLoader"></div>
 
@@ -103,17 +103,38 @@
                     </ul>
                     <div class="grey-background"></div>
                 </div>
+
                 <div class="col-sm-5 col-sm-push-1 matchHeight">
+
                     <section class="alignMiddle padding-80-0">
-                        @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+                        @if (User.Identity.IsAuthenticated)
                         {
-                            <input type="text" name="name" placeholder="Name">
-                            <input type="email" name="_replyto" placeholder="Email">
-                            <textarea name="message" placeholder="Message" rows="5"></textarea>
-                            <input type="submit" value="Send" class="btn btn-default">
+                            using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @*<input type="text" name="CustomerFirstName" placeholder="Name">
+                                <input type="email" name="Customeremail" placeholder="Email">*@
+                                <textarea name="message" placeholder="Message" rows="5"></textarea>
+                                <input type="submit" name="name" value="Send" class="btn btn-default">
+                            }
                         }
+                        else
+                        {
+                            using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+                            {
+                            @Html.AntiForgeryToken()
+                            <input type="text" name="CustomerFirstName" placeholder="Name">
+                            <input type="email" name="Customeremail" placeholder="Email">
+                            <textarea name="message" placeholder="Message" rows="5"></textarea>
+                            <input type="submit" name="name" value="Send" class="btn btn-default">
+                            }
+                        }
+
+
                     </section>
+
                 </div>
+
             </div>
         </div>
     </div>

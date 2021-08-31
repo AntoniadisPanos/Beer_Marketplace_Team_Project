@@ -300,6 +300,7 @@
     <Compile Include="ViewModels\ArticleCommentsUserViewModel.cs" />
     <Compile Include="ViewModels\BeerDetailsViewModel.cs" />
     <Compile Include="ViewModels\CreateRoleViewModel.cs" />
+    <Compile Include="ViewModels\CustomerContactWithMessagesViewModel.cs" />
     <Compile Include="ViewModels\IndexHomeViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -24,6 +24,9 @@ namespace Omadiko.Entities
         [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
+
+        public int? CustomerId { get; set; }
+        public Customer Customer { get; set; }
         
     }
 }
