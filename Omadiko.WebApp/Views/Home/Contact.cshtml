@@ -105,13 +105,13 @@
                 </div>
                 <div class="col-sm-5 col-sm-push-1 matchHeight">
                     <section class="alignMiddle padding-80-0">
-                        <form action=""
-                              method="POST" class=" scrollme animateme" data-when="enter" data-from="1" data-to="0" data-opacity="0" data-scale="1.1">
+                        @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+                        {
                             <input type="text" name="name" placeholder="Name">
                             <input type="email" name="_replyto" placeholder="Email">
                             <textarea name="message" placeholder="Message" rows="5"></textarea>
                             <input type="submit" value="Send" class="btn btn-default">
-                        </form>
+                        }
                     </section>
                 </div>
             </div>
