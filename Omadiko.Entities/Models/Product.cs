@@ -23,11 +23,12 @@ namespace Omadiko.Entities
        //[CustomValidation(typeof(ValidationMethods), Methods.ValidateGreaterThanZero)]
         public decimal Price { get; set; }
 
-       // [CustomValidation(typeof(ValidationMethods), Methods.ABVPercent)]
+        [Range(0 , 1)]
         public double ABV { get; set; }  //Alcohol By Volume
 
-      // [CustomValidation(typeof(ValidationMethods), Methods.ValidateVolume)]
-        public double Volume { get; set; }
+         [Range(0.3 ,1)]
+        public double Volume { get; set; }//Product ML
+        
 
         [MaxLength(500, ErrorMessage = "Description must be less than 500 characters")]
         
@@ -46,11 +47,17 @@ namespace Omadiko.Entities
         public string LargePhoto { get; set; }
         public Country Country { get; set; }
         
-        
-
+        public double ConvertABV(double abv)
+        {
+            return abv * 100;
+        }
+        public double ConvertVolume(double volume)
+        {
+            return volume * 1000;
+        }
         //Navigation Properties
 
-      
+
         public int? CategoryId { get; set; }
         public int? BreweryId { get; set; }
 

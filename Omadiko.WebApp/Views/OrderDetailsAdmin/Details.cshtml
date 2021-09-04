@@ -1,0 +1,142 @@
+﻿@model Omadiko.Entities.OrderDetails
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3>OrderDetails Details</h3>
+                </div>
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">Go!</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="#">Settings 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Settings 2</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Order.OrderStatus)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Order.OrderStatus)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.OrderNumber)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.OrderNumber)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Price)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Quantity)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Quantity)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ProductName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ProductName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TotalAmount)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.TotalAmount)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.FullFilled)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.FullFilled)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ShippingDate)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ShippingDate)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PaymentDate)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.PaymentDate)
+                                </dd>
+
+                            </dl>
+                        </div>
+                        <p>
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.OrderDetailsId }) |
+                            @Html.ActionLink("Back to List", "Index")
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

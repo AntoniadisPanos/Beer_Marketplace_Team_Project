@@ -294,13 +294,12 @@
                      style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)">
                 </div>
             </div>
-        </main>
+        </main>        
+            <form class="msger-inputarea" >
+                <input type="text" name="text" class="msger-input" placeholder="Enter your message...">
+                <button type="submit" class="msger-send-btn"><i class="fas fa-paper-plane"></i></button>
 
-        <form class="msger-inputarea">
-            <input type="text" name="text" class="msger-input" placeholder="Enter your message...">
-            <button type="submit" class="msger-send-btn"><i class="fas fa-paper-plane"></i></button>
-
-        </form>
+            </form>       
     </section>
 </div>
 }
@@ -329,7 +328,7 @@
             "Greetings, how can i help you?",
             "Is There anything u want to ask for our products?",
             "If there is any problem with your orders feel free to contact us ",
-            
+
         ];
 
         // Icons made by Freepik from www.flaticon.com
@@ -397,7 +396,7 @@
         function random(min, max) {
             return Math.floor(Math.random() * (max - min) + min);
         }
-    $(function () {
+    @*$(function () {
             // Reference the auto-generated proxy for the hub.
             var chat = $.connection.chatHub;
             // Create a function that the hub can call back to display messages.
@@ -420,7 +419,7 @@
                     // Call the Send method on the hub.
                     chat.server.send($(@User.Identity.Name).val(), $('#message').val());
                     // Clear text box and reset focus for next comment.
-                    $('#message').val('').focus();                                     
+                    $('#message').val('').focus();
                 });
             });
         });
@@ -428,5 +427,5 @@
         function htmlEncode(value) {
             var encodedValue = $('<div />').text(value).html();
             return encodedValue;
-        }
+        }*@
 </script>

@@ -191,7 +191,7 @@
                                     <img src="@beer.SmallPhoto" style="max-width:50%" height="100" alt="Beer can mockup">
                                 </a>
                                 <h3>@beer.ProductName.ToString().Replace("_", " ")</h3>
-                                <h4>@beer.Price</h4>
+                                <h4>@beer.ConvertABV(beer.ABV)%</h4>
                             </div>
                         }
                     </div>
@@ -203,7 +203,7 @@
     <!-- Section -->
     <!-- Section -->
 
-    
+
     <div class="container-fluid light section no-padding">
         @foreach (var article in Model.Articles)
         {
@@ -229,58 +229,61 @@
         }
 
     </div>
-    
-        <!-- Section -->
-        <div class="container-fluid super-dark section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="counter">
-                            <img src="~/Template/main/images/Can.svg" class="svg" alt="" />
-                            <span>207</span>
-                            Flavours
-                        </div>
+
+    <!-- Section -->
+    <div class="container-fluid super-dark section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6 col-sm-3">
+                    <div class="counter">
+                        <img src="~/Template/main/images/Can.svg" class="svg" alt="" />
+                        <span>207</span>
+                        Flavours
                     </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="counter">
-                            <img src="~/Template/main/images/Sign.svg" class="svg" alt="" />
-                            <span class="one">396</span>
-                            Outlets
-                        </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="counter">
+                        <img src="~/Template/main/images/Sign.svg" class="svg" alt="" />
+                        <span class="one">396</span>
+                        Outlets
                     </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="counter">
-                            <img src="~/Template/main/images/Badge.svg" class="svg" alt="" />
-                            <span>60</span>
-                            Years brewing
-                        </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="counter">
+                        <img src="~/Template/main/images/Badge.svg" class="svg" alt="" />
+                        <span>60</span>
+                        Years brewing
                     </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="counter">
-                            <img src="~/Template/main/images/BarrelSide.svg" class="svg" alt="" />
-                            <span>21</span>
-                            Days til ready
-                        </div>
+                </div>
+                <div class="col-xs-6 col-sm-3">
+                    <div class="counter">
+                        <img src="~/Template/main/images/BarrelSide.svg" class="svg" alt="" />
+                        <span>21</span>
+                        Days til ready
                     </div>
                 </div>
             </div>
         </div>
-        @section MyJavascript{
-            <script>
-                $("#myCarousel").owlCarousel({
-                    loop: true,
-                    autoplay: true,
-                    autoplayTimeout: 4000,
-                    autoplaySpeed: 500,
-                    autoplayHoverPause: true,
-                    responsive: {
-                        480: { items: 1 },
-                        768: { items: 3 },
-                        1024: { items: 4 }
-                    },
-                });
-            </script>
-        }
     </div>
+    @section MyJavascript{
+        <script>
+            $("#myCarousel").owlCarousel({
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 4000,
+                autoplaySpeed: 500,
+                autoplayHoverPause: true,
+                responsive: {
+                    480: { items: 1 },
+                    768: { items: 3 },
+                    1024: { items: 4 }
+                },
+            });
+        </script>
+        <script>
+            var scroll = new SmoothScroll('a[href*="#"]');
+        </script>
+    }
+</div>
 
 

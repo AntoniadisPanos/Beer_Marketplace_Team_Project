@@ -3,36 +3,69 @@
     ViewBag.Title = "Verify";
 }
 
-<h2>@ViewBag.Title.</h2>
+<html lang="en" class="js cssanimations wf-fontawesome-n4-active wf-active" scrolltop="NaN">
+<head>
 
-@using (Html.BeginForm("VerifyCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
-    @Html.AntiForgeryToken()
-    @Html.Hidden("provider", @Model.Provider)
-    @Html.Hidden("rememberMe", @Model.RememberMe)
-    <h4>Enter verification code</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Code, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Code, new { @class = "form-control" })
+</head>
+<body>
+    <!-- Fake page loading -->
+    <div id="fakeLoader"></div>
+
+    <!-- Wrapper -->
+    <div class="wrapper">
+        <!-- Hero -->
+        <div id="hero" class="single-page section" style="background-image: url(http://placehold.it/1500x500)">
+            <br />
+            <br />
+            <!-- Content -->
+            <div class="container">
+                <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+                    <div class="col-md-10 col-md-offset-1">
+                        <h1>Review your</h1>
+                        <h2>Account Settings</h2>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <div class="checkbox">
-                @Html.CheckBoxFor(m => m.RememberBrowser)
-                @Html.LabelFor(m => m.RememberBrowser)
+        <p class="text-success">@ViewBag.StatusMessage</p>
+        <div class="container-fluid white section cart">
+            <div class="container">
+
+                @using (Html.BeginForm("VerifyCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("provider", @Model.Provider)
+                    @Html.Hidden("rememberMe", @Model.RememberMe)
+                    <h4>Enter verification code</h4>
+                    <hr />
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Code, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Code, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(m => m.RememberBrowser)
+                                @Html.LabelFor(m => m.RememberBrowser)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" class="btn btn-default" value="Submit" />
+                        </div>
+                    </div>
+                }
+
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")
+                }
             </div>
         </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Submit" />
-        </div>
-    </div>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+</body>
+</html>

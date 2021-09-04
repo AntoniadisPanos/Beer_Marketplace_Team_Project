@@ -35,6 +35,8 @@ namespace Omadiko.WebApp.Controllers
             {
                 case "PriceDesc":products = products.OrderByDescending(x => x.Price).ToList();break;
                 case "PriceAsc":products = products.OrderBy(x => x.Price).ToList();break;
+                case "CategoryDesc":products = products.OrderByDescending(x => x.Category.CategoryName).ToList();break;
+                case "CategoryAsc": products = products.OrderBy(x => x.Category.CategoryName).ToList();break;
                 case "MostPopular":products = products.OrderBy(x => x.Popularity).ToList();break;
                 case "LessPopular":products = products.OrderByDescending(x => x.Popularity).ToList();break;
                 case "NameAsc":products = products.OrderBy(x => x.ProductName).ToList();break;
@@ -53,61 +55,52 @@ namespace Omadiko.WebApp.Controllers
             ViewBag.LP = sortOrder == "LessPopular" ? "MostPopular" : "LessPopular";
             ViewBag.NA = sortOrder == "NameAsc" ? "NameDesc" : "NameAsc";
             ViewBag.ND = sortOrder == "NameDesc" ? "NameAsc" : "NameDesc";
-
+            ViewBag.CatDesc = sortOrder == "CategoryDesc" ? "CategoryAsc" : "CategoryDesc";
+            ViewBag.CatAsc = sortOrder == "CategoryAsc" ? "CategoryDesc" : "CategoryAsc";
             ViewBag.CurrentSortOrder = sortOrder;
             return products;
         }
 
-
-        //[HttpGet]
-        //public ActionResult ProductInfo()
-        //{
-        //    IndexHomeViewModel vm = new IndexHomeViewModel();
-        //    return View(vm);
-        //}
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
+        
         public ActionResult ProductInfo(int? id,FormCollection frc)
         {
            if(id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("~/Views/Shared/Error.cshtml");
             }
             Product product = db.Products.Find(id);
             if(product == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                return  View("~/Views/Shared/Error.cshtml");
             }
             var mostpopular = db.Products.Where(x => x.Popularity >= 3).OrderByDescending(x => x.Popularity).Take(5).ToList();
-
-            
-
-            Blog blog = new Blog()
-            {   
-                ProductId=product.ProductId,
-                CustomerName =User.Identity.Name,
-                CustomerEmail = User.Identity.Name,
-                Comments = frc["comment"]
-            };
-            
-            db.Blogs.Add(blog);
-            db.SaveChanges();
-            var blogs = db.Blogs.Where(x => x.Product.ProductId == id).ToList();
-            IndexHomeViewModel vm = new IndexHomeViewModel()
+            if (ModelState.IsValid)
             {
-                Blog = blog,
-                Product = product,
-                BestProductsByPopularity = mostpopular,
-                IndividualBlogForProduct = blogs
+                Blog blog = new Blog()
+                {
+                    ProductId = product.ProductId,
+                    CustomerName = User.Identity.Name,
+                    CustomerEmail = User.Identity.Name,
+                    Comments = frc["comment"]
+                };
+                db.Blogs.Add(blog);
+                db.SaveChanges();
 
-            };
-           
-            db.SaveChanges();
 
-            
-            return View(vm);
+
+                var blogs = db.Blogs.Where(x => x.Product.ProductId == id).ToList();
+                IndexHomeViewModel vm = new IndexHomeViewModel()
+                {
+                    Blog = blog,
+                    Product = product,
+                    BestProductsByPopularity = mostpopular,
+                    IndividualBlogForProduct = blogs
+
+                };
+                return View(vm);
+            }
+            return RedirectToAction("Index");
         }
-        
+         
     }
 }

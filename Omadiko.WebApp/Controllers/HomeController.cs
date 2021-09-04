@@ -114,12 +114,13 @@ namespace Omadiko.WebApp.Controllers
 
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("~/Views/Shared/Error.cshtml");
+
             }
             Article article = db.Articles.Find(id);
             if (article == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                 return View("~/Views/Shared/Error.cshtml");
             }
                  Comment comment=new Comment()
                 {
@@ -159,6 +160,7 @@ namespace Omadiko.WebApp.Controllers
             }; 
             return View(vm);
         }
-       
+      
     }
+    
 }

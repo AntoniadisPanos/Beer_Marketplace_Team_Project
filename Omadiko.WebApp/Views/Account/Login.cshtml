@@ -39,7 +39,7 @@
                             <div class="col-md-10 col-md-offset-1">
                                 <h1>Over one hundred flavours of</h1>
                                 <h2>Specially <br />crafted beer</h2>
-                                <a href="~/Template/main/#" class="btn btn-default">
+                                <a href="@Url.Action("OurBeer","Home")" class="btn btn-default">
                                     <span>Explore</span>
                                 </a>
                             </div>
@@ -93,9 +93,9 @@
                         <p class="centred">If you have already registered, please, enter your details in the boxes below. If you are a new customer, please, go to the Billing &amp; Shipping section.</p>
                         <hr class="space-40" />
                         <div class="login">
-                            <div class="row">
+                            <div class="row" id="login">
                                 <div class="col-md-8">
-                                    <section id="loginForm">
+                                    <section id="login-form">
                                         @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", autocomplete = "off" }))
                                         {
                                             @Html.AntiForgeryToken()
@@ -167,3 +167,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script>
+
+	var scroll = new SmoothScroll('a[href*="#"]');
+</script>

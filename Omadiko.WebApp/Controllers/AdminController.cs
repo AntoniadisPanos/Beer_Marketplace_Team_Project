@@ -16,23 +16,17 @@ namespace Omadiko.WebApp.Controllers
 {
     public class AdminController : Controller
     {
-       
+        private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Admin
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult GetDate()
+        public ActionResult GetData()
         {
-            ApplicationDbContext db = new ApplicationDbContext();
-            var data = db.OrderDetails.Include("Product").ToList();
-
-            var query = db.OrderDetails.Include("Product")
-                .GroupBy(x => x.ProductName)
-                .Select(y => new { name = y.Key, count =y.SingleOrDefault().Quantity });
-            return Json(query, JsonRequestBehavior.AllowGet);
+            return View(db.Messages.ToList());
         }
-        
+       
         
         
 

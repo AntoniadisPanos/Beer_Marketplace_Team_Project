@@ -3,7 +3,38 @@
 @{
     ViewBag.Title = "Error";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+</head>
+<body>
 
+    <!-- Fake page loading -->
+    @*<div id="fakeLoader"></div>*@
+
+    <!-- Wrapper -->
+    <div class="wrapper">
+
+        <!-- Navigation -->
+        <!-- Hero -->
+        <div id="hero" class="section error-page" style="background-image: url(http://placehold.it/1500x730)">
+
+            <!-- Content -->
+            <div class="container">
+                <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1>Oops, we’re having a little trouble and</h1>
+                        <h2>Cannot find this page</h2>
+                        <input type="text" placeholder="Search website">
+                        <a href="@Url.Action("Index","Home")" class="btn btn-default"><span>Search</span></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+</html>

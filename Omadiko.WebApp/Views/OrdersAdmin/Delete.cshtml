@@ -1,0 +1,181 @@
+﻿@model Omadiko.Entities.Order
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Order </h4>
+    <hr />
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3> Delete Order </h3>
+                </div>
+                <div class="title_right">
+                    <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">Go!</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="#">Settings 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Settings 2</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Customer.CustomerFirstName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Customer.CustomerFirstName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ShippingDetails.Address)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ShippingDetails.Address)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.OrderDate)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.OrderDate)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ShippingDate)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ShippingDate)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PaymentDate)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.PaymentDate)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Fullfilled)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Fullfilled)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Paid)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Paid)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Deleted)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Deleted)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.OrderTime)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.OrderTime)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.OrderStatus)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.OrderStatus)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.OrderInstructions)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.OrderInstructions)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Country)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Country)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.UserId)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.UserId)
+                                </dd>
+
+                            </dl>
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                                    @Html.ActionLink("Back to List", "Index")
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

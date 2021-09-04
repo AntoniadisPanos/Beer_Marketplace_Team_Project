@@ -59,6 +59,7 @@ namespace Omadiko.WebApp.Controllers
                 return RedirectToAction("Index");
             }
 
+           
             ViewBag.BreweryId = new SelectList(db.Breweries, "BreweryId", "BreweryName", product.BreweryId);
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", product.CategoryId);
             return View(product);

@@ -3,6 +3,29 @@
     ViewBag.Title = "OurBeer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Craft Beer Nation - Craft Beer HTML Template</title>
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/fakeLoader.css" rel="stylesheet">
+    <link href="css/owl-carousel.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:400,500,600,700,800%7CGrand+Hotel" rel="stylesheet">
+
+
+    <!--[if IE 9]>
+        <link href="css/ie9.css" rel="stylesheet">
+    <![endif]-->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
 <body>
 
     <!-- Fake page loading -->
@@ -11,11 +34,12 @@
     <!-- Wrapper -->
     <div class="wrapper">
 
-
+        <!-- Navigation -->
         <!-- Hero -->
         <div id="hero" class="single-page section" style="background-image: url(http://placehold.it/1500x500)">
-            <!-- Content --><br />
             <br />
+            <br />
+            <!-- Content -->
             <div class="container">
                 <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
                     <div class="col-md-10 col-md-offset-1">
@@ -31,22 +55,18 @@
         <div class="container-fluid dark section no-padding">
             <div class="row">
                 <div class="col-sm-3 col-xs-6 icon-grid">
-                    <img src="images/Hops.svg" class="svg" alt="Quality Ingredients" />
                     <h4>All natural</h4>
                     <p>Claritas est etiam processus dynamicus, qui sequitur mutationem.</p>
                 </div>
                 <div class="col-sm-3 col-xs-6 icon-grid">
-                    <img src="images/Mill.svg" class="svg" alt="Quality Ingredients" />
                     <h4>MAde in the UK</h4>
                     <p>Claritas est etiam processus dynamicus, qui sequitur mutationem.</p>
                 </div>
                 <div class="col-sm-3 col-xs-6 icon-grid">
-                    <img src="images/3DSixPack.svg" class="svg" alt="Quality Ingredients" />
                     <h4>Huge variety</h4>
                     <p>Claritas est etiam processus dynamicus, qui sequitur mutationem.</p>
                 </div>
                 <div class="col-sm-3 col-xs-6 icon-grid">
-                    <img src="images/Pint.svg" class="svg" alt="Quality Ingredients" />
                     <h4>Stocked locally</h4>
                     <p>Claritas est etiam processus dynamicus, qui sequitur mutationem.</p>
                 </div>
@@ -54,68 +74,70 @@
         </div>
 
         <!-- Section -->
-        
-            <div class="container-fluid light section">
-                <div class="row">
-                    <div id="carousel-1" class="carousel slide carousel-fade bs-carousel our-beers" data-ride="carousel">
-                        <div class="carousel-inner" role="listbox">
-                            @foreach (var beer in Model.TwoProductsForPage)
-                            {
-                                <!-- Slide 1 -->
-                                <div class="item active">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-5 matchHeight">
-                                                <img src="@beer.SmallPhoto" alt="About our Brewery" class="alignMiddle" />
-                                            </div>
-                                            <div class="col-sm-6 col-sm-push-1 matchHeight">
-                                                <section class="alignMiddle mobile-center">
-                                                    <header>
-                                                        <h1>@beer.Category.CategoryName</h1>
-                                                        <h2>@beer.ProductName.ToString().Replace("_", " ")</h2>
-                                                    </header>
-                                                    <p>@beer.Description</p>
-                                                    <p>There's very little bitterness, but a slight lemony sourness, banana pith and light hop leaf character that, combined, increase the perceived bitterness. Yeast is rather neutral, a bit chalky.</p>
-                                                    <a href="@Url.Action("ProductInfo","Product",new {id=beer.ProductId })" class="btn btn-default"><span>Go to shop</span></a>
-                                                </section>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Slide 2 -->
-                                <div class="item">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-5 matchHeight">
-                                                <img src="@beer.SmallPhoto" alt="About our Brewery" class="alignMiddle" />
-                                            </div>
-                                            <div class="col-sm-6 col-sm-push-1 matchHeight">
-                                                <section class="alignMiddle mobile-center">
-                                                    <header>
-                                                        <h1>@beer.Category.CategoryName</h1>
-                                                        <h2>@beer.ProductName.ToString().Replace("_"," ")</h2>
-                                                    </header>
-                                                    <p>@beer.Description</p>
-                                                    <p>Body is light, and the mouthfeel smooth. The palate gathers apple peel, light clove notes and a thin sweetness that's touched with caramel. In the middle, ripe and juicy fresh wheat malt with pear edge, while a husky, grainy, wheat twang livens things up. Suggestions of bubblegum are noted.</p>
-                                                    <a href="@Url.Action("ProductInfo","Product",new {id=beer.ProductId })" class="btn btn-default"><span>Go to shop</span></a>
-                                                </section>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                            <a class="left carousel-control" href="#carousel-1" data-slide="prev">
-                                <span class="fa fa-chevron-left" aria-hidden="true"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-1" data-slide="next">
-                                <span class="fa fa-chevron-right" aria-hidden="true"></span>
-                            </a>
+        <div class="container-fluid light section">
+            <div class="row">
+                <div id="carousel-1" class="carousel slide carousel-fade bs-carousel our-beers" data-ride="carousel">
 
-                        </div>
+                    <div class="carousel-inner" role="listbox">
+                        @foreach (var beer in Model.TwoProductsForPage)
+                        {
+                            <!-- Slide 1 -->
+                            <div class="item active">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-5 matchHeight">
+                                            <img src="@beer.SmallPhoto" alt="About our Brewery" class="alignMiddle" />
+                                        </div>
+                                        <div class="col-sm-6 col-sm-push-1 matchHeight">
+                                            <section class="alignMiddle mobile-center">
+                                                <header>
+                                                    <h1>@beer.Category.CategoryName</h1>
+                                                    <h2>@beer.ProductName.ToString().Replace("_", " ")</h2>
+                                                </header>
+                                                <p>@beer.Description</p>
+                                                <p>There's very little bitterness, but a slight lemony sourness, banana pith and light hop leaf character that, combined, increase the perceived bitterness. Yeast is rather neutral, a bit chalky.</p>
+                                                <a href="@Url.Action("ProductInfo","Product",new {id=beer.ProductId })" class="btn btn-default"><span>Go to shop</span></a>
+                                            </section>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2 -->
+                            <div class="item">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-5 matchHeight">
+                                            <img src="@beer.SmallPhoto" alt="About our Brewery" class="alignMiddle" />
+                                        </div>
+                                        <div class="col-sm-6 col-sm-push-1 matchHeight">
+                                            <section class="alignMiddle mobile-center">
+                                                <header>
+                                                    <h1>@beer.Category.CategoryName</h1>
+                                                    <h2>@beer.ProductName.ToString().Replace("_", " ")</h2>
+                                                </header>
+                                                <p>@beer.Description</p>
+                                                <p>Body is light, and the mouthfeel smooth. The palate gathers apple peel, light clove notes and a thin sweetness that's touched with caramel. In the middle, ripe and juicy fresh wheat malt with pear edge, while a husky, grainy, wheat twang livens things up. Suggestions of bubblegum are noted.</p>
+                                                <a href="@Url.Action("ProductInfo","Product",new {id=beer.ProductId })" class="btn btn-default"><span>Go to shop</span></a>
+                                            </section>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                    </div>
+
+                    <a class="left carousel-control" href="#carousel-1" data-slide="prev">
+                        <span class="fa fa-chevron-left" aria-hidden="true"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-1" data-slide="next">
+                        <span class="fa fa-chevron-right" aria-hidden="true"></span>
+                    </a>
                 </div>
             </div>
-        
-
+        </div>
 
         <!-- Section -->
         <div class="container-fluid dark section" style="background-image: url(http://placehold.it/880x650);">
@@ -136,12 +158,12 @@
                             @foreach (var beer in Model.BestProductsByPopularity)
                             {
                                 <div class="product item">
-                                    <a href="@Url.Action("ProductInfo","Product",new { id =beer.ProductId },null)">
+                                    <a href="@Url.Action("ProductInfo","Product",new {id=beer.ProductId })">
                                         <span>Buy it</span>
-                                        <img src="@beer.SmallPhoto" style="max-width:50%" height="100" alt="Beer can mockup">
+                                        <img src="@beer.SmallPhoto" alt="Beer can mockup">
                                     </a>
                                     <h3>@beer.ProductName.ToString().Replace("_", " ")</h3>
-                                    <h4>@beer.Price</h4>
+                                    <h4>@beer.ConvertABV(beer.ABV)%</h4>
                                 </div>
                             }
                         </div>
@@ -151,75 +173,77 @@
         </div>
 
         <!-- Section -->
-
-        <div class="container-fluid light section no-padding">
-            <div class="container">
-
-                <div class="row">
+        
+            <div class="container-fluid light section no-padding">
+                <div class="container">
                     @foreach (var blog in Model.Articles)
                     {
-                        <div class="col-sm-6 latest-post  matchHeight ">
-                            <a href="@Url.Action("SingleBlog","Home",new {id=blog.ArticleId })"></a>
-                            <div class="row">
-                                <div class="col-sm-10 col-sm-push-1">
-                                    <header>
-                                        <span class="date">@blog.DateTime.ToString("dd MMMM")</span>
-                                        <h2>@blog.Title</h2>
-                                    </header>
-                                    <p>@blog.Blog</p>
-                                    <p><a href="#" class="underline">Read more</a></p>
+                        <div class="row">
+                            <div class="col-sm-12 latest-post  ">
+                                <a href="@Url.Action("SingleBlog", "Home", new { id = blog.ArticleId })"></a>
+                                <div class="row">
+                                    <div class="col-sm-10 col-sm-push-1">
+                                        <header>
+                                            <span class="date">@blog.DateTime.ToString("dd MMMM")</span>
+                                            <h2>@blog.Title</h2>
+                                        </header>
+                                        <p>@blog.Blog</p>
+                                        <p></p>
+                                        <p><a href="#" class="underline">Read more</a></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="background" style="background-image: url(http://placehold.it/750x535);"></div>
+                                <div class="background" style="background-image: url(http://placehold.it/750x535);"></div>
+                            </div>                           
                         </div>
                     }
-                </div>
+                    </div>               
             </div>
-        </div>
-    </div>
         
 
 
-        <!-- Section -->
-        <div class="container-fluid super-dark section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="counter">
-                            <img src="images/Can.svg" class="svg" alt="" />
-                            <span>207</span>
-                            Flavours
+            <!-- Section -->
+            <div class="container-fluid super-dark section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-3">
+                            <div class="counter">
+                                <img src="images/Can.svg" class="svg" alt="" />
+                                <span>207</span>
+                                Flavours
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="counter">
-                            <img src="images/Sign.svg" class="svg" alt="" />
-                            <span class="one">396</span>
-                            Outlets
+                        <div class="col-xs-6 col-sm-3">
+                            <div class="counter">
+                                <img src="images/Sign.svg" class="svg" alt="" />
+                                <span class="one">396</span>
+                                Outlets
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="counter">
-                            <img src="images/Badge.svg" class="svg" alt="" />
-                            <span>60</span>
-                            Years brewing
+                        <div class="col-xs-6 col-sm-3">
+                            <div class="counter">
+                                <img src="images/Badge.svg" class="svg" alt="" />
+                                <span>60</span>
+                                Years brewing
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-3">
-                        <div class="counter">
-                            <img src="images/BarrelSide.svg" class="svg" alt="" />
-                            <span>21</span>
-                            Days til ready
+                        <div class="col-xs-6 col-sm-3">
+                            <div class="counter">
+                                <img src="images/BarrelSide.svg" class="svg" alt="" />
+                                <span>21</span>
+                                Days til ready
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Footer -->
+
+
         </div>
 
-        <!-- Footer -->
-    </div>
-
-
+    
 </body>
+</html>
 
 

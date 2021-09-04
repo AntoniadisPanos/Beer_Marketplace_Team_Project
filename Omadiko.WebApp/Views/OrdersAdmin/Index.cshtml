@@ -1,0 +1,155 @@
+﻿@model IEnumerable<Omadiko.Entities.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Orders</h3>
+            </div>
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <p>
+                            @Html.ActionLink("Create New", "Create")
+                        </p>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="#">Settings 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Customer.CustomerFirstName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ShippingDetails.Address)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ShippingDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PaymentDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Fullfilled)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Paid)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Deleted)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderTime)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderStatus)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.OrderInstructions)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Country)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.UserId)
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Customer.CustomerFirstName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ShippingDetails.Address)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OrderDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ShippingDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PaymentDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Fullfilled)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Paid)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Deleted)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OrderTime)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OrderStatus)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OrderInstructions)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Country)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UserId)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

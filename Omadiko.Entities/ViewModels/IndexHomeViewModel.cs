@@ -29,5 +29,11 @@ namespace Omadiko.Entities.ViewModels
 
         public PhotoForSite photoForSite { get; set; }
 
+
+        //test
+        public Message Message { get; set; }
+
+        public ApplicationUser applicationUser { get; set; }
+
     }
 }

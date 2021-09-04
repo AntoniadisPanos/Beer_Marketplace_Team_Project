@@ -22,7 +22,9 @@
 
     <!-- Custom Theme Style -->
     <link href="~/Template/admin/build/css/custom.min.css" rel="stylesheet">
-  
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("Scripts", required: false)
 </head>
 
 <body class="nav-md">
@@ -31,6 +33,7 @@
             @Html.Partial("~/Views/Shared/Components/_AdminNavigationBar.cshtml")
             @RenderBody()
             @Html.Partial("~/Views/Shared/Components/_AdminFooter.cshtml")
+            
             
             <!-- /footer content -->
         </div>

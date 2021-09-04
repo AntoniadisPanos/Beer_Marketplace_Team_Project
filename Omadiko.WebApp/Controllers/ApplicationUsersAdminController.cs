@@ -18,7 +18,9 @@ namespace Omadiko.WebApp.Controllers
         // GET: ApplicationUsersAdmin
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+
+            var users = db.Users.Include(x => x.Messages).Distinct().ToList();
+            return View(users);
         }
 
         // GET: ApplicationUsersAdmin/Details/5
@@ -71,6 +73,12 @@ namespace Omadiko.WebApp.Controllers
             {
                 return HttpNotFound();
             }
+            var messages = db.Messages.ToList().Select(x => new
+            {
+                MessageId =x.MessageId,
+                MessageText=x.Text
+            });
+            ViewBag.MessageId = new SelectList(messages, "MessageId", "MessageText");
             return View(applicationUser);
         }
 

@@ -3,22 +3,55 @@
     ViewBag.Title = "Send";
 }
 
-<h2>@ViewBag.Title.</h2>
+<html lang="en" class="js cssanimations wf-fontawesome-n4-active wf-active" scrolltop="NaN">
+<head>
 
-@using (Html.BeginForm("SendCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
-    @Html.AntiForgeryToken()
-    @Html.Hidden("rememberMe", @Model.RememberMe)
-    <h4>Send verification code</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-8">
-            Select Two-Factor Authentication Provider:
-            @Html.DropDownListFor(model => model.SelectedProvider, Model.Providers)
-            <input type="submit" value="Submit" class="btn btn-default" />
+</head>
+<body>
+    <!-- Fake page loading -->
+    <div id="fakeLoader"></div>
+
+    <!-- Wrapper -->
+    <div class="wrapper">
+        <!-- Hero -->
+        <div id="hero" class="single-page section" style="background-image: url(http://placehold.it/1500x500)">
+            <br />
+            <br />
+            <!-- Content -->
+            <div class="container">
+                <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
+                    <div class="col-md-10 col-md-offset-1">
+                        <h1>Review your</h1>
+                        <h2>Account Settings</h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <p class="text-success">@ViewBag.StatusMessage</p>
+        <div class="container-fluid white section cart">
+            <div class="container">
+
+                @using (Html.BeginForm("SendCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("rememberMe", @Model.RememberMe)
+                    <h4>Send verification code</h4>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-8">
+                            Select Two-Factor Authentication Provider:
+                            @Html.DropDownListFor(model => model.SelectedProvider, Model.Providers)
+                            <input type="submit" value="Submit" class="btn btn-default" />
+                        </div>
+                    </div>
+                }
+
+                @section Scripts {
+                    @Scripts.Render("~/bundles/jqueryval")
+                }
+            </div>
         </div>
     </div>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+</body>
+</html>

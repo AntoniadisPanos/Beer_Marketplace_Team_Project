@@ -1,29 +1,29 @@
 ﻿
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="js cssanimations wf-fontawesome-n4-active wf-active" scrolltop="NaN">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Craft Beer Nation - Craft Beer HTML Template</title>
-    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <link rel="icon" type="image/png" href="~/Template/images/favicon.png" />
     <link href="~/Template/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/Template/css/fakeLoader.css" rel="stylesheet">
     <link href="~/Template/css/owl-carousel.min.css" rel="stylesheet">
     <link href="~/Template/css/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:400,500,600,700,800%7CGrand+Hotel" rel="stylesheet">
-   
+    <link href="https://use.fontawesome.com/4dfd2d448a.js" media="all">
 
     @*[if IE 9]>*@
-    <!--<link href="~/Template/css/ie9.css" rel="stylesheet">-->
+    <link href="~/Template/css/ie9.css" rel="stylesheet">
     @*<![endif]*@
     @*[if lt IE 9]>*@
-    <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     @*<![endif]*@
     
 </head>
-<body>
+<body scrolltop="NaN" class="open">
 
     <!-- Navigation -->
     @Html.Partial("~/Views/Shared/Components/_NavigationBar.cshtml")
@@ -38,7 +38,22 @@
     @*LiveChat*@
     @Html.Partial("~/Views/Shared/Components/_LiveChat.cshtml")
 
+    @*<script>
 
+        $(document).ready(function () {
+            $('#nav .navbar-nav li>a').on('click', function (event) {
+                event.preventDefault();
+                var sectionID = $(this).attr("href");
+                scrollToID(sectionID, 750);
+            });
+
+            function scrollToID(id, speed) {
+                var offSet = 70;
+                var targetOffset = $(id).offset().top - offSet;
+                $('html,body').animate({ scrollTop: targetOffset }, speed);
+            }
+        });
+    </script>*@
     <script src="~/Template/js/jquery-2.2.4.min.js"></script>
     <script src="~/Template/js/jquery-ui.min.js"></script>
     <script src="~/Template/js/bootstrap.min.js"></script>
@@ -51,15 +66,29 @@
     <script src="~/Template/js/fakeLoader.min.js"></script>
     <script src="~/Template/js/owl.carousel.js"></script>
     <script src="~/Template/js/owl.autoplay.js"></script>
-    <script src="https://use.fontawesome.com/4dfd2d448a.js"></script>
+    
     <script src="~/Template/js/custom.js"></script>
+    <script src="~/Template/admin/vendors/smooth-scroll.polyfills.min.js"></script>
 
+
+    <script src="~/Template/admin/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Template/admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Template/admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/Template/admin/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="~/Template/admin/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/Template/admin/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/Template/admin/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/Template/admin/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="~/Template/admin/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="~/Template/admin/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Template/admin/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Template/admin/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     @RenderSection("MyJavascript", required: false)
 
-    
+
 </body>
 </html>
 
