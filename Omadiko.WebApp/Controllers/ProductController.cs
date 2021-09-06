@@ -61,7 +61,16 @@ namespace Omadiko.WebApp.Controllers
             return products;
         }
 
-        
+
+        //[HttpGet]
+        //public ActionResult ProductInfo()
+        //{
+        //    return View();
+        //}
+
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         public ActionResult ProductInfo(int? id,FormCollection frc)
         {
            if(id == null)
@@ -76,6 +85,8 @@ namespace Omadiko.WebApp.Controllers
             var mostpopular = db.Products.Where(x => x.Popularity >= 3).OrderByDescending(x => x.Popularity).Take(5).ToList();
             if (ModelState.IsValid)
             {
+                
+                
                 Blog blog = new Blog()
                 {
                     ProductId = product.ProductId,
@@ -99,6 +110,7 @@ namespace Omadiko.WebApp.Controllers
                 };
                 return View(vm);
             }
+
             return RedirectToAction("Index");
         }
          

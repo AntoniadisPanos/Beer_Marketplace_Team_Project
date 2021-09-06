@@ -83,14 +83,14 @@
                             <i class="fa fa-location-arrow"></i>
                             <div>
                                 Address
-                                <span>94 River Road, London, United Kingdom</span>
+                                <span>Vavuloi Xios ,Greece</span>
                             </div>
                         </li>
                         <li>
                             <i class="fa fa-envelope"></i>
                             <div>
                                 Email
-                                <span>sales@craftbeer-nation.com</span>
+                                <span>aegean@aegean.gr</span>
                             </div>
                         </li>
                         <li>
@@ -123,9 +123,9 @@
                             using (Html.BeginForm("Contact", "Home", FormMethod.Post))
                             {
                             @Html.AntiForgeryToken()
-                            <input type="text" name="CustomerFirstName" placeholder="Name">
-                            <input type="email" name="Customeremail" placeholder="Email">
-                            <textarea name="message" placeholder="Message" rows="5"></textarea>
+                            <input type="text" name="CustomerFirstName" placeholder="Name" style="text-transform:none;">
+                            <input type="email" name="Customeremail" placeholder="Email" style="text-transform:none;">
+                            <textarea name="message" placeholder="Message" rows="5" style="text-transform:none;"></textarea>
                             <input type="submit" name="name" value="Send" class="btn btn-default">
                             }
                         }

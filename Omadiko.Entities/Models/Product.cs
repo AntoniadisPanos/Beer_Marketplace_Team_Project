@@ -20,7 +20,7 @@ namespace Omadiko.Entities
         [MinLength(2, ErrorMessage = "Title must be greater than 2 characters")]
         public string ProductName { get; set; }
 
-       //[CustomValidation(typeof(ValidationMethods), Methods.ValidateGreaterThanZero)]
+       
         public decimal Price { get; set; }
 
         [Range(0 , 1)]
@@ -57,7 +57,13 @@ namespace Omadiko.Entities
         }
         //Navigation Properties
 
-
+        public static TimeSpan GetDays()
+        {
+            var currentDate = DateTime.Now;
+            var endDate = new DateTime(2021, 12, 24);
+            TimeSpan remainingDays = endDate - currentDate;
+            return remainingDays;
+        }
         public int? CategoryId { get; set; }
         public int? BreweryId { get; set; }
 

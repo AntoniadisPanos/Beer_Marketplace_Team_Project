@@ -12,10 +12,12 @@ namespace Omadiko.Entities.ViewModels
 {
     public class IndexHomeViewModel
     {
-        
+
 
         public Product Product { get; set; }
         public List<Product> BestProductsByPopularity { get; set; }
+        public List<Product> AllProducts { get; set; }
+        public List<Category> AllCategories { get; set; }
 
         public List<Product> TwoProductsForPage { get; set; }
 
@@ -35,5 +37,6 @@ namespace Omadiko.Entities.ViewModels
 
         public ApplicationUser applicationUser { get; set; }
 
+       public TimeSpan GetDays { get; set; }
     }
 }

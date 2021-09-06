@@ -177,7 +177,7 @@
                             <h2>Beer aisle</h2>
                         </header>
                         <p>Smoky characters emerge as the beer warms, as do subtle drops of caramel. The overall dryness of the beer carries through to the finish, with a semi-burnt linger and bitter end.</p>
-                        <a href="~/Template/main/#" class="btn btn-default"><span>Show me more</span></a>
+                        <a href="@Url.Action("Index","Product")" class="btn btn-default"><span>Show me more</span></a>
                     </div>
                 </div>
                 <div class="col-sm-6 col-sm-push-1 matchHeight">
@@ -237,15 +237,15 @@
                 <div class="col-xs-6 col-sm-3">
                     <div class="counter">
                         <img src="~/Template/main/images/Can.svg" class="svg" alt="" />
-                        <span>207</span>
+                        <span>@Model.AllProducts.Count()</span>
                         Flavours
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-3">
                     <div class="counter">
                         <img src="~/Template/main/images/Sign.svg" class="svg" alt="" />
-                        <span class="one">396</span>
-                        Outlets
+                        <span class="one">@Model.AllCategories.Count()</span>
+                        Categories
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-3">
@@ -258,7 +258,7 @@
                 <div class="col-xs-6 col-sm-3">
                     <div class="counter">
                         <img src="~/Template/main/images/BarrelSide.svg" class="svg" alt="" />
-                        <span>21</span>
+                        <span>@Model.GetDays.ToString("dd")</span>
                         Days til ready
                     </div>
                 </div>

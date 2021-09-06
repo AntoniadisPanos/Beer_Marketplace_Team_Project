@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model Omadiko.Entities.ViewModels.IndexHomeViewModel
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -59,7 +60,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-6 matchHeight">
-                                    <img src="http://placehold.it/555x355" alt="About our Brewery" class="alignMiddle" />
+                                    <img src="~/Template/images/114642september-555x355.jpg" alt="About our Brewery" class="alignMiddle" />
                                 </div>
                                 <div class="col-sm-5 col-sm-push-1 matchHeight">
                                     <section class="alignMiddle mobile-center">
@@ -79,8 +80,8 @@
                     <div class="item">
                         <div class="container">
                             <div class="row">
-                                <div class="col-sm-6 matchHeight">
-                                    <img src="http://placehold.it/555x355" alt="About our Brewery" class="alignMiddle" />
+                                <div class="col-sm-6 matchHeight">                                    
+                                    <img src="~/Template/images/114642september-555x355.jpg" />
                                 </div>
                                 <div class="col-sm-5 col-sm-push-1 matchHeight">
                                     <section class="alignMiddle mobile-center">
@@ -113,7 +114,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="history-logo">
-                            <img src="images/logo.png" alt="Craft Beer HTML Template">
+                            <img src="~/Template/images/pin.png" />                            
                         </div>
                         <div class="history">
                             <span class="date">1956</span>
@@ -164,28 +165,19 @@
                             </header>
                         </section>
                     </div>
-                    <div class="col-sm-9 matchHeight">
-                        <div class="owl-carousel" id="partners">
-                            <div class="item">
-                                <img src="images/partner-1.png" alt="The Craft Beer Shop" />
-                            </div>
-                            <div class="item">
-                                <img src="images/partner-2.png" alt="The Craft Beer Shop" />
-                            </div>
-                            <div class="item">
-                                <img src="images/partner-3.png" alt="The Craft Beer Shop" />
-                            </div>
-                            <div class="item">
-                                <img src="images/partner-1.png" alt="The Craft Beer Shop" />
-                            </div>
-                            <div class="item">
-                                <img src="images/partner-2.png" alt="The Craft Beer Shop" />
-                            </div>
-                            <div class="item">
-                                <img src="images/partner-3.png" alt="The Craft Beer Shop" />
-                            </div>
+                   
+                        <div class="col-sm-9 matchHeight">
+                            <div class="owl-carousel" id="partners">
+                                @foreach (var category in Model.AllProducts)
+                                {
+                                    <div class="item">
+                                        <img src="@category.SmallPhoto" alt="The Craft Beer Shop" />
+                                    </div>                                                                                                                                                                                   
+                                }
+                                </div>
                         </div>
-                    </div>
+                    
+
                 </div>
             </div>
         </div>
@@ -196,29 +188,29 @@
                 <div class="row">
                     <div class="col-xs-6 col-sm-3">
                         <div class="counter">
-                            <img src="images/Can.svg" class="svg" alt="" />
-                            <span>207</span>
+                            <img src="~/Template/main/images/Can.svg" class="svg" alt="" />
+                            <span>@Model.AllProducts.Count()</span>
                             Flavours
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-3">
                         <div class="counter">
-                            <img src="images/Sign.svg" class="svg" alt="" />
-                            <span class="one">396</span>
-                            Outlets
+                            <img src="~/Template/main/images/Sign.svg" class="svg" alt="" />
+                            <span class="one">@Model.AllCategories.Count()</span>
+                            Categories
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-3">
                         <div class="counter">
-                            <img src="images/Badge.svg" class="svg" alt="" />
+                            <img src="~/Template/main/images/Badge.svg" class="svg" alt="" />
                             <span>60</span>
                             Years brewing
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-3">
                         <div class="counter">
-                            <img src="images/BarrelSide.svg" class="svg" alt="" />
-                            <span>21</span>
+                            <img src="~/Template/main/images/BarrelSide.svg" class="svg" alt="" />
+                            <span>@Model.GetDays.ToString("dd")</span>
                             Days til ready
                         </div>
                     </div>

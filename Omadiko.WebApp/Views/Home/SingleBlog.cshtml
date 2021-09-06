@@ -55,8 +55,8 @@
         <div class="container-fluid light section">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12 single-blog">
-                        <img src="http://placehold.it/750x535" alt="Craft beer single blog post" />
+                    <div class="col-sm-12 single-blog">                        
+                        <img src="~/Template/images/pin.png" alt="Craft ale HTML template" />
                         <header>
                             <span class="date">@Model.Article.DateTime.ToString("dd MMMM")</span>
                             <h2>@Model.Article.Title</h2>
@@ -118,8 +118,8 @@
                                     @Html.AntiForgeryToken()
                                     @*<input required type="text" id="name" name="name" placeholder="Name">
                                     <input required type="email" id="_replyto" name="_replyto" placeholder="Email">*@
-                                    <textarea required name="comment" id="comment" placeholder="Comment" rows="5"></textarea>
-                                    <input type="submit" name="name" value="Post Comment" class="btn btn-default" />
+                                    <textarea required name="comment" id="comment" placeholder="Comment" rows="5" style="text-transform:none;"></textarea>
+                                    <input type="submit"  name="name" value="Post Comment" class="btn btn-default" />
 
                                 }
                             </section>

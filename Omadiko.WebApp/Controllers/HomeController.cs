@@ -22,8 +22,12 @@ namespace Omadiko.WebApp.Controllers
             IndexHomeViewModel vm = new IndexHomeViewModel()
             {
                 Articles = db.Articles.OrderBy(x => x.DateTime).Take(5).ToList(),
-                BestProductsByPopularity = db.Products.Where(x => x.Popularity >= 3).OrderByDescending(x => x.Popularity).Take(5).ToList()
+                BestProductsByPopularity = db.Products.Where(x => x.Popularity >= 3).OrderByDescending(x => x.Popularity).Take(5).ToList(),
+                AllProducts = db.Products.ToList(),
+                AllCategories = db.Categories.ToList(),
+                GetDays=Product.GetDays()
             };
+            
             return View(vm);
         }
 
@@ -87,8 +91,17 @@ namespace Omadiko.WebApp.Controllers
       
         public ActionResult OurStory()
         {
-            ViewBag.Message = "You story page.";
-            return View();
+
+            IndexHomeViewModel vm = new IndexHomeViewModel()
+            {
+                Articles = db.Articles.OrderBy(x => x.DateTime).Take(5).ToList(),
+                BestProductsByPopularity = db.Products.Where(x => x.Popularity >= 3).OrderByDescending(x => x.Popularity).Take(5).ToList(),
+                AllProducts = db.Products.ToList(),
+                AllCategories = db.Categories.ToList(),
+                GetDays = Product.GetDays()
+            };
+
+            return View(vm);
         }
         public ActionResult Blog()
         {

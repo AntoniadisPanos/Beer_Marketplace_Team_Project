@@ -38,7 +38,7 @@
                     <div class="col-sm-6 col-sm-push-1 matchHeight">
                         <section class="alignMiddle mobile-center">
                             <header>
-                                <h1><i>@(Model.Product.ConvertVolume(Model.Product.Volume)) ml</i>@Model.Product.ConvertABV(Model.Product.ABV)%</h1>
+                                <h1><i>@(Model.Product.ConvertVolume(Model.Product.Volume))ml </i>@Model.Product.ConvertABV(Model.Product.ABV)%</h1>
                                 <h2>@Model.Product.ProductName.ToString().Replace("_"," ")</h2>
                             </header>
                             <p>@Model.Product.Description</p>
@@ -126,11 +126,11 @@
                                                             @using (Html.BeginForm("ProductInfo", "Product",FormMethod.Post))
                                                                 {
 
-                                                                    @*@Html.HiddenFor(x => x.IndividualBlogForProduct)*@
+                                                                    @Html.HiddenFor(x => x.IndividualBlogForProduct)
                                                                     @Html.AntiForgeryToken()
                                                                     @*<input required type="text" id="name" name="name" placeholder="Name">
                                                                     <input required type="email" id="_replyto" name="_replyto" placeholder="Email">*@
-                                                                    <textarea required name="comment" id="comment" placeholder="Comment" rows="5"></textarea>
+                                                                    <textarea required name="comment" id="comment" placeholder="Comment" rows="5" style="text-transform:none;"></textarea>
                                                                     <input type="submit" name="name" value="Post Comment" class="btn btn-default" />
 
                                                                 }

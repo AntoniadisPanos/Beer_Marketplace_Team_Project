@@ -207,29 +207,29 @@
                     <div class="row">
                         <div class="col-xs-6 col-sm-3">
                             <div class="counter">
-                                <img src="images/Can.svg" class="svg" alt="" />
-                                <span>207</span>
+                                <img src="~/Template/main/images/Can.svg" class="svg" alt="" />
+                                <span>@Model.AllProducts.Count()</span>
                                 Flavours
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-3">
                             <div class="counter">
-                                <img src="images/Sign.svg" class="svg" alt="" />
-                                <span class="one">396</span>
-                                Outlets
+                                <img src="~/Template/main/images/Sign.svg" class="svg" alt="" />
+                                <span class="one">@Model.AllCategories.Count()</span>
+                                Categories
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-3">
                             <div class="counter">
-                                <img src="images/Badge.svg" class="svg" alt="" />
+                                <img src="~/Template/main/images/Badge.svg" class="svg" alt="" />
                                 <span>60</span>
                                 Years brewing
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-3">
                             <div class="counter">
-                                <img src="images/BarrelSide.svg" class="svg" alt="" />
-                                <span>21</span>
+                                <img src="~/Template/main/images/BarrelSide.svg" class="svg" alt="" />
+                                <span>@Model.GetDays.ToString("dd")</span>
                                 Days til ready
                             </div>
                         </div>
