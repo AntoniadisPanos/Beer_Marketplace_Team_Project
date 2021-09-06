@@ -15,35 +15,53 @@ namespace Omadiko.Entities
     {
         public int ProductId { get; set; }
 
-        [Required(ErrorMessage = "Title is required")]
-        [MaxLength(60, ErrorMessage = "Title must be less than 60 characters")]
-        [MinLength(2, ErrorMessage = "Title must be greater than 2 characters")]
+        //[Required(ErrorMessage = "Required Field")]
+        //[RegularExpression(@"^[a-zA-Z ]*$", ErrorMessage = "Only Letters")]
+        //[MaxLength(60, ErrorMessage = "Title must be less than 60 characters")]
+        //[MinLength(2, ErrorMessage = "Title must be greater than 2 characters")]
         public string ProductName { get; set; }
 
-       
+
+        //[Required(ErrorMessage = "Required Field")]
+        //[RegularExpression(@"^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$", ErrorMessage = "Only Numbers")]
+        //[Range(1.0, 100.0, ErrorMessage = "Price value must be between 1-100")]
         public decimal Price { get; set; }
 
-        [Range(0 , 1)]
+
+        //[Required(ErrorMessage = "Required Field")]
+        //[RegularExpression(@"^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$", ErrorMessage = "Only Numbers")]
+        //[Range(0.0, 1.0, ErrorMessage = "ABV Value must me between 0-1")]
         public double ABV { get; set; }  //Alcohol By Volume
 
-         [Range(0.3 ,1)]
+        //[Required(ErrorMessage = "Required Field")]
+        //[RegularExpression(@"^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$", ErrorMessage = "Only Numbers")]
+        //[Range(0, 2, ErrorMessage = "Volume must be between 0.250-2")]
         public double Volume { get; set; }//Product ML
-        
 
-        [MaxLength(500, ErrorMessage = "Description must be less than 500 characters")]
-        
+
+        [MaxLength(1000, ErrorMessage = "Description must be less than 1000 characters")]
         public string Description { get; set; }
 
-        [MaxLength(20, ErrorMessage = "Type must be less than 60 characters")]
-        [MinLength(2, ErrorMessage = "Type must be greater than 2 characters")]
+
+        //[RegularExpression(@"^[a-zA-Z ]*$", ErrorMessage = "Only Letters")]
+        //[MaxLength(20, ErrorMessage = "Type must be less than 20 characters")]
+        //[MinLength(2, ErrorMessage = "Type must be greater than 2 characters")]
         public string Type { get; set; }
+        //[RegularExpression(@"^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$", ErrorMessage = "Only Numbers")]
+        //[Range(1.0, 100.0, ErrorMessage = "Discount value must be between 1%-100%")]
         public decimal Discount { get; set; }
+
         public string DiscountCode { get; set; }
 
-        [Range(0, 5)]
+        //[RegularExpression(@"^[0-9]*$", ErrorMessage = "Only Integers are allowed")]
+        //[Range(0, 5, ErrorMessage = "Popularity Value Must be Between 0-5")]
         public byte Popularity { get; set; }
 
+        //[Required(ErrorMessage = "Required Field")]
+        //[RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.bmp)$", ErrorMessage ="Only jpg,png,bmp")]
         public string SmallPhoto { get; set; }
+        //[Required(ErrorMessage = "Required Field")]
+        //[RegularExpression(@"([^\s]+(\.(?i)(jpg|png|bmp))$)", ErrorMessage = "Only jpg,png,bmp")]
         public string LargePhoto { get; set; }
         public Country Country { get; set; }
         

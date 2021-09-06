@@ -12,9 +12,12 @@ namespace Omadiko.Entities
         public int CommentId { get; set; }
         
         public string Comments { get; set; }
-        
+
+        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Only Letters")]
         public string CustomerName { get; set; }
-        
+
+
+        [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "Please enter a valid Email")]
         public string CustomerEmail { get; set; }
 
         public int ArticleId { get; set; }
