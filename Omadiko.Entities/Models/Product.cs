@@ -33,9 +33,9 @@ namespace Omadiko.Entities
         [Range(0.0, 1.0, ErrorMessage = "ABV Value must me between 0-1")]
         public double ABV { get; set; }  //Alcohol By Volume
 
-        //[Required(ErrorMessage = "Required Field")]
-        //[RegularExpression(@"^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$", ErrorMessage = "Only Numbers")]
-        //[Range(0, 2, ErrorMessage = "Volume must be between 0.250-2")]
+        [Required(ErrorMessage = "Required Field")]
+        [RegularExpression(@"^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$", ErrorMessage = "Only Numbers")]
+        [Range(0.0, 2.0, ErrorMessage = "Volume must be between 0.250-2")]
         public double Volume { get; set; }//Product ML
 
 
@@ -47,7 +47,9 @@ namespace Omadiko.Entities
         [MaxLength(20, ErrorMessage = "Type must be less than 20 characters")]
         [MinLength(2, ErrorMessage = "Type must be greater than 2 characters")]
         public string Type { get; set; }
-        //[RegularExpression(@"^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$", ErrorMessage = "Only Numbers")]
+
+
+        [RegularExpression(@"^[+-]?([0-9]+\.?[0-9]*|\.[0-9]+)$", ErrorMessage = "Only Numbers")]
         //[Range(1.0, 100.0, ErrorMessage = "Discount value must be between 1%-100%")]
         public decimal Discount { get; set; }
 
