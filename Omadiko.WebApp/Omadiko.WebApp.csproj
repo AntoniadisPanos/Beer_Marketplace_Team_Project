@@ -377,6 +377,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\169X299\Aecht-Schlenkerla-Rauchbier-Marzen.png" />
     <Content Include="Content\Images\169X299\AMSTEL_500ml_adobespark.png" />
     <Content Include="Content\Images\169X299\Asahi_Super_Dry-Black_330ml.png" />
@@ -391,6 +395,7 @@
     <Content Include="Content\Images\169X299\Corfu_Dark_Ale_Bitter_500ml.png" />
     <Content Include="Content\Images\169X299\Corona-extra-355ml.png" />
     <Content Include="Content\Images\169X299\Corona_extra_355ml.png" />
+    <Content Include="Content\Images\169X299\Erdinger_Weiss_500ml.png" />
     <Content Include="Content\Images\169X299\Fanziskaner_Weiss_500ml.png" />
     <Content Include="Content\Images\169X299\Fix_Hellas_500ml.png" />
     <Content Include="Content\Images\169X299\Fresh_Chios_Beer_330ml.png" />
@@ -407,11 +412,11 @@
     <Content Include="Content\Images\169X299\McFarland_Red_Irish_330ml.png" />
     <Content Include="Content\Images\169X299\Newcastle_Brown_Ale_330ml.png" />
     <Content Include="Content\Images\169X299\Nisos-7-bofor-330ml.png" />
+    <Content Include="Content\Images\169X299\Paguru_Cream_Ale_330ml.png" />
     <Content Include="Content\Images\169X299\Paulaner_Salvator.500ml.png" />
     <Content Include="Content\Images\169X299\Peroni_330.png" />
     <Content Include="Content\Images\169X299\Pinta_Imperator_Baltycki_330ml.png" />
     <Content Include="Content\Images\169X299\Rodenbach_Caractere_Rouge_Red_Ale_750ml.png" />
-    <Content Include="Content\Images\169X299\Paguru_Cream_Ale_330ml.png" />
     <Content Include="Content\Images\169X299\Samichlaus_Bier_330ml.png" />
     <Content Include="Content\Images\169X299\Semedorato_Golden_Seed_330ml.png" />
     <Content Include="Content\Images\169X299\Stella_Artois Premium_Lager_660ml.png" />
@@ -477,11 +482,6 @@
     <Content Include="Content\Images\475X550\ΒΕΡΓΙΝΑ WEISS ΦΙΑΛΗ 0.5L %28WEISS%29 %28475x550%29.jpg" />
     <Content Include="Content\Images\475X550\ΝΗΣΟΣ 7 Μποφόρ 0.33lt %28PORTER%29 %28475X550%29.jpg" />
     <Content Include="Content\Images\475X550\Χίου Φρέσκια Ale Φιάλη 330ml %28PALE ALE%29 %28475X550%29.jpg" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Images\169X299\Erdinger_Weiss_500ml.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

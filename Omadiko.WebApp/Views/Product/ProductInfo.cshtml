@@ -38,12 +38,12 @@
                     <div class="col-sm-6 col-sm-push-1 matchHeight">
                         <section class="alignMiddle mobile-center">
                             <header>
-                                <h1><i>@(Model.Product.ConvertVolume(Model.Product.Volume))ml </i>@Model.Product.ConvertABV(Model.Product.ABV)%</h1>
-                                <h2>@Model.Product.ProductName.ToString().Replace("_"," ")</h2>
+                                <h2>@Model.Product.ProductName.ToString().Replace("_", " ")</h2>
+                                <h1><i>@(Model.Product.ConvertVolume(Model.Product.Volume))ml &nbsp&nbsp</i>@Model.Product.ConvertABV(Model.Product.ABV)%</h1>
                             </header>
                             <p>@Model.Product.Description</p>
-                            <p>IT WORKS.CALM DOWN BOYS I GOT THIS </p>
-                            <p class="price">&dollar;@Model.Product.Price</p>
+                            
+                            <p class="price"><span><strong>Price</strong></span>: &euro;@Model.Product.Price</p>
                             <input class="quantity" id="quantity" type="text" placeholder=""> <a href="@Url.Action("OrderNow","ShoppingCart",new { id =Model.Product.ProductId },null)" class="btn btn-default"><span>Add to cart</span></a> <a href="#share" class="share-link"><i class="fa fa-share-alt"></i> Share this</a>
                         </section>
                     </div>
