@@ -39,7 +39,9 @@
                         <section class="alignMiddle mobile-center">
                             <header>
                                 <h2>@Model.Product.ProductName.ToString().Replace("_", " ")</h2>
+                                
                                 <h1><i>@(Model.Product.ConvertVolume(Model.Product.Volume))ml &nbsp&nbsp</i>@Model.Product.ConvertABV(Model.Product.ABV)%</h1>
+                                <br/>
                             </header>
                             <p>@Model.Product.Description</p>
                             
