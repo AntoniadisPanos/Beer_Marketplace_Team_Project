@@ -16,13 +16,15 @@ namespace Omadiko.WebApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: CustomersAdmin
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
-            var customers = db.Customers.Include(c => c.ApplicationUser);
+            var customers = db.Customers.Include(c => c.ApplicationUser).Include(x=>x.Orders).Include(x=>x.Messages);
             return View(customers.ToList());
         }
 
         // GET: CustomersAdmin/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +40,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: CustomersAdmin/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
@@ -49,6 +52,7 @@ namespace Omadiko.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "CustomerId,CustomerFirstName,CustomerLastName,PostalCode,CustomerPhone,CustomerEmail,CustomerAddress,CustomerAddress2,Country,UserId")] Customer customer)
         {
             if (ModelState.IsValid)
@@ -63,6 +67,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: CustomersAdmin/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -83,6 +88,7 @@ namespace Omadiko.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "CustomerId,CustomerFirstName,CustomerLastName,PostalCode,CustomerPhone,CustomerEmail,CustomerAddress,CustomerAddress2,Country,UserId")] Customer customer)
         {
             if (ModelState.IsValid)
@@ -96,6 +102,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: CustomersAdmin/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,6 +120,7 @@ namespace Omadiko.WebApp.Controllers
         // POST: CustomersAdmin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Customer customer = db.Customers.Find(id);

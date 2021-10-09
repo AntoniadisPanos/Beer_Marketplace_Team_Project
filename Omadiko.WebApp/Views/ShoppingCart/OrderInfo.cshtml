@@ -22,7 +22,8 @@
 
         <!-- Hero -->
         <div id="hero" class="single-page section" style="background-image: url(http://placehold.it/1500x500)">
-
+            <br />
+            <br />
             <!-- Content -->
             <div class="container">
                 <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
@@ -42,7 +43,7 @@
                     <ul class="horz-menu center-menu">
                         <li><span><a href="@Url.Action("Login","Account")">Login</a></span></li>
                         <li><span><a href="@Url.Action("CheckOut","ShoppingCart")">Billing</a></span></li>
-                        <li><span><a href="@Url.Action("ShippingDetails","ShoppingCart")">Shipping</a></span></li>
+                        <li><span><a href="@Url.Action("OrderDetails","ShoppingCart")">Shipping</a></span></li>
                         <li class="active"><span><a href="@Url.Action("OrderInfo","ShoppingCart")">Order info</a></span></li>
                         <li><span><a href="@Url.Action("PaymentInfo","ShoppingCart")">Payment info</a></span></li>
                     </ul>
@@ -59,51 +60,59 @@
                                 <h1>Current</h1>
                                 <h2>Order info</h2>
                             </header>
-                            <hr class="space-40" />
-                            @foreach (var item in (List<Item>)Session["Cart"])
+                            @if ((Session["Cart"] == null))
                             {
-                               
-                                <div class="row item">
-                                    <div class="col-sm-2 matchHeight">
-                                        <img src="@item.Product.SmallPhoto" alt="Beer can mockup" />
-                                    </div>
-                                    <div class="col-sm-5 matchHeight">
-                                        <header class="alignMiddle">
-                                            <h2>@item.Product.Type</h2>
-                                            <span>@item.Product.ProductName</span>
-                                        </header>
-                                    </div>
-                                    <div class="col-sm-4 matchHeight">
-                                        <div class="quantity alignMiddle">
-                                            <input type="text" value="@item.Quantity">
+                                var items = (List<Item>)Session["Cart"];
+                            }
+                            else
+                            {
+                                <hr class="space-40" />
+                                foreach (var item in (List<Item>)Session["Cart"])
+                                {
+
+                                    <div class="row item">
+                                        <div class="col-sm-2 matchHeight">
+                                            <img src="@item.Product.SmallPhoto" alt="Beer can mockup" />
+                                        </div>
+                                        <div class="col-sm-5 matchHeight">
+                                            <header class="alignMiddle">
+                                                <h2>@item.Product.Type</h2>
+                                                <span>@item.Product.ProductName</span>
+                                            </header>
+                                        </div>
+                                        <div class="col-sm-4 matchHeight">
+                                            <div class="quantity alignMiddle">
+                                                <input type="text" value="@item.Quantity">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1 matchHeight">
+                                            <span class="price alignMiddle">&dollar;@Item.Sum(item.Product.Price, item.Quantity)</span>
+
+
                                         </div>
                                     </div>
-                                    <div class="col-sm-1 matchHeight">
-                                        <span class="price alignMiddle">&dollar;@Item.Sum(item.Product.Price, item.Quantity)</span>
-                                        
+                                }
 
+                                <div class="row">
+                                    <div class="col-sm-6 promo">
+                                        <input type="text" name="promo"> <a href="#" class="btn btn-primary"><span>Apply</span></a>
+                                    </div>
+                                    <div class="col-sm-6 total">
+                                        @{
+                                            var cart = (List<Item>)Session["Cart"];
+                                        }
+                                        <p>Cart total: <span>&dollar;@cart.Sum(x => x.Product.Price * x.Quantity)</span></p>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 btn-wrap">
+                                        <a href="@Url.Action("OrderDetails","ShoppingCart")" class="btn btn-grey"><span>Previous</span></a> <a href="@Url.Action("PaymentInfo","ShoppingCart")" class="btn btn-default"><span>Next</span></a>
                                     </div>
                                 </div>
                             }
 
-                            <div class="row">
-                                <div class="col-sm-6 promo">
-                                    <input type="text" name="promo"> <a href="#" class="btn btn-primary"><span>Apply</span></a>
-                                </div>
-                                <div class="col-sm-6 total">
-                                    @{
-                                        var cart = (List<Item>)Session["Cart"];
-                                    }
-                                    <p>Cart total: <span>&dollar;@cart.Sum(x => x.Product.Price * x.Quantity)</span></p>
-                                   
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-12 btn-wrap">
-                                    <a href="@Url.Action("OrderDetails","ShoppingCart")" class="btn btn-grey"><span>Previous</span></a> <a href="@Url.Action("PaymentInfo","ShoppingCart")" class="btn btn-default"><span>Next</span></a>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

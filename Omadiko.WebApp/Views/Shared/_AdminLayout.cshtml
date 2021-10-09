@@ -13,6 +13,9 @@
     <!-- iCheck -->
     <link href="~/Template/admin/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
+    <link href="~/Content/c3.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
     <!-- bootstrap-progressbar -->
     <link href="~/Template/admin/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -33,12 +36,14 @@
             @Html.Partial("~/Views/Shared/Components/_AdminNavigationBar.cshtml")
             @RenderBody()
             @Html.Partial("~/Views/Shared/Components/_AdminFooter.cshtml")
-            
-            
+
+
             <!-- /footer content -->
         </div>
     </div>
-
+    <script src="~/Scripts/d3.min.js"></script>
+    <script src="~/Scripts/c3.min.js"></script>
+    
     <!-- jQuery -->
     <script src="~/Template/admin/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -76,7 +81,7 @@
     <!-- bootstrap-daterangepicker -->
     <script src="~/Template/admin/vendors/moment/min/moment.min.js"></script>
     <script src="~/Template/admin/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-     
+
     <!-- iCheck -->
     <script src="~/Template/admin/vendors/iCheck/icheck.min.js"></script>
     <!-- Datatables -->
@@ -100,6 +105,6 @@
     <script src="~/Template/admin/build/js/custom.min.js"></script>
 
 
-    
+
 </body>
 </html>

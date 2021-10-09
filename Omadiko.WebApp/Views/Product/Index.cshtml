@@ -54,7 +54,7 @@
                             <div class="col-md-10 col-md-offset-1">
                                 <h1>We use only the finest ingredients to create the</h1>
                                 <h2>The perfect <br />craft beer</h2>
-                                <a href="~/Template/main/#" class="btn btn-default">
+                                <a href="/home/ourstory" class="btn btn-default">
                                     <span>Explore</span>
                                 </a>
                             </div>
@@ -69,7 +69,7 @@
                             <div class="col-md-10 col-md-offset-1">
                                 <h1>The perfect template to compliment</h1>
                                 <h2>Your brewery</h2>
-                                <a href="~/Template/main/#" class="btn btn-default">
+                                <a href="@Url.Action("OurBeer","Home")" class="btn btn-default">
                                     <span>Explore</span>
                                 </a>
                             </div>
@@ -85,18 +85,27 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <ul class="horz-menu">
-                            <li class="active"><span><a href="@Url.Action("Index","Product",new { sortOrder = ViewBag.NA },null)">All</a></span></li>
+                            <li @*class="active"*@><span><a href="@Url.Action("Index","Product",new { sortOrder = ViewBag.NA },null)">All</a></span></li>
                             <li><span><a href="@Url.Action("Index","Product",new { sortOrder =ViewBag.CatDesc },null)">Category</a></span></li>
                             <li><span><a href="@Url.Action("Index","Product",new { sortOrder = ViewBag.MP },null)">Popularity</a></span></li>
                             <li><span><a href="@Url.Action("Index","Product",new {sortOrder=ViewBag.PD },null)">Price</a></span></li>
+                            @using (@Html.BeginForm("Index", "Product", FormMethod.Get, new { id = "form" }))
+                            {
+                                <li>@Html.TextBox("searchProduct", null, new { placeholder = "Search Beer", type = "search" })</li>
+                                <li ><input type="hidden" id="hidden" name="sortOrder" value="@ViewBag.CurrentSortOrder" /></li>
+                                <li ><input type="submit" value="Search" class="btn btn-primary" style="top:26px;" /></li>
+                                <li><input id="ResetButton" type="button" value="Clear Form" class="btn btn-default" /></li>
+                            }
+                            
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        @if (!(Model.PageCount < Model.PageNumber))
-        {
-            <div id="datatable" class="container-fluid light section no-padding">
+       
+        <div id="datatable" class="container-fluid light section no-padding">
+            @if (!(Model.PageCount < Model.PageNumber))
+            {
                 <div class="row">
                     @foreach (var beer in Model)
                     {
@@ -113,30 +122,51 @@
                     }
 
                 </div>
-            </div>
-        }
-        else
-        {
-            <h1>No Data in This Page</h1>
-        }
-        <!-- Section -->
-        <!-- Section -->
-        <div class="container-fluid super-dark section no-padding">
+            }
+            else
+            {
+                
+
+        <div class="container-fluid white section cart">
             <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        
-                        <ul class="horz-menu center-menu pages" >                            
-                            <li class="active">
-                                @Html.PagedListPager(Model, x => Url.Action("Index", "Product", new { page = x }))
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <h4>The beer you are looking for doesnt exist </h4>
             </div>
-        </div>       
-        <!-- Footer -->
-    </div>   
+        </div>
+                
+             }
+
+
+                    <!-- Section -->
+                    <!-- Section -->
+                    <div class="container-fluid super-dark section no-padding">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+
+                                    <ul class="horz-menu center-menu pages">
+                                        <li class="active">
+                                            @Html.PagedListPager(Model, x => Url.Action("Index", "Product", new { page = x }))
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer -->
+                </div>
+                @section scripts{
+                    <script>
+                        $("#ResetButton").click(function (e) {
+                            $("#searchProduct").val(' ');
+                           
+
+
+                        });
+                        
+
+                    </script>
+
+                }
 </body>
 </html>
 

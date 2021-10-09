@@ -7,10 +7,13 @@ using Omadiko.Entities.ViewModels;
 
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace Omadiko.WebApp.Controllers
 {
@@ -18,17 +21,20 @@ namespace Omadiko.WebApp.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Admin
+        [Authorize(Roles="Admin")]
         public ActionResult Index()
         {
-            return View();
-        }
-        public ActionResult GetData()
-        {
-            return View(db.Messages.ToList());
-        }
-       
-        
-        
-
+            AdminIndexViewModel vm = new AdminIndexViewModel()
+            {
+                Categories = db.Categories.ToList(),
+                Customers = db.Customers.ToList(),
+                Messages = db.Messages.ToList(),
+                Products = db.Products.ToList(),
+                ApplicationUsers = db.Users.ToList(),
+                
+            };
+            
+            return View(vm);
+        }                
     }
 }

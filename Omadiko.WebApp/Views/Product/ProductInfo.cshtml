@@ -12,7 +12,7 @@
     <!-- Wrapper -->
     <div class="wrapper">
         <!-- Hero -->
-        <div id="hero" class="single-page section" style="width:auto;background-image: url('../../Template/images/dt-freevb-1500x500.jpg')">
+        <div id="hero" class="single-page section" style="width: auto;background-image: url('../../Template/images/beer-1500x500.jpg');">
             <br />
             <br />
             <!-- Content -->
@@ -45,7 +45,7 @@
                             </header>
                             <p>@Model.Product.Description</p>
                             
-                            <p class="price"><span><strong>Price</strong></span>: &euro;@Model.Product.Price</p>
+                            <p class="price"><span><strong>Price</strong></span>: &dollar;@Model.Product.Price</p>
                             <input class="quantity" id="quantity" type="text" placeholder=""> <a href="@Url.Action("OrderNow","ShoppingCart",new { id =Model.Product.ProductId },null)" class="btn btn-default"><span>Add to cart</span></a> <a href="#share" class="share-link"><i class="fa fa-share-alt"></i> Share this</a>
                         </section>
                     </div>
@@ -59,7 +59,14 @@
                 <div class="tabs">
                     <ul>
                         <li><a href="#description">Full description</a></li>
-                        <li><a href="#reviews">Customer reviews</a></li>
+                        @if (User.IsInRole("Admin") || User.IsInRole("Customer"))
+                        {
+                            <li><a href="#reviews">Customer reviews</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="#reviews">Register in Order to Participate to our community</a></li>
+                        }
                         <li><a href="#details">Beer details</a></li>
                     </ul>
                     <div id="description">
@@ -73,42 +80,39 @@
                             </div>
                         </div>
                     </div>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Customer"))
+                    {
+                        <div id="reviews">
+                            <div class="container">
 
-                    <div id="reviews">
-                        <div class="container">
-
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    @if (Model.IndividualBlogForProduct == null)
-                                    {
-                                        <h1>There is No comment Yet</h1>
-                                    }
-                                    else
-                                    {
-                                        foreach (var comment in Model.IndividualBlogForProduct)
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        @if (Model.IndividualBlogForProduct == null)
                                         {
-                                            <div class="row">
-                                                <div class="col-sm-12 user-comments">
-                                                    <div class="row">
-                                                        <div class="col-sm-1">                                              
-                                                            <img src="~/Template/images/pin.png" alt="Craft ale HTML template"/>
-                                                        </div>
-                                                        <div class="col-sm-11">
-                                                            <h5>@comment.CustomerName,Post Comment For @comment.Product.ProductName</h5>
-                                                            <p>@comment.Comments</p>
-                                                            <span class="edit">
-                                                                @*<a href="#">Reply</a> | <a href="#">Edit</a>*@
-                                                            </span>
+                                            <h1>There is No comment Yet</h1>
+                                        }
+                                        else
+                                        {
+                                            foreach (var comment in Model.IndividualBlogForProduct)
+                                            {
+                                                <div class="row">
+                                                    <div class="col-sm-12 user-comments">
+                                                        <div class="row">
+                                                            <div class="col-sm-1">
+                                                                <img src="~/Template/images/pin.png" alt="Craft ale HTML template" />
+                                                            </div>
+                                                            <div class="col-sm-11">
+                                                                <h5>@comment.CustomerName,Post Comment For @comment.Product.ProductName</h5>
+                                                                <p>@comment.Comments</p>
+                                                                <span class="edit">
+                                                                    @*<a href="#">Reply</a> | <a href="#">Edit</a>*@
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            }
                                         }
-                                    }
-
-
-                                    @if (User.IsInRole("Admin") || User.IsInRole("Customer"))
-                                    {
                                         <div class="container-fluid light section no-padding">
                                             <div class="container">
                                                 <div class="row">
@@ -125,42 +129,40 @@
 
                                                     <div class="col-sm-5 col-sm-push-1 matchHeight">
                                                         <section class="alignMiddle padding-80-0">
-                                                            @using (Html.BeginForm("ProductInfo", "Product",FormMethod.Post))
-                                                                {
+                                                            @using (Html.BeginForm("ProductInfo", "Product", FormMethod.Post))
+                                                            {
 
-                                                                    @Html.HiddenFor(x => x.IndividualBlogForProduct)
-                                                                    @Html.AntiForgeryToken()
-                                                                    @*<input required type="text" id="name" name="name" placeholder="Name">
-                                                                    <input required type="email" id="_replyto" name="_replyto" placeholder="Email">*@
-                                                                    <textarea required name="comment" id="comment" placeholder="Comment" rows="5" style="text-transform:none;"></textarea>
-                                                                    <input type="submit" name="name" value="Post Comment" class="btn btn-default" />
+                                                                @Html.HiddenFor(x => x.IndividualBlogForProduct)
+                                                                @Html.AntiForgeryToken()
+                                                                @*<input required type="text" id="name" name="name" placeholder="Name">
+                                                    <input required type="email" id="_replyto" name="_replyto" placeholder="Email">*@
+                                                                <textarea required name="comment" id="comment" placeholder="Comment" rows="5" style="text-transform:none;"></textarea>
+                                                                <input type="submit" name="name" value="Post Comment" class="btn btn-default" />
 
-                                                                }
+                                                            }
                                                         </section>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
-                                    }
+                                        <!-- Section -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                        <div id="details">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p>Rich, golden color with dark amber and orange hues and a touch of chill haze that clears as the beer warms. Carbonation is quite active, with abnormally large bubbles frothing into a thick white foam head that piles high, sticks and leaves a healthy lacing. Steely and mineral in the nose, soft and powdery, with a dusting of herbal and malty-sweet suggestions. Very smooth on the palate; even and medium-bodied. Malty with bready and biscuity notes running through a light and toasty sweetness. An aggressive alcohol cuts through with spice and a burn, prickling the palate. Distinct herbal hops characters meet the alcohol spice and meld well. Faint taste of ripe stone fruit beneath. Toasty finish, slightly drying, powdery dash of spices.</p>
 
-                                    <!-- Section -->
+                                        <p>One of the most sought-after stouts in Bell's history, Black Note Stout blends the complex aromatics of Expedition Stout with the velvety smooth texture of Double Cream Stout and ages the combination in freshly retired oak bourbon barrels for months. The resulting harmony of flavors captures the finest features of all three components: malty notes of dark chocolate, espresso &amp; dried fruits, all buoyed by the warmth and fragrance of the bourbon barrel. Aimed squarely at the stout and bourbon aficionados, Black Note makes a grand statement about the art of the dark.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="details">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <p>Rich, golden color with dark amber and orange hues and a touch of chill haze that clears as the beer warms. Carbonation is quite active, with abnormally large bubbles frothing into a thick white foam head that piles high, sticks and leaves a healthy lacing. Steely and mineral in the nose, soft and powdery, with a dusting of herbal and malty-sweet suggestions. Very smooth on the palate; even and medium-bodied. Malty with bready and biscuity notes running through a light and toasty sweetness. An aggressive alcohol cuts through with spice and a burn, prickling the palate. Distinct herbal hops characters meet the alcohol spice and meld well. Faint taste of ripe stone fruit beneath. Toasty finish, slightly drying, powdery dash of spices.</p>
-
-                                    <p>One of the most sought-after stouts in Bell's history, Black Note Stout blends the complex aromatics of Expedition Stout with the velvety smooth texture of Double Cream Stout and ages the combination in freshly retired oak bourbon barrels for months. The resulting harmony of flavors captures the finest features of all three components: malty notes of dark chocolate, espresso &amp; dried fruits, all buoyed by the warmth and fragrance of the bourbon barrel. Aimed squarely at the stout and bourbon aficionados, Black Note makes a grand statement about the art of the dark.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 

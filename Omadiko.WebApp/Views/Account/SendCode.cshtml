@@ -32,7 +32,7 @@
         <div class="container-fluid white section cart">
             <div class="container">
 
-                @using (Html.BeginForm("SendCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                @using (Html.BeginForm("SendCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "login", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
                     @Html.Hidden("rememberMe", @Model.RememberMe)

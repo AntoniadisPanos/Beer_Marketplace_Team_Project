@@ -15,18 +15,28 @@ namespace Omadiko.WebApp.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Product
-        public ActionResult Index(int? pSize, int? page,string sortOrder)
+        public ActionResult Index(int? pSize, int? page,string sortOrder,string searchProduct)
         {
             List<Product> products =Filtering(sortOrder);
-
-            products = Sorting(sortOrder, products);
+            //Filtering
+            products = Filter(searchProduct, products);
+            //Sorting
+            products= Sorting(sortOrder, products);
             int pageSize, pageNumber;
             Pagination(pSize, page, out pageSize, out pageNumber);
             return View(products.ToPagedList(pageNumber, pageSize));
         }
+        private static List<Product>Filter(string searchProduct, List<Product> products)
+        {
+            if (!String.IsNullOrEmpty(searchProduct))
+            {
+                products = products.Where(x => x.ProductName.ToUpper().Contains(searchProduct.ToUpper())).ToList();
+            }
+            return products;
+        }
         private static void Pagination(int? pSize, int? page, out int pageSize, out int pageNumber)
         {
-            pageSize = pSize ?? 5;
+            pageSize = pSize ?? 6;
             pageNumber = page ?? 1;
         }
         private static List<Product> Sorting(string sortOrder,List<Product>products)
@@ -58,6 +68,7 @@ namespace Omadiko.WebApp.Controllers
             ViewBag.CatDesc = sortOrder == "CategoryDesc" ? "CategoryAsc" : "CategoryDesc";
             ViewBag.CatAsc = sortOrder == "CategoryAsc" ? "CategoryDesc" : "CategoryAsc";
             ViewBag.CurrentSortOrder = sortOrder;
+
             return products;
         }
 

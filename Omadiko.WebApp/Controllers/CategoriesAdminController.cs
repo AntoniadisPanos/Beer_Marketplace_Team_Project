@@ -16,12 +16,14 @@ namespace Omadiko.WebApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: CategoriesAdmin
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View(db.Categories.ToList());
         }
 
         // GET: CategoriesAdmin/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: CategoriesAdmin/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -47,6 +50,7 @@ namespace Omadiko.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "CategoryId,CategoryName")] Category category)
         {
             if (ModelState.IsValid)
@@ -60,6 +64,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: CategoriesAdmin/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,6 +84,7 @@ namespace Omadiko.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "CategoryId,CategoryName")] Category category)
         {
             if (ModelState.IsValid)
@@ -91,6 +97,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: CategoriesAdmin/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,6 +114,7 @@ namespace Omadiko.WebApp.Controllers
 
         // POST: CategoriesAdmin/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

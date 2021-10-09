@@ -16,13 +16,15 @@ namespace Omadiko.WebApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: OrdersAdmin
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
-            var orders = db.Orders.Include(o => o.Customer).Include(o => o.ShippingDetails);
+            var orders = db.Orders.Include(o => o.Customer).Include(o=>o.ApplicationUsers);
             return View(orders.ToList());
         }
 
         // GET: OrdersAdmin/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,10 +40,10 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: OrdersAdmin/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "CustomerFirstName");
-            ViewBag.ShippingDetailsId = new SelectList(db.ShippingDetails, "ShippingDetailsId", "Address");
             return View();
         }
 
@@ -50,7 +52,8 @@ namespace Omadiko.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OrderId,OrderDate,ShippingDate,PaymentDate,Fullfilled,Paid,Deleted,OrderTime,OrderStatus,OrderInstructions,Country,ShippingDetailsId,UserId,CustomerId")] Order order)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Create([Bind(Include = "OrderId,OrderDate,ShippingDate,PaymentDate,Fullfilled,Paid,Deleted,OrderTime,OrderStatus,OrderInstructions,Country,UserId,CustomerId")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -58,13 +61,31 @@ namespace Omadiko.WebApp.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            CreateOrderViewBag();
+             return View(order);
+        }
+            public void CreateOrderViewBag()
+            {
+            var customer = db.Customers.ToList().Select(x => new
+            {
+                CustomerId = x.CustomerId,
+                CustomerFullName = string.Format($"{x.CustomerFirstName} {x.CustomerLastName}")
 
-            ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "CustomerFirstName", order.CustomerId);
-            ViewBag.ShippingDetailsId = new SelectList(db.ShippingDetails, "ShippingDetailsId", "Address", order.ShippingDetailsId);
-            return View(order);
+            });
+            var users = db.Users.ToList().Select(x => new
+            {
+                UserId = x.Id,
+                UserName = x.UserName
+            });
+            ViewBag.CustomerId = new SelectList(customer, "CustomerId", "CustomerFullName");
+            ViewBag.UserId = new SelectList(users, "UserId", "UserName");
         }
 
+
+
+
         // GET: OrdersAdmin/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,7 +98,6 @@ namespace Omadiko.WebApp.Controllers
                 return HttpNotFound();
             }
             ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "CustomerFirstName", order.CustomerId);
-            ViewBag.ShippingDetailsId = new SelectList(db.ShippingDetails, "ShippingDetailsId", "Address", order.ShippingDetailsId);
             return View(order);
         }
 
@@ -86,7 +106,8 @@ namespace Omadiko.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OrderId,OrderDate,ShippingDate,PaymentDate,Fullfilled,Paid,Deleted,OrderTime,OrderStatus,OrderInstructions,Country,ShippingDetailsId,UserId,CustomerId")] Order order)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit([Bind(Include = "OrderId,OrderDate,ShippingDate,PaymentDate,Fullfilled,Paid,Deleted,OrderTime,OrderStatus,OrderInstructions,Country,UserId,CustomerId")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -95,11 +116,11 @@ namespace Omadiko.WebApp.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CustomerId = new SelectList(db.Customers, "CustomerId", "CustomerFirstName", order.CustomerId);
-            ViewBag.ShippingDetailsId = new SelectList(db.ShippingDetails, "ShippingDetailsId", "Address", order.ShippingDetailsId);
             return View(order);
         }
 
         // GET: OrdersAdmin/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -117,6 +138,7 @@ namespace Omadiko.WebApp.Controllers
         // POST: OrdersAdmin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Order order = db.Orders.Find(id);

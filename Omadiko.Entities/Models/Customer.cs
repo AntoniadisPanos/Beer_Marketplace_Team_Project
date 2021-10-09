@@ -13,16 +13,16 @@ namespace Omadiko.Entities
     {
        
         public int CustomerId { get; set; }
-        [Required]
+        //[Required]
         [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Only Letters")]
         [StringLength(20, MinimumLength = 2, ErrorMessage = "Min 2, Max 20 Characters")]
         public string CustomerFirstName { get; set; }
 
-        [Required]
+        //[Required]
         [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Only Letters")]
         [StringLength(20, MinimumLength = 2, ErrorMessage = "Min 2, Max 20 Characters")]
         public string CustomerLastName { get; set; }
-        [Required]
+        //[Required]
         [RegularExpression(@"^[a-zA-Z0-9\s]*$", ErrorMessage = "Please use Letters and Numbers only")]
         public string PostalCode { get; set; }
         [RegularExpression(@"^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$", ErrorMessage = "Not a valid phone number")]
@@ -30,11 +30,11 @@ namespace Omadiko.Entities
 
 
 
-        [Required]
+        //[Required]
         [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "Please enter a valid Email")]
         public string CustomerEmail { get; set; }
 
-        [Required]
+        //[Required]
         [RegularExpression(@"^[a-zA-Z0-9\s]*$", ErrorMessage = "Please use Letters and Numbers only")]
         public string CustomerAddress { get; set; }
         [RegularExpression(@"^[a-zA-Z0-9\s]*$", ErrorMessage = "Please use Letters and Numbers only")]

@@ -16,6 +16,7 @@ namespace Omadiko.WebApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Messages
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var messages = db.Messages.Include(m => m.ApplicationUser).Include(m => m.Customer);
@@ -23,6 +24,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: Messages/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +40,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: Messages/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.UserId = new SelectList(db.Users, "Id", "Email");            
@@ -50,6 +53,7 @@ namespace Omadiko.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "MessageId,UserName,Text,When,UserId,CustomerId")] Message message)
         {
             if (ModelState.IsValid)
@@ -65,6 +69,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: Messages/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -86,6 +91,7 @@ namespace Omadiko.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "MessageId,UserName,Text,When,UserId,CustomerId")] Message message)
         {
             if (ModelState.IsValid)
@@ -100,6 +106,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: Messages/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -117,6 +124,7 @@ namespace Omadiko.WebApp.Controllers
         // POST: Messages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Message message = db.Messages.Find(id);

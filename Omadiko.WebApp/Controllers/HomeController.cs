@@ -46,9 +46,7 @@ namespace Omadiko.WebApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Contact(FormCollection frc, int? id)
-        {
-
-            
+        {           
                 Customer customer = new Customer()
                 {
                     CustomerEmail=frc["Customeremail"],
@@ -58,16 +56,19 @@ namespace Omadiko.WebApp.Controllers
                 db.SaveChanges();
             if (User.Identity.IsAuthenticated)
             {
-                Message msg = new Message()
+                if (ModelState.IsValid)
                 {
+                    Message msg = new Message()
+                    {
 
-                    UserId=db.Users.Max(x=>x.Id),                   
-                    UserName = User.Identity.Name,
-                    Text = frc["message"],
-                    When = DateTime.Now.Date
-                };
-                db.Messages.Add(msg);
-                db.SaveChanges();
+                        UserId = db.Users.Max(x => x.Id),
+                        UserName = User.Identity.Name,
+                        Text = frc["message"],
+                        When = DateTime.Now.Date
+                    };
+                    db.Messages.Add(msg);
+                    db.SaveChanges();
+                }               
             }
             else
             {
@@ -80,15 +81,9 @@ namespace Omadiko.WebApp.Controllers
                 };
                 db.Messages.Add(msg);
                 db.SaveChanges();
-            }
-                
-            
+            }                            
             return View();
-        }
-                
-                
-    
-      
+        }                                         
         public ActionResult OurStory()
         {
 
@@ -109,19 +104,10 @@ namespace Omadiko.WebApp.Controllers
             return View(article);
         }
 
+        
 
 
-        //[HttpGet]
-        //public ActionResult SingleBlog(int? id)
-        //{
-        //    db.Articles.Find(id);
-        //  var comment = db.Comments.ToList();
-        //    return View(comment);
-        //}
-
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
+       
         public ActionResult SingleBlog(FormCollection frc,int?id )
         {
 
@@ -135,45 +121,53 @@ namespace Omadiko.WebApp.Controllers
             {
                  return View("~/Views/Shared/Error.cshtml");
             }
-                 Comment comment=new Comment()
+            if (ModelState.IsValid)
+            {
+                Comment comment = new Comment()
                 {
-                    
-                    ArticleId= article.ArticleId,
+                    ArticleId = article.ArticleId,
                     CustomerName = User.Identity.Name,
                     CustomerEmail = User.Identity.Name,
                     Comments = frc["comment"],
                 };
-                db.Comments.Add(comment);
-
-                var articlepercomment= db.Comments.Where(x => x.Article.ArticleId==id).ToList();                
+                db.Entry(comment).State=System.Data.Entity.EntityState.Added;
+                db.SaveChanges();
+                var articlepercomment = db.Comments.Where(x => x.Article.ArticleId == id).ToList();
                 ArticleCommentsUserViewModel vm = new ArticleCommentsUserViewModel()
                 {
-                    Article=article,
-                    Comment = comment,                                        
-                    Comments= articlepercomment,
+                    Article = article,
+                    Comment = comment,
+                    Comments = articlepercomment,
 
-                };                       
-            //var model = db.Comments.ToList(); 
-            //if(model != null)
-            //{
-            //   db.Comments.ToList();
-            //}
-            db.SaveChanges();
-            return View(vm);
+                };
+
+                return View(vm);
+                
+            }
+            else
+            {
+                return View("~/Views/Shared/Error.cshtml");
+            }
+            
+           
+                                                             
         }
         public ActionResult OurBeer()
-        {
-
-            
+        {           
             IndexHomeViewModel vm = new IndexHomeViewModel()
             {
                 BestProductsByPopularity = db.Products.Where(x => x.Popularity >= 3).OrderByDescending(x => x.Popularity).Take(10).ToList(),
                 Articles = db.Articles.Take(2).ToList(),
-                TwoProductsForPage = db.Products.Take(2).ToList(),               
+                TwoProductsForPage = db.Products.Take(2).ToList(),   
+                AllProducts=db.Products.ToList(),
+                AllCategories=db.Categories.ToList(),
+                GetDays = Product.GetDays()
+
             }; 
             return View(vm);
         }
-      
+       
+
+
     }
-    
 }

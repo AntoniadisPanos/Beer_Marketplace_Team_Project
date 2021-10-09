@@ -1,4 +1,5 @@
-﻿
+﻿@using Omadiko.Entities;
+
 @{
     ViewBag.Title = "PaymentInfo";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,10 +8,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+
 </head>
 <body>
-
+    @if ((Session["Cart"] == null))
+    {
+        var items = (List<Item>)Session["Cart"];
+    }
     <!-- Fake page loading -->
     <div id="fakeLoader"></div>
 
@@ -21,7 +25,8 @@
 
         <!-- Hero -->
         <div id="hero" class="single-page section" style="background-image: url(http://placehold.it/1500x500)">
-
+            <br />
+            <br />
             <!-- Content -->
             <div class="container">
                 <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
@@ -42,8 +47,8 @@
                         <li><span><a href="@Url.Action("Login","Account")">Login</a></span></li>
                         <li><span><a href="@Url.Action("CheckOut","ShoppingCart")">Billing</a></span></li>
                         <li><span><a href="@Url.Action("OrderDetails","ShoppingCart")">Shipping</a></span></li>
-                        <li class="active"><span><a href="@Url.Action("OrderInfo","ShoppingCart")">Order info</a></span></li>
-                        <li><span><a href="@Url.Action("PaymentInfo","ShoppingCart")">Payment info</a></span></li>
+                        <li ><span><a href="@Url.Action("OrderInfo","ShoppingCart")">Order info</a></span></li>
+                        <li class="active"><span><a href="@Url.Action("PaymentInfo","ShoppingCart")">Payment info</a></span></li>
                     </ul>
                 </div>
             </div>
@@ -52,35 +57,80 @@
         <!-- Section -->
         <div class="container-fluid white section">
             <div class="container">
-                <div class="row">
+                <div class="row">                  
                     <div class="col-sm-8 col-sm-push-2">
                         <header class="centred">
-                            <h1>Enter</h1>
-                            <h2>Payment details</h2>
+                            <h1>Select</h1>
+                            <h2>Payment Method</h2>
                         </header>
                         <hr class="space-40" />
-                        @using (Html.BeginForm("PaymentInfo", "ShoppingCart", FormMethod.Post))
-                        {
-                            <div class="check-option">
-                                <input type="checkbox" checked> <strong>Direct bank transfer</strong>
-                                <blockquote></blockquote>
+                        @*@using (Html.BeginForm("PaymentInfo", "ShoppingCart", FormMethod.Post))
+        {
+            <div class="check-option">
+                <input type="checkbox" checked> <strong>Direct bank transfer</strong>
+
+            </div>
+            <div class="check-option">
+                <input id="paypal" type="checkbox"> <strong>PayPal</strong>
+            </div>
+            <div class="check-option">
+                <input id="cheque" type="checkbox"> <strong>Cheque</strong>
+            </div>
+            <div class="check-option">
+                <input id="creditcard" type="checkbox"> <strong>Credit or Debit card</strong>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 btn-wrap">
+                    <a href="@Url.Action("OrderInfo","ShoppingCart")" class="btn btn-grey"><span>Previous</span></a> <a href="@Url.Action("PaymentWithPaypal","ShoppingCart")" class="btn btn-default" style="height:48px; width:150px;"><input type="submit" name="name" value="" />Place Order</a>
+                </div>
+            </div>
+             <div id="paypal-button-container"></div>
+        }*@
+
+                        <div id="smart-button-container">
+                            <div style="text-align: center;">
+                                <div id="paypal-button-container"></div>
                             </div>
-                            <div class="check-option">
-                                <input id="paypal" type="checkbox"> <strong>PayPal</strong>
-                            </div>
-                            <div class="check-option">
-                                <input id="cheque" type="checkbox"> <strong>Cheque</strong>
-                            </div>
-                            <div class="check-option">
-                                <input id="creditcard" type="checkbox"> <strong>Credit or Debit card</strong>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 btn-wrap"> 
-                                    <a href="@Url.Action("OrderInfo","ShoppingCart")" class="btn btn-grey"><span>Previous</span></a> <a href="@Url.Action("PaymentWithPaypal","ShoppingCart")"  class="btn btn-default" style="height:48px; width:150px;"><input type="submit" name="name" value=""  />Place Order</a>
-                                </div>
-                            </div>
-                        }
-                        @*<div id="paypal-button-container"></div>*@
+                        </div>
+                        
+                        <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+                        <script>
+                            function initPayPalButton() {
+                                paypal.Buttons({
+                                    style: {
+                                        shape: 'rect',
+                                        color: 'gold',
+                                        layout: 'vertical',
+                                        label: 'paypal',
+
+                                    },
+                          
+                                    createOrder: function (data, actions) {
+                                        return actions.order.create({
+                                            purchase_units: [{ "amount": { "currency_code": "USD", "value":2.80} }]
+                                        });
+                                    },
+                                    onApprove: function (data, actions) {
+                                        return actions.order.capture().then(function (orderData) {
+
+                                            // Full available details
+                                            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                                            // Show a success message within this page, e.g.
+                                            const element = document.getElementById('paypal-button-container');
+                                            element.innerHTML = '';
+                                            element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+                                            
+
+                                        });
+                                    },
+                                    onError: function (err) {
+                                        console.log(err);                                    }
+                                }).render('#paypal-button-container');
+                            }
+                            initPayPalButton();
+                        </script>
                     </div>
                 </div>
             </div>
@@ -88,17 +138,10 @@
 
         <!-- Footer -->
     </div>
-    @*<script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>*@
-    <script>
-      
+    
 
-        document.getElementById('paypal').onclick = function() {
-            if (this.checked == true)
-                window.location = '@Url.Action("PaymentWithPaypal", "ShoppingCart")';
-                
+        
 
-}
-    </script>
 </body>
 </html>
 

@@ -13,7 +13,7 @@ namespace Omadiko.Entities
         
         public string Comments { get; set; }
 
-        [RegularExpression(@"^[a-zA-Z\s]*$", ErrorMessage = "Only Letters")]
+        [RegularExpression(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", ErrorMessage = "Please enter a valid Email")]
         public string CustomerName { get; set; }
 
 

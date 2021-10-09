@@ -16,6 +16,7 @@ namespace Omadiko.WebApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ApplicationUsersAdmin
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
 
@@ -24,6 +25,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: ApplicationUsersAdmin/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -39,6 +41,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: ApplicationUsersAdmin/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -49,6 +52,7 @@ namespace Omadiko.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
         {
             if (ModelState.IsValid)
@@ -62,6 +66,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: ApplicationUsersAdmin/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -87,6 +92,7 @@ namespace Omadiko.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
         {
             if (ModelState.IsValid)
@@ -99,6 +105,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: ApplicationUsersAdmin/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -115,6 +122,7 @@ namespace Omadiko.WebApp.Controllers
 
         // POST: ApplicationUsersAdmin/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {

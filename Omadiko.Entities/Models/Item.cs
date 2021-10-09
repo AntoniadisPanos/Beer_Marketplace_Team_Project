@@ -19,16 +19,12 @@ namespace Omadiko.Entities
        
         public bool Purchase { get; set; }
 
-        //Navigation Properties
-       
-       public virtual Order Order { get; set; }
-
-       
+        public virtual Order Order { get; set; }
 
         public virtual Product Product { get; set; }
 
-       
-       public static decimal Sum(decimal price,int quantity)
+
+        public static decimal Sum(decimal price,int quantity)
         {
             return price*quantity;
         }

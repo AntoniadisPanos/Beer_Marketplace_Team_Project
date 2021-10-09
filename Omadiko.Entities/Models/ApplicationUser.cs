@@ -31,16 +31,15 @@ namespace Omadiko.Entities
         public virtual ICollection<Message> Messages { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
-        public virtual UserDetails UserDetails { get; set; }
+       
        
         public virtual Blog Blog { get; set; }
-        public virtual ICollection<UserLocation> UserLocations { get; set; }
+       
 
         public virtual Article Article { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
             
-        public virtual ICollection<Item> Carts { get; set; }
-
+        //public virtual ICollection<Item> Carts { get; set; }
         
         public ICollection<Customer> Customers { get; set; }
 

@@ -16,6 +16,7 @@ namespace Omadiko.WebApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: CommentsAdmin
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var comments = db.Comments.Include(c => c.Article).Include(c => c.Customer);
@@ -23,6 +24,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: CommentsAdmin/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +40,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: CommentsAdmin/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.ArticleId = new SelectList(db.Articles, "ArticleId", "Blog");
@@ -50,6 +53,7 @@ namespace Omadiko.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "CommentId,Comments,CustomerName,CustomerEmail,ArticleId,CustomerId")] Comment comment)
         {
             if (ModelState.IsValid)
@@ -65,6 +69,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: CommentsAdmin/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -86,6 +91,7 @@ namespace Omadiko.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "CommentId,Comments,CustomerName,CustomerEmail,ArticleId,CustomerId")] Comment comment)
         {
             if (ModelState.IsValid)
@@ -100,6 +106,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: CommentsAdmin/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -117,6 +124,7 @@ namespace Omadiko.WebApp.Controllers
         // POST: CommentsAdmin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Comment comment = db.Comments.Find(id);

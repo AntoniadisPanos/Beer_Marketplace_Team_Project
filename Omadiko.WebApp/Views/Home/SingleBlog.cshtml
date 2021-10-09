@@ -34,16 +34,16 @@
         <div class="container-fluid dark section no-padding">
             <div class="container">
                 <div class="row">
-                    @if (Model == null)
+                    @if (Model.Comments == null)
                     {
                         <div class="col-sm-12">
-                            <p class="author center-menu">Posted by Lee Grand <a href="#comments">Comments</a></p>
+                            <p class="author center-menu">@Model.Comments.Count()<a href="#comments">Comments </a>For this post</p>
                         </div>
                     }
                     else
                     {
                         <div class="col-sm-12">
-                            <p class="author center-menu">Posted by Lee Grand <a href="#comments">@Model.Comments.Count() Comments</a></p>
+                            <p class="author center-menu"><a href="#comments">@Model.Comments.Count() Comments </a>For this post</p>
                         </div>
                     }
 
@@ -55,7 +55,7 @@
         <div class="container-fluid light section">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-12 single-blog">                        
+                    <div class="col-sm-12 single-blog">
                         <img src="~/Template/images/pin.png" alt="Craft ale HTML template" />
                         <header>
                             <span class="date">@Model.Article.DateTime.ToString("dd MMMM")</span>
@@ -68,34 +68,38 @@
         </div>
         @if (User.IsInRole("Admin") || User.IsInRole("Customer"))
         {
-            <!-- Section -->
-            <div class="container-fluid section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h3 id="comments">Comments</h3>
-                        </div>
-                        @foreach (var comment in Model.Comments)
-                        {
-                            <div class="col-sm-12 user-comments">
-                                <div class="row scrollme animateme" data-when="enter" data-from="0.75" data-to="0" data-opacity="0" data-translatey="75">
-                                    <div class="col-sm-1">
-                                        <img src="http://placehold.it/72x72" alt="Craft ale HTML template" />
-                                    </div>
-                                    <div class="col-sm-11">
-                                        <h5>@comment.CustomerName,Post Comment</h5>
-                                        <p>@comment.Comments</p>
-                                        <span class="edit">
-                                            <a href="#">Reply</a> | <a href="#">Edit</a>
-                                        </span>
-                                    </div>
-                                </div>
+           
+                <!-- Section -->
+                <div class="container-fluid section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h3 id="comments">Comments</h3>
                             </div>
-                        }
+                            @foreach (var comment in Model.Comments)
+                            {
+                               
+                                    <div class="col-sm-12 user-comments">
+                                        <div class="row scrollme animateme" data-when="enter" data-from="0.75" data-to="0" data-opacity="0" data-translatey="75">
+                                            <div class="col-sm-1">
+                                                <img src="~/Template/images/pin.png" alt="Craft ale HTML template" />
+                                            </div>
+                                            <div class="col-sm-11">
+                                                <h5>@comment.CustomerName,Post Comment</h5>
+                                                <p>@comment.Comments</p>
+                                                <span class="edit">
+                                                    <a href="#">Reply</a> | <a href="#">Edit</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>                                
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Section -->
+                <!-- Section -->
+            
+
 
             <div class="container-fluid light section no-padding">
                 <div class="container">
@@ -108,18 +112,20 @@
                                 </header>
                                 <p>A tough one to drink. The use of molasses and licorice is simply overwhelming and without balance.</p>
                             </section>
-                            <div class="grey-background" style="background-image: url(http://placehold.it/750x565); background-size: cover;"></div>
+                            <div class="grey-background" style="background-image: url('../../Template/images/merlin.jpg'); background-size: cover; "></div>
                         </div>
 
                         <div class="col-sm-5 col-sm-push-1 matchHeight">
                             <section class="alignMiddle padding-80-0">
                                 @using (Html.BeginForm("SingleBlog", "Home", FormMethod.Post))
                                 {
+                                   
                                     @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary();
                                     @*<input required type="text" id="name" name="name" placeholder="Name">
                                     <input required type="email" id="_replyto" name="_replyto" placeholder="Email">*@
                                     <textarea required name="comment" id="comment" placeholder="Comment" rows="5" style="text-transform:none;"></textarea>
-                                    <input type="submit"  name="name" value="Post Comment" class="btn btn-default" />
+                                    <input type="submit" name="name" value="Post Comment" class="btn btn-default" />
 
                                 }
                             </section>

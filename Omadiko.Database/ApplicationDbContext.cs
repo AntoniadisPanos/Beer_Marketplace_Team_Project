@@ -13,7 +13,8 @@ namespace Omadiko.Database
     {
         public ApplicationDbContext() :base("Sindesmos")
         {
-
+            //this.Configuration.LazyLoadingEnabled = true;
+            //this.Configuration.ProxyCreationEnabled = true;
         }
         
         public DbSet<Product> Products { get; set; }
@@ -25,12 +26,7 @@ namespace Omadiko.Database
         
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
-        
-        public DbSet<ShippingDetails> ShippingDetails { get; set; }
-        
-        public DbSet<UserDetails>UserDetails { get; set; }
-        public DbSet<UserLocation>UserLocations { get; set; }
-
+              
         public DbSet<Message> Messages { get; set; }
         
         public DbSet<Article> Articles { get; set; }

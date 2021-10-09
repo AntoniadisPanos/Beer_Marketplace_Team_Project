@@ -118,7 +118,7 @@ namespace SignalR.Controllers
             if (!ModelState.IsValid)
             {
                 return View(model);
-            }
+            }            
             // Generate the token and send it
             var code = await UserManager.GenerateChangePhoneNumberTokenAsync(User.Identity.GetUserId(), model.Number);
             if (UserManager.SmsService != null)

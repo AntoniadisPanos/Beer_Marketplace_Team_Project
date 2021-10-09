@@ -246,7 +246,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\c3.css" />
+    <Content Include="Content\c3.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Scripts\c3.js" />
+    <Content Include="Scripts\c3.min.js" />
+    <Content Include="Scripts\d3.js" />
+    <Content Include="Scripts\d3.min.js" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Omadiko.Entities\Omadiko.Entities.csproj">

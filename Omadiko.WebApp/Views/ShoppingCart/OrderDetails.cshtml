@@ -19,7 +19,8 @@
     <div class="wrapper">
         <!-- Hero -->
         <div id="hero" class="single-page section" style="background-image: url(http://placehold.it/1500x500)">
-
+            <br />
+            <br />
             <!-- Content -->
             <div class="container">
                 <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
@@ -38,9 +39,9 @@
                 <div class="row">
                     <ul class="horz-menu center-menu">
                         <li><span><a href="@Url.Action("Login","Account")">Login</a></span></li>
-                        <li><span><a href="@Url.Action("CheckOut","ShoppingCart")">Billing</a></span></li>
+                        <li class="active"><span><a href="@Url.Action("CheckOut","ShoppingCart")">Billing</a></span></li>
                         <li><span><a href="@Url.Action("OrderDetails","ShoppingCart")">Shipping</a></span></li>
-                        <li class="active"><span><a href="@Url.Action("OrderInfo","ShoppingCart")">Order info</a></span></li>
+                        <li ><span><a href="@Url.Action("OrderInfo","ShoppingCart")">Order info</a></span></li>
                         <li><span><a href="@Url.Action("PaymentInfo","ShoppingCart")">Payment info</a></span></li>
                     </ul>
                 </div>
@@ -62,10 +63,10 @@
                             @using (Html.BeginForm("OrderDetails", "ShoppingCart", FormMethod.Post))
                             {
                                 @Html.AntiForgeryToken()
-                                <textarea placeholder="Order notes" name="ordernotes" rows="4" style="text-transform:none;"></textarea>
+                                <textarea placeholder="Order notes"  name="ordernotes" rows="4" style="text-transform:none;"></textarea>
                                 <div class="row">
                                     <div class="col-sm-12 btn-wrap">
-                                        <a href="@Url.Action("CheckOut","ShoppingCart")" class="btn btn-grey"><span>Previous</span></a><a href="@Url.Action("OrderInfo","ShoppingCart")"><span><input type="submit" name="name" value="Next" class="btn btn-default" /></span></a>>
+                                        <a href="@Url.Action("CheckOut","ShoppingCart")" class="btn btn-grey"><span>Previous</span></a><a href="@Url.Action("OrderInfo","ShoppingCart")"><span><input type="submit" name="name" value="Next"  class="btn btn-default" /></span></a>
                                     </div>
                                 </div>
                             }
@@ -80,5 +81,6 @@
         
         <!-- Footer -->
      </div>
+   
 </body>
 </html>

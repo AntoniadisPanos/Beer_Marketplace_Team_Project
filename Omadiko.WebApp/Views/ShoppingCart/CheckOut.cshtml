@@ -1,4 +1,4 @@
-﻿@model Omadiko.WebApp.Models.CustomerProductViewModel
+﻿@model Omadiko.Entities.Customer
 @{
     ViewBag.Title = "CheckOut";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -21,7 +21,8 @@
     <div class="wrapper">
         <!-- Hero -->
         <div id="hero" class="single-page section" style="background-image: url(http://placehold.it/1500x500)">
-
+            <br />
+            <br />
             <!-- Content -->
             <div class="container">
                 <div class="row blurb scrollme animateme" data-when="exit" data-from="0" data-to="1" data-opacity="0" data-translatey="100">
@@ -40,9 +41,9 @@
                 <div class="row">
                     <ul class="horz-menu center-menu">
                         <li><span><a href="@Url.Action("Login","Account")">Login</a></span></li>
-                        <li><span><a href="@Url.Action("CheckOut","ShoppingCart")">Billing</a></span></li>
+                        <li class="active"><span><a href="@Url.Action("CheckOut","ShoppingCart")">Billing</a></span></li>
                         <li><span><a href="@Url.Action("OrderDetails","ShoppingCart")">Shipping</a></span></li>
-                        <li class="active"><span><a href="@Url.Action("OrderInfo","ShoppingCart")">Order info</a></span></li>
+                        <li ><span><a href="@Url.Action("OrderInfo","ShoppingCart")">Order info</a></span></li>
                         <li><span><a href="@Url.Action("PaymentInfo","ShoppingCart")">Payment info</a></span></li>
                     </ul>
                 </div>
@@ -62,21 +63,25 @@
                         <!-- Form start -->
                         @using (Html.BeginForm("CheckOut", "ShoppingCart", FormMethod.Post))
                         {
-                            
+                            @Html.AntiForgeryToken()
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="text" required name="CustomerFirstName" placeholder="First name" style="text-transform:none;">
+                                    <input type="text" required pattern="^[a-zA-Z\s]*$" name="CustomerFirstName" placeholder="First name" title="Use letters only" style="text-transform:none;">
+                                   
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" required name="CustomerLastName" placeholder="Last name" style="text-transform:none;">
+                                    <input type="text" required pattern="^[a-zA-Z\s]*$" name="CustomerLastName" placeholder="Last name" title="Use letters only" style="text-transform:none;">
+                                    
                                 </div>
-                            </div>                            
+                            </div>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="text" required name="customeremail" placeholder="Email address" style="text-transform:none;">
+                                    <input type="text" required pattern="^[a-zA-Z0-9._+-]+&#64;[a-zA-Z0-9.-]+\.[a-zA-Z]{2,9}$" name="customeremail" title="Must be something@email.com" placeholder="Email address" style="text-transform:none;">
+                                    @Html.ValidationMessageFor(m => m.CustomerEmail)
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" required name="customerphone" placeholder="Telephone" >
+                                    <input type="text" required pattern="^[0-9]+$" name="customerphone" title="Use number only" placeholder="Telephone">
+                                    
                                 </div>
                             </div>
                             <div class="row">
@@ -86,14 +91,17 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <input type="text" name="customeraddress" required placeholder="Town/City" style="text-transform:none;">
-                                    <input type="text" name="customeraddress2" required placeholder="Address  " style="text-transform:none;">
+                                    <input type="text" pattern="^[a-zA-Z0-9\s]*$" name="customeraddress" required title="Use number/letters only" placeholder="Town/City" style="text-transform:none;">
+                                    
+                                    <input type="text" pattern="^[a-zA-Z0-9\s]*$" name="customeraddress2" required title="Use number/letters only" placeholder="Address  " style="text-transform:none;">
+                                    
                                 </div>
                             </div>
                             <div class="row">
 
                                 <div class="col-sm-6">
-                                    <input type="text" name="postalcode" required placeholder="Postcode" >
+                                    <input type="text" pattern="^[0-9]+$" name="postalcode" title="Use numbers only" required placeholder="Postcode">
+                                   
                                 </div>
                             </div>
                             <div class="row">
@@ -103,7 +111,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 btn-wrap">
-                                    <a href="@Url.Action("Index","ShoppingCart")" class="btn btn-grey"><span>Previous</span></a><a href="@Url.Action("OrderDetails","ShoppingCart")" ><span><input type="submit" name="name" value="Next" class="btn btn-default" /></span></a>
+                                    <a href="@Url.Action("Index","ShoppingCart")" class="btn btn-grey"><span>Previous</span></a><a href="@Url.Action("OrderDetails","ShoppingCart")"><span><input type="submit" name="name"  value="Next" class="btn btn-default" /></span></a>
                                 </div>
                             </div>
                         }

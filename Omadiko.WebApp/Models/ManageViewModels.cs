@@ -63,6 +63,8 @@ namespace Omadiko.WebApp.Models
         [Required]
         [Phone]
         [Display(Name = "Phone Number")]
+        [StringLength(13, MinimumLength = 13)]
+        [RegularExpression(@"^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$", ErrorMessage = "Include Your country code in front of your phon-number")]
         public string Number { get; set; }
     }
 

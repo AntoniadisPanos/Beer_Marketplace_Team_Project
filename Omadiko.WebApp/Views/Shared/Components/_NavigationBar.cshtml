@@ -7,9 +7,9 @@
                 <div class="col-sm-4 hidden-xs">
                     <ul class="social">
 
-                        <li><a href="~/Template/main/#" class="fa fa-instagram"></a></li>
-                        <li><a href="~/Template/main/#" class="fa fa-facebook-square"></a></li>
-                        <li><a href="~/Template/main/#" class="fa fa-twitter-square"></a></li>
+                        <li><a href="" class="fa fa-instagram"></a></li>
+                        <li><a href="" class="fa fa-facebook-square"></a></li>
+                        <li><a href="" class="fa fa-twitter-square"></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-8" >
@@ -59,9 +59,9 @@
             </button>
         </div>
         <div class="navbar-collapse collapse">
-            <ul id="menu-primary" class="nav navbar-nav">
-                <li class="active">
-                    <span>
+            <ul style="color:black;" id="menu-primary" class="nav navbar-nav">
+                <li @*class="active"*@>
+                    <span >
                         @Html.ActionLink("Home", "Index", "Home")
                     </span>
                 </li>
@@ -94,6 +94,7 @@
                 </li>
                 @if (User.IsInRole("Admin") || User.IsInRole("Supervisor"))
                 {
+                    
                     <li>@Html.ActionLink("Dashboard", "Index", "Admin")</li>
 
                 }

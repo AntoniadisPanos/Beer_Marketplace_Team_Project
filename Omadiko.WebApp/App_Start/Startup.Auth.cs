@@ -8,7 +8,7 @@ using Owin;
 using Omadiko.WebApp.Models;
 using Omadiko.Database;
 using Omadiko.Entities;
-
+using Microsoft.Owin.Security;
 
 namespace Omadiko.WebApp
 {
@@ -55,7 +55,7 @@ namespace Omadiko.WebApp
             // Once you check this option, your second step of verification during the login process will be remembered on the device where you logged in from.
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
-            
+
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
             //    clientId: "",
@@ -65,15 +65,23 @@ namespace Omadiko.WebApp
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //  appId: "",
-            //  appSecret: "");
+            app.UseFacebookAuthentication(
+              appId: "550500555988386",
+              appSecret: "0943369cfbc44f75c5c78d1ee849d8fe");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "377553642295-evuad9s6to1iurpd8f96nuutakplc032.apps.googleusercontent.com",
+                ClientSecret = "G3AfSo2HiI6n4n37VIe0V9hj",
+                 CallbackPath = new PathString("/GoogleLoginCallback")
+            });
+            //app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
+            //app.UseCookieAuthentication(new CookieAuthenticationOptions
             //{
-            //    ClientId = "",
-            //    ClientSecret = ""
+            //    LoginPath = new PathString("/Account/Index"),
+            //    SlidingExpiration = true
             //});
+            
         }
 
     }

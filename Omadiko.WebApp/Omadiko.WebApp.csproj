@@ -381,6 +381,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\c3.css" />
+    <Content Include="Content\c3.min.css" />
     <Content Include="Content\Images\169X299\Aecht-Schlenkerla-Rauchbier-Marzen.png" />
     <Content Include="Content\Images\169X299\AMSTEL_500ml_adobespark.png" />
     <Content Include="Content\Images\169X299\Asahi_Super_Dry-Black_330ml.png" />
@@ -466,7 +468,7 @@
     <Content Include="Content\Images\475X550\Nisos_7_bofor_330ml.png" />
     <Content Include="Content\Images\475X550\Paguru Cream Ale 330ml %28CREAM ALE%29 %28475X550%29.jpg" />
     <Content Include="Content\Images\475X550\Paguru_Cream_Ale_330ml.png" />
-    <Content Include="Content\Images\475X550\Paulaner Salvator 0.33lt %28BOCK%29 %28475X550%29.jpg" />
+    <Content Include="Content\Images\475X550\Paulaner Salvator.jpg" />
     <Content Include="Content\Images\475X550\Paulaner_Salvator_330ml.png" />
     <Content Include="Content\Images\475X550\Peroni_330.png" />
     <Content Include="Content\Images\475X550\Pinta_Imperator_Baltycki_330ml.png" />
@@ -490,6 +492,10 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\c3.js" />
+    <Content Include="Scripts\c3.min.js" />
+    <Content Include="Scripts\d3.js" />
+    <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -502,6 +508,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\openweather.js" />
     <Content Include="Template\admin\build\css\custom.css" />
     <Content Include="Template\admin\build\css\custom.min.css" />
     <Content Include="Template\admin\build\images\back_disabled.png" />
@@ -3980,10 +3987,15 @@
     <Content Include="Template\admin\vendors\validator\validator.js" />
     <Content Include="Template\images\114642september-555x355.jpg" />
     <Content Include="Template\images\1500x500.jpg" />
+    <Content Include="Template\images\1529520228114.jpg" />
+    <Content Include="Template\images\beer-1500x500.jpg" />
+    <Content Include="Template\images\beer-199650_1920.jpg" />
     <Content Include="Template\images\Brazil-ranked-number-2-most-innovative-craft-beer-market-Mintel.jpg" />
+    <Content Include="Template\images\download.jpg" />
     <Content Include="Template\images\dt-freevb-1500x500.jpg" />
     <Content Include="Template\images\Hooghoudt-30_RON5843-555x355.jpg" />
     <Content Include="Template\images\Japanese-Beer-2017.jpg" />
+    <Content Include="Template\images\KPU-Brew-students-Luc-Vreys-and-Sacha-Bordas-sig-beer-2019-750x565.jpg" />
     <Content Include="Template\images\merlin.jpg" />
     <Content Include="Template\images\nordic-beer-markets.jpg" />
     <Content Include="Template\images\people-bar-night-club-sparklers-sexy-women-men-62543835.jpg" />
@@ -4941,9 +4953,6 @@
     <Content Include="Views\ShoppingCart\OrderInfo.cshtml" />
     <Content Include="Views\ShoppingCart\PaymentInfo.cshtml" />
     <Content Include="Views\Shared\Components\_LiveChat.cshtml" />
-    <Content Include="Views\ShoppingCart\PaymentWithPaypal.cshtml" />
-    <Content Include="Views\ShoppingCart\FailureView.cshtml" />
-    <Content Include="Views\ShoppingCart\SuccessView.cshtml" />
     <Content Include="Views\ProductsAdmin\Create.cshtml" />
     <Content Include="Views\ProductsAdmin\Delete.cshtml" />
     <Content Include="Views\ProductsAdmin\Details.cshtml" />
@@ -4954,8 +4963,6 @@
     <Content Include="Views\CustomersAdmin\Details.cshtml" />
     <Content Include="Views\CustomersAdmin\Edit.cshtml" />
     <Content Include="Views\CustomersAdmin\Index.cshtml" />
-    <Content Include="Views\Admin\CreateRole.cshtml" />
-    <Content Include="Views\Admin\GetDate.cshtml" />
     <Content Include="Views\ApplicationUsersAdmin\Create.cshtml" />
     <Content Include="Views\ApplicationUsersAdmin\Delete.cshtml" />
     <Content Include="Views\ApplicationUsersAdmin\Details.cshtml" />
@@ -4981,8 +4988,6 @@
     <Content Include="Views\Messages\Details.cshtml" />
     <Content Include="Views\Messages\Edit.cshtml" />
     <Content Include="Views\Messages\Index.cshtml" />
-    <Content Include="Views\Manage\RemovePhoneNumber.cshtml" />
-    <Content Include="Views\Admin\GetData.cshtml" />
     <Content Include="Views\OrdersAdmin\Create.cshtml" />
     <Content Include="Views\OrdersAdmin\Delete.cshtml" />
     <Content Include="Views\OrdersAdmin\Details.cshtml" />
@@ -4993,6 +4998,9 @@
     <Content Include="Views\OrderDetailsAdmin\Details.cshtml" />
     <Content Include="Views\OrderDetailsAdmin\Edit.cshtml" />
     <Content Include="Views\OrderDetailsAdmin\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\SuccessView.cshtml" />
+    <Content Include="Views\ShoppingCart\FailureView.cshtml" />
+    <Content Include="Views\ShoppingCart\PaymentWithPayPal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

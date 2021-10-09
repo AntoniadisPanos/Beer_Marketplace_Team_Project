@@ -16,6 +16,7 @@ namespace Omadiko.WebApp.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: OrderDetailsAdmin
+        [Authorize(Roles ="Admin")]
         public ActionResult Index()
         {
             var orderDetails = db.OrderDetails.Include(o => o.Order);
@@ -23,6 +24,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: OrderDetailsAdmin/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +40,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: OrderDetailsAdmin/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.OrderId = new SelectList(db.Orders, "OrderId", "OrderStatus");
@@ -49,6 +52,7 @@ namespace Omadiko.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "OrderDetailsId,OrderNumber,Price,Quantity,ProductName,TotalAmount,FullFilled,ShippingDate,PaymentDate,OrderId")] OrderDetails orderDetails)
         {
             if (ModelState.IsValid)
@@ -63,6 +67,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: OrderDetailsAdmin/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -83,6 +88,7 @@ namespace Omadiko.WebApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "OrderDetailsId,OrderNumber,Price,Quantity,ProductName,TotalAmount,FullFilled,ShippingDate,PaymentDate,OrderId")] OrderDetails orderDetails)
         {
             if (ModelState.IsValid)
@@ -96,6 +102,7 @@ namespace Omadiko.WebApp.Controllers
         }
 
         // GET: OrderDetailsAdmin/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,6 +120,7 @@ namespace Omadiko.WebApp.Controllers
         // POST: OrderDetailsAdmin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             OrderDetails orderDetails = db.OrderDetails.Find(id);

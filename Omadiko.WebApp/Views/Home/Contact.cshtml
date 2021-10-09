@@ -26,19 +26,19 @@
     <div class="container-fluid dark section no-padding">
         <div class="row">
             <div class="col-sm-3 col-xs-6 icon-grid">
-                <a href="http://www.facebook.com/klevermediauk"></a>
+                <a href="#"></a>
                 <i class="fa fa-facebook"></i>
                 <h4>Facebook</h4>
                 <p>Like our Facebook page for awesome deals &amp; new arrivals.</p>
             </div>
             <div class="col-sm-3 col-xs-6 icon-grid">
-                <a href="http://www.instagram.com/klevermediauk"></a>
+                <a href="#"></a>
                 <i class="fa fa-instagram"></i>
                 <h4>Instagram</h4>
                 <p>Hashtag <a href="#">#craftbeernation</a> to be in with a chance to win freebies.</p>
             </div>
             <div class="col-sm-3 col-xs-6 icon-grid">
-                <a href="http://www.twitter.com/klevermediauk"></a>
+                <a href="#"></a>
                 <i class="fa fa-twitter"></i>
                 <h4>Twitter</h4>
                 <p>Follow us on Twitter for all the latest in craft beer brewing.</p>
@@ -112,9 +112,10 @@
                             using (Html.BeginForm("Contact", "Home", FormMethod.Post))
                             {
                                 @Html.AntiForgeryToken()
+                                @Html.ValidationSummary();
                                 @*<input type="text" name="CustomerFirstName" placeholder="Name">
                                 <input type="email" name="Customeremail" placeholder="Email">*@
-                                <textarea name="message" placeholder="Message" rows="5"></textarea>
+                                <textarea name="message" required placeholder="Message" rows="5"></textarea>
                                 <input type="submit" name="name" value="Send" class="btn btn-default">
                             }
                         }
@@ -122,11 +123,12 @@
                         {
                             using (Html.BeginForm("Contact", "Home", FormMethod.Post))
                             {
-                            @Html.AntiForgeryToken()
-                            <input type="text" name="CustomerFirstName" placeholder="Name" style="text-transform:none;">
-                            <input type="email" name="Customeremail" placeholder="Email" style="text-transform:none;">
-                            <textarea name="message" placeholder="Message" rows="5" style="text-transform:none;"></textarea>
-                            <input type="submit" name="name" value="Send" class="btn btn-default">
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary();
+                                <input type="text" required pattern="^[a-zA-Z\s]*$" name="CustomerFirstName" placeholder="Name" style="text-transform:none;">
+                                <input type="email" required name="Customeremail" placeholder="Email" style="text-transform:none;">
+                                <textarea name="message" required placeholder="Message" rows="5" style="text-transform:none;"></textarea>
+                                <input type="submit" name="name" value="Send" class="btn btn-default">
                             }
                         }
 
