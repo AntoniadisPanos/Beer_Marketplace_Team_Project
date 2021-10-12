@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
+
 using Owin;
 using Omadiko.WebApp.Models;
 using Omadiko.Database;
@@ -65,16 +65,16 @@ namespace Omadiko.WebApp
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            app.UseFacebookAuthentication(
-              appId: "550500555988386",
-              appSecret: "0943369cfbc44f75c5c78d1ee849d8fe");
+            //app.UseFacebookAuthentication(
+            //  appId: "550500555988386",
+            //  appSecret: "0943369cfbc44f75c5c78d1ee849d8fe");
 
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            {
-                ClientId = "377553642295-evuad9s6to1iurpd8f96nuutakplc032.apps.googleusercontent.com",
-                ClientSecret = "G3AfSo2HiI6n4n37VIe0V9hj",
-                 CallbackPath = new PathString("/GoogleLoginCallback")
-            });
+            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            //{
+            //    ClientId = "377553642295-evuad9s6to1iurpd8f96nuutakplc032.apps.googleusercontent.com",
+            //    ClientSecret = "G3AfSo2HiI6n4n37VIe0V9hj",
+            //     CallbackPath = new PathString("/GoogleLoginCallback")
+            //});
             //app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
             //app.UseCookieAuthentication(new CookieAuthenticationOptions
             //{

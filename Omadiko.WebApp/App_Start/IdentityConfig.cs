@@ -15,9 +15,7 @@ using Microsoft.Owin.Security;
 using Omadiko.Database;
 using Omadiko.Entities;
 using Omadiko.WebApp.Models;
-using Twilio;
-using Twilio.Rest.Api.V2010.Account;
-using Twilio.Types;
+
 
 namespace Omadiko.WebApp
 {
@@ -30,31 +28,31 @@ namespace Omadiko.WebApp
         }
     }
 
-    public class SmsService : IIdentityMessageService
-    {
-        public Task SendAsync(IdentityMessage message)
-        {
-            // Twilio Begin
-            var accountSid = ConfigurationManager.AppSettings["SMSAccountIdentification"];
-            var authToken = ConfigurationManager.AppSettings["SMSAccountPassword"];
-            var fromNumber = ConfigurationManager.AppSettings["SMSAccountFrom"];
+    //public class SmsService : IIdentityMessageService
+    //{
+    //    public Task SendAsync(IdentityMessage message)
+    //    {
+    //        Twilio Begin
+    //        var accountSid = ConfigurationManager.AppSettings["SMSAccountIdentification"];
+    //        var authToken = ConfigurationManager.AppSettings["SMSAccountPassword"];
+    //        var fromNumber = ConfigurationManager.AppSettings["SMSAccountFrom"];
 
-            TwilioClient.Init(accountSid, authToken);
+    //        TwilioClient.Init(accountSid, authToken);
 
-            MessageResource result = MessageResource.Create(
-            new PhoneNumber(message.Destination),
-            from: new PhoneNumber(fromNumber),
-            body: message.Body
-            );
+    //        MessageResource result = MessageResource.Create(
+    //        new PhoneNumber(message.Destination),
+    //        from: new PhoneNumber(fromNumber),
+    //        body: message.Body
+    //        );
 
-            //Status is one of Queued, Sending, Sent, Failed or null if the number is not valid
-            Trace.TraceInformation(result.Status.ToString());
-            //Twilio doesn't currently have an async API, so return success.
-            return Task.FromResult(0);
-            // Twilio End
+    //        //Status is one of Queued, Sending, Sent, Failed or null if the number is not valid
+    //        Trace.TraceInformation(result.Status.ToString());
+    //        //Twilio doesn't currently have an async API, so return success.
+    //        return Task.FromResult(0);
+    //        Twilio End
 
-        }
-    }
+    //    }
+    //}
 
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
     public class ApplicationUserManager : UserManager<ApplicationUser>
@@ -101,7 +99,7 @@ namespace Omadiko.WebApp
                 BodyFormat = "Your security code is {0}"
             });
             manager.EmailService = new EmailService();
-            manager.SmsService = new SmsService();
+           // manager.SmsService = new SmsService();
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
